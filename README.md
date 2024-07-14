@@ -1,2 +1,2 @@
 # Warrenguard
-A 2D action rpg game about rabbits
+A 2D rpg game about rabbits
