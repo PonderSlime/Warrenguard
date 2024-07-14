@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://q01o7rogtouc"]
+[gd_scene load_steps=24 format=3 uid="uid://q01o7rogtouc"]
 
+[ext_resource type="Script" path="res://Prepped Assets/Characters/player.gd" id="1_6joar"]
 [ext_resource type="Texture2D" uid="uid://ch7orknpbswpb" path="res://Sprites/Player/SpriteSheet.png" id="1_osxjy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd1cf"]
@@ -112,7 +113,60 @@ _data = {
 "walk": SubResource("Animation_nw5t7")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hcmnp"]
+animation = &"fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bijfm"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yxpiu"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ata4b"]
+animation = &"land"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5l5ej"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i7c5w"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iqqmr"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7bq84"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ycnlu"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gn2d3"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jen4i"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_31lrn"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5ltp2"]
+states/fall/node = SubResource("AnimationNodeAnimation_hcmnp")
+states/fall/position = Vector2(432, 218)
+states/idle/node = SubResource("AnimationNodeAnimation_bijfm")
+states/idle/position = Vector2(446, 81)
+states/jump/node = SubResource("AnimationNodeAnimation_yxpiu")
+states/jump/position = Vector2(226, 224)
+states/land/node = SubResource("AnimationNodeAnimation_ata4b")
+states/land/position = Vector2(602, 202)
+states/walk/node = SubResource("AnimationNodeAnimation_5l5ej")
+states/walk/position = Vector2(423, -68)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_i7c5w"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_iqqmr"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_7bq84"), "fall", "land", SubResource("AnimationNodeStateMachineTransition_ycnlu"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_gn2d3"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_jen4i"), "land", "idle", SubResource("AnimationNodeStateMachineTransition_31lrn")]
+graph_offset = Vector2(-49, 15)
+
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_6joar")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -127,3 +181,8 @@ shape = SubResource("RectangleShape2D_wd1cf")
 libraries = {
 "": SubResource("AnimationLibrary_4abcs")
 }
+autoplay = "idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_5ltp2")
+anim_player = NodePath("../AnimationPlayer")
