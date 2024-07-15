@@ -4,7 +4,7 @@ extends Camera2D
  
 # Use this value to compensate for your project's resolution
 # 2.4 is appropriate for 1080p. 1.0 is appropriate for 480p
-const SCALE := 2.4
+const SCALE := 1.2
  
  
 @export_category("pan")

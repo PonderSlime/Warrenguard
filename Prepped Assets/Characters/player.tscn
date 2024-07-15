@@ -1,8 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://q01o7rogtouc"]
+[gd_scene load_steps=25 format=3 uid="uid://q01o7rogtouc"]
 
 [ext_resource type="Script" path="res://Prepped Assets/Characters/player.gd" id="1_6joar"]
 [ext_resource type="Texture2D" uid="uid://ch7orknpbswpb" path="res://Sprites/Player/SpriteSheet.png" id="1_osxjy"]
-[ext_resource type="Script" path="res://Prepped Assets/Characters/Camera2D.gd" id="3_1e1qt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd1cf"]
 size = Vector2(16, 24)
@@ -187,6 +186,3 @@ autoplay = "idle"
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_5ltp2")
 anim_player = NodePath("../AnimationPlayer")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("3_1e1qt")

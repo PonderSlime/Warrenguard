@@ -4,7 +4,7 @@ var run_speed = 8.9
 
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 @export var speed = 120
-@export var jump_speed = -500
+@export var jump_speed = -450
 @export var gravity = 1000
 @export_range(0.0, 1.0) var friction = 0.1
 @export_range(0.0 , 1.0) var acceleration = 0.25
