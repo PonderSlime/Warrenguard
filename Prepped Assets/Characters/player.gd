@@ -8,6 +8,7 @@ var run_speed = 8.9
 @export var gravity = 1000
 @export_range(0.0, 1.0) var friction = 0.1
 @export_range(0.0 , 1.0) var acceleration = 0.25
+@onready var collision = $CollisionShape2D
 
 func get_input():
 	var current = state_machine.get_current_node()
@@ -22,12 +23,23 @@ func get_input():
 	move_and_slide()
 
 func _physics_process(delta):
-	velocity.y += gravity * delta
-	var dir = Input.get_axis("move_left", "move_right")
-	if dir != 0:
-		velocity.x = lerp(velocity.x, dir * speed, acceleration)
-	else:
-		velocity.x = lerp(velocity.x, 0.0, friction)
+	if collision.disabled == false:
+		velocity.y += gravity * delta
+		var dir = Input.get_axis("move_left", "move_right")
+		if dir != 0:
+			velocity.x = lerp(velocity.x, dir * speed, acceleration)
+		else:
+			velocity.x = lerp(velocity.x, 0.0, friction)
+	elif collision.disabled == true:
+		if is_on_floor():
+			velocity.y = 0
+		else:
+			velocity.y = 0
+		velocity.x = 0
+		if Input.is_action_just_pressed("exit_burrow"):
+			global_position = get_global_mouse_position()
+			collision.disabled = false
+	
 
 	move_and_slide()
 	if velocity.x != 0:
@@ -36,7 +48,6 @@ func _physics_process(delta):
 		state_machine.travel("jump")
 		await get_tree().create_timer(0.1).timeout
 		velocity.y = jump_speed
-		
 		return
 	if velocity.y < 0:
 		state_machine.travel("fall")
@@ -49,3 +60,6 @@ func _physics_process(delta):
 			state_machine.travel("walk")
 		else:
 			state_machine.travel("idle")
+	if Input.is_action_just_pressed("burrow"):
+		collision.disabled = true
+		

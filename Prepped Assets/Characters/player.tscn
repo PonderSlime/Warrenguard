@@ -1,7 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://q01o7rogtouc"]
+[gd_scene load_steps=29 format=3 uid="uid://q01o7rogtouc"]
 
 [ext_resource type="Script" path="res://Prepped Assets/Characters/player.gd" id="1_6joar"]
 [ext_resource type="Texture2D" uid="uid://ch7orknpbswpb" path="res://Sprites/Player/SpriteSheet.png" id="1_osxjy"]
+[ext_resource type="Texture2D" uid="uid://dr74vcdcrr1pr" path="res://Sprites/Environment/Cursor.png" id="3_2rhjq"]
+[ext_resource type="Script" path="res://Prepped Assets/Characters/ExitBurrowLoc.gd" id="3_sj2km"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd1cf"]
 size = Vector2(16, 24)
@@ -162,10 +164,16 @@ states/walk/position = Vector2(423, -68)
 transitions = ["walk", "idle", SubResource("AnimationNodeStateMachineTransition_iqqmr"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_7bq84"), "fall", "land", SubResource("AnimationNodeStateMachineTransition_ycnlu"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_gn2d3"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_jen4i"), "land", "idle", SubResource("AnimationNodeStateMachineTransition_31lrn"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_3hdeg"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_1e8tb")]
 graph_offset = Vector2(-133, -67)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8w2fy"]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_62cgi"]
+radius = 12.0
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 2
 collision_layer = 2
-collision_mask = 255
+collision_mask = 251
 script = ExtResource("1_6joar")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -186,3 +194,27 @@ autoplay = "idle"
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_5ltp2")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="ExitBurrowLoc" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_8w2fy")
+script = ExtResource("3_sj2km")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitBurrowLoc"]
+shape = SubResource("CircleShape2D_62cgi")
+
+[node name="TextureRect" type="TextureRect" parent="ExitBurrowLoc"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2rhjq")
