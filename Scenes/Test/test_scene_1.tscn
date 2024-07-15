@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dg88qd2iyrbgb"]
+[gd_scene load_steps=13 format=3 uid="uid://dg88qd2iyrbgb"]
 
 [ext_resource type="PackedScene" uid="uid://q01o7rogtouc" path="res://Prepped Assets/Characters/player.tscn" id="1_60xql"]
 [ext_resource type="Texture2D" uid="uid://bmqmu2cagdk1t" path="res://Sprites/Environment/Tilemap.png" id="1_usa6h"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_bixfq"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_kphx5"]
 [ext_resource type="Texture2D" uid="uid://l00yjfnvepmv" path="res://Sprites/Environment/Cloud1.png" id="6_55r36"]
+[ext_resource type="Texture2D" uid="uid://p6pjna6l7nwx" path="res://Sprites/Environment/Background.png" id="7_mnen0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ead3n"]
 
@@ -322,10 +323,9 @@ position = Vector2(555, 187)
 scale = Vector2(2, 2)
 texture = ExtResource("6_55r36")
 
-[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Clouds"]
 z_index = -2
-offset_left = -866.0
-offset_top = -1054.0
-offset_right = 2134.0
-offset_bottom = 1946.0
-color = Color(0.358618, 0.64601, 0.753152, 1)
+texture_filter = 1
+position = Vector2(501, 252)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_mnen0")
