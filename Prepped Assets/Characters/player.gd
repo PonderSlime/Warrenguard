@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var run_speed = 8.9
 
-@onready var state_machine = $AnimationTree["parameters/playback"]
+@onready var state_machine = $AnimationTree.get("parameters/playback")
 @export var speed = 120
 @export var jump_speed = -500
 @export var gravity = 1000
@@ -30,14 +30,22 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, 0.0, friction)
 
 	move_and_slide()
+	if velocity.x != 0:
+		$Sprite2D.scale.x = sign(velocity.x)
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_speed
 		state_machine.travel("jump")
+		await get_tree().create_timer(0.1).timeout
+		velocity.y = jump_speed
+		
+		return
 	if velocity.y < 0:
 		state_machine.travel("fall")
-	if velocity.y < 0 and is_on_floor():
-		state_machine.travel("land")
-	else:
-		state_machine.travel("idle")
+		return
 	if is_on_floor():
-		state_machine.travel("land")
+		if !is_on_floor():
+			state_machine.travel("land")
+			return
+		if velocity.length() > 50:
+			state_machine.travel("walk")
+		else:
+			state_machine.travel("idle")
