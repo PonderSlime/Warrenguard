@@ -1,20 +1,13 @@
 extends CharacterBody2D
 
-var run_speed = 80.0
-var attacks = ["attack1", "attack2"]
+var run_speed = 8.9
 
 @onready var state_machine = $AnimationTree["parameters/playback"]
-@export var speed = 1200
-@export var jump_speed = -1800
-@export var gravity = 4000
+@export var speed = 120
+@export var jump_speed = -500
+@export var gravity = 1000
 @export_range(0.0, 1.0) var friction = 0.1
 @export_range(0.0 , 1.0) var acceleration = 0.25
-#func hurt():
-	#state_machine.travel("hurt")
-#
-#func die():
-	#state_machine.travel("die")
-	#set_physics_process(false)
 
 func get_input():
 	var current = state_machine.get_current_node()
@@ -42,5 +35,9 @@ func _physics_process(delta):
 		state_machine.travel("jump")
 	if velocity.y < 0:
 		state_machine.travel("fall")
+	if velocity.y < 0 and is_on_floor():
+		state_machine.travel("land")
+	else:
+		state_machine.travel("idle")
 	if is_on_floor():
 		state_machine.travel("land")

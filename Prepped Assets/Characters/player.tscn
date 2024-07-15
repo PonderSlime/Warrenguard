@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://q01o7rogtouc"]
+[gd_scene load_steps=23 format=3 uid="uid://q01o7rogtouc"]
 
 [ext_resource type="Script" path="res://Prepped Assets/Characters/player.gd" id="1_6joar"]
 [ext_resource type="Texture2D" uid="uid://ch7orknpbswpb" path="res://Sprites/Player/SpriteSheet.png" id="1_osxjy"]
@@ -9,6 +9,7 @@ size = Vector2(16, 24)
 [sub_resource type="Animation" id="Animation_2abqj"]
 resource_name = "idle"
 length = 1.33
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -73,7 +74,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_3b2b1"]
 resource_name = "fall"
 length = 0.5
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -128,9 +128,6 @@ animation = &"land"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5l5ej"]
 animation = &"walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i7c5w"]
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iqqmr"]
 advance_mode = 2
 
@@ -162,10 +159,13 @@ states/land/node = SubResource("AnimationNodeAnimation_ata4b")
 states/land/position = Vector2(602, 202)
 states/walk/node = SubResource("AnimationNodeAnimation_5l5ej")
 states/walk/position = Vector2(423, -68)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_i7c5w"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_iqqmr"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_7bq84"), "fall", "land", SubResource("AnimationNodeStateMachineTransition_ycnlu"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_gn2d3"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_jen4i"), "land", "idle", SubResource("AnimationNodeStateMachineTransition_31lrn")]
-graph_offset = Vector2(-49, 15)
+transitions = ["walk", "idle", SubResource("AnimationNodeStateMachineTransition_iqqmr"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_7bq84"), "fall", "land", SubResource("AnimationNodeStateMachineTransition_ycnlu"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_gn2d3"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_jen4i"), "land", "idle", SubResource("AnimationNodeStateMachineTransition_31lrn")]
+graph_offset = Vector2(-196, 34)
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 2
+collision_layer = 2
+collision_mask = 255
 script = ExtResource("1_6joar")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -186,3 +186,6 @@ autoplay = "idle"
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_5ltp2")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
