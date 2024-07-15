@@ -6,10 +6,12 @@ var run_speed = 8.9
 @export var speed = 120
 @export var jump_speed = -450
 @export var gravity = 1000
+@export var exit_burrow_loc : StaticBody2D
 @export_range(0.0, 1.0) var friction = 0.1
 @export_range(0.0 , 1.0) var acceleration = 0.25
 @onready var collision = $CollisionShape2D
-
+@onready var sprite = $Sprite2D
+var exit_burrow_ready : bool = false
 func get_input():
 	var current = state_machine.get_current_node()
 	# flip the character sprite left/right
@@ -31,15 +33,18 @@ func _physics_process(delta):
 		else:
 			velocity.x = lerp(velocity.x, 0.0, friction)
 	elif collision.disabled == true:
-		if is_on_floor():
-			velocity.y = 0
-		else:
-			velocity.y = 0
+		velocity.y = 0
 		velocity.x = 0
-		if Input.is_action_just_pressed("exit_burrow"):
-			global_position = get_global_mouse_position()
+		state_machine.travel("burrow")
+		if Input.is_action_just_pressed("exit_burrow") and exit_burrow_ready:
+			exit_burrow_loc.visible = false
+			sprite.visible = false
+			global_position = exit_burrow_loc.global_position
 			collision.disabled = false
-	
+			await get_tree().create_timer(0.05).timeout
+			sprite.visible = true
+			state_machine.travel("exit_burrow")
+		
 
 	move_and_slide()
 	if velocity.x != 0:
@@ -62,4 +67,14 @@ func _physics_process(delta):
 			state_machine.travel("idle")
 	if Input.is_action_just_pressed("burrow"):
 		collision.disabled = true
+		exit_burrow_loc.visible = true
+		exit_burrow_loc.global_position = get_global_position()
 		
+
+
+func _on_exit_burrow_loc_area_entered():
+	exit_burrow_ready = true
+
+
+func _on_exit_burrow_loc_area_exited():
+	exit_burrow_ready = false

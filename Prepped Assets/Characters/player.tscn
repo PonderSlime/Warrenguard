@@ -1,12 +1,42 @@
-[gd_scene load_steps=29 format=3 uid="uid://q01o7rogtouc"]
+[gd_scene load_steps=33 format=3 uid="uid://q01o7rogtouc"]
 
 [ext_resource type="Script" path="res://Prepped Assets/Characters/player.gd" id="1_6joar"]
 [ext_resource type="Texture2D" uid="uid://ch7orknpbswpb" path="res://Sprites/Player/SpriteSheet.png" id="1_osxjy"]
-[ext_resource type="Texture2D" uid="uid://dr74vcdcrr1pr" path="res://Sprites/Environment/Cursor.png" id="3_2rhjq"]
-[ext_resource type="Script" path="res://Prepped Assets/Characters/ExitBurrowLoc.gd" id="3_sj2km"]
+[ext_resource type="PackedScene" uid="uid://jeg576y3uga7" path="res://Prepped Assets/Characters/exit_burrow_loc.tscn" id="3_e5wjs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd1cf"]
 size = Vector2(16, 24)
+
+[sub_resource type="Animation" id="Animation_8jdja"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3b2b1"]
+resource_name = "fall"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [48, 48]
+}
 
 [sub_resource type="Animation" id="Animation_2abqj"]
 resource_name = "idle"
@@ -24,8 +54,9 @@ tracks/0/keys = {
 "values": [0, 15]
 }
 
-[sub_resource type="Animation" id="Animation_8jdja"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_xlovt"]
+resource_name = "jump"
+length = 0.4167
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -33,10 +64,26 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [32, 36]
+}
+
+[sub_resource type="Animation" id="Animation_gk3a6"]
+resource_name = "land"
+length = 0.4167
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [64, 68]
 }
 
 [sub_resource type="Animation" id="Animation_nw5t7"]
@@ -56,9 +103,9 @@ tracks/0/keys = {
 "values": [16, 19]
 }
 
-[sub_resource type="Animation" id="Animation_xlovt"]
-resource_name = "jump"
-length = 0.4167
+[sub_resource type="Animation" id="Animation_pwvms"]
+resource_name = "burrow"
+length = 0.91
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -66,15 +113,15 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [32, 36]
+"values": [80, 90]
 }
 
-[sub_resource type="Animation" id="Animation_3b2b1"]
-resource_name = "fall"
-length = 0.5
+[sub_resource type="Animation" id="Animation_jn1kh"]
+resource_name = "exit_burrow"
+length = 0.91
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -82,37 +129,29 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [48, 48]
-}
-
-[sub_resource type="Animation" id="Animation_gk3a6"]
-resource_name = "land"
-length = 0.4167
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.91),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [64, 68]
+"values": [90, 80]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4abcs"]
 _data = {
 "RESET": SubResource("Animation_8jdja"),
+"burrow": SubResource("Animation_pwvms"),
+"exit_burrow": SubResource("Animation_jn1kh"),
 "fall": SubResource("Animation_3b2b1"),
 "idle": SubResource("Animation_2abqj"),
 "jump": SubResource("Animation_xlovt"),
 "land": SubResource("Animation_gk3a6"),
 "walk": SubResource("Animation_nw5t7")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j4eg3"]
+animation = &"burrow"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1rs3j"]
+animation = &"exit_burrow"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hcmnp"]
 animation = &"fall"
@@ -150,71 +189,64 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1e8tb"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ujwto"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v7h3h"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ye4n2"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5ltp2"]
+states/burrow/node = SubResource("AnimationNodeAnimation_j4eg3")
+states/burrow/position = Vector2(631, 19)
+states/exit_burrow/node = SubResource("AnimationNodeAnimation_1rs3j")
+states/exit_burrow/position = Vector2(645, -52)
 states/fall/node = SubResource("AnimationNodeAnimation_hcmnp")
 states/fall/position = Vector2(432, 218)
 states/idle/node = SubResource("AnimationNodeAnimation_bijfm")
-states/idle/position = Vector2(446, 81)
+states/idle/position = Vector2(444, 70)
 states/jump/node = SubResource("AnimationNodeAnimation_yxpiu")
 states/jump/position = Vector2(226, 224)
 states/land/node = SubResource("AnimationNodeAnimation_ata4b")
 states/land/position = Vector2(602, 202)
 states/walk/node = SubResource("AnimationNodeAnimation_5l5ej")
 states/walk/position = Vector2(423, -68)
-transitions = ["walk", "idle", SubResource("AnimationNodeStateMachineTransition_iqqmr"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_7bq84"), "fall", "land", SubResource("AnimationNodeStateMachineTransition_ycnlu"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_gn2d3"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_jen4i"), "land", "idle", SubResource("AnimationNodeStateMachineTransition_31lrn"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_3hdeg"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_1e8tb")]
-graph_offset = Vector2(-133, -67)
+transitions = ["walk", "idle", SubResource("AnimationNodeStateMachineTransition_iqqmr"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_7bq84"), "fall", "land", SubResource("AnimationNodeStateMachineTransition_ycnlu"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_gn2d3"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_jen4i"), "land", "idle", SubResource("AnimationNodeStateMachineTransition_31lrn"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_3hdeg"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_1e8tb"), "burrow", "exit_burrow", SubResource("AnimationNodeStateMachineTransition_ujwto"), "idle", "burrow", SubResource("AnimationNodeStateMachineTransition_v7h3h"), "exit_burrow", "idle", SubResource("AnimationNodeStateMachineTransition_ye4n2")]
+graph_offset = Vector2(13, -89)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8w2fy"]
-friction = 0.0
+[node name="Node" type="Node2D"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_62cgi"]
-radius = 12.0
-
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("exit_burrow_loc")]
 z_index = 2
 collision_layer = 2
 collision_mask = 251
 script = ExtResource("1_6joar")
+exit_burrow_loc = NodePath("../ExitBurrowLoc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
 texture_filter = 1
+position = Vector2(0, -12)
 texture = ExtResource("1_osxjy")
 hframes = 16
-vframes = 5
+vframes = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_wd1cf")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 libraries = {
 "": SubResource("AnimationLibrary_4abcs")
 }
 autoplay = "idle"
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="Player"]
 tree_root = SubResource("AnimationNodeStateMachine_5ltp2")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="ExitBurrowLoc" type="StaticBody2D" parent="."]
-collision_layer = 4
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_8w2fy")
-script = ExtResource("3_sj2km")
+[node name="ExitBurrowLoc" parent="." instance=ExtResource("3_e5wjs")]
+visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitBurrowLoc"]
-shape = SubResource("CircleShape2D_62cgi")
-
-[node name="TextureRect" type="TextureRect" parent="ExitBurrowLoc"]
-texture_filter = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_2rhjq")
+[connection signal="area_entered" from="ExitBurrowLoc" to="Player" method="_on_exit_burrow_loc_area_entered"]
+[connection signal="area_exited" from="ExitBurrowLoc" to="Player" method="_on_exit_burrow_loc_area_exited"]
