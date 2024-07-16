@@ -1,7 +1,7 @@
 extends Node
 
 var player_health : int = 100
-var carrots : int = 0
+var carrots : int = 100
 var current_scene = null
 
 func _ready():

@@ -1,8 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://q01o7rogtouc"]
+[gd_scene load_steps=34 format=3 uid="uid://q01o7rogtouc"]
 
 [ext_resource type="Script" path="res://Prepped Assets/Characters/player.gd" id="1_6joar"]
 [ext_resource type="Texture2D" uid="uid://ch7orknpbswpb" path="res://Sprites/Player/SpriteSheet.png" id="1_osxjy"]
 [ext_resource type="PackedScene" uid="uid://jeg576y3uga7" path="res://Prepped Assets/Characters/exit_burrow_loc.tscn" id="3_e5wjs"]
+[ext_resource type="PackedScene" uid="uid://bd8v4t8j3r4us" path="res://Prepped Assets/UI/hud.tscn" id="4_8mjqa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd1cf"]
 size = Vector2(16, 24)
@@ -247,6 +248,8 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="ExitBurrowLoc" parent="." instance=ExtResource("3_e5wjs")]
 visible = false
+
+[node name="HUD" parent="." instance=ExtResource("4_8mjqa")]
 
 [connection signal="area_entered" from="ExitBurrowLoc" to="Player" method="_on_exit_burrow_loc_area_entered"]
 [connection signal="area_exited" from="ExitBurrowLoc" to="Player" method="_on_exit_burrow_loc_area_exited"]
