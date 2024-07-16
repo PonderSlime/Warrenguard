@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bd8v4t8j3r4us"]
+[gd_scene load_steps=6 format=3 uid="uid://bd8v4t8j3r4us"]
 
 [ext_resource type="Texture2D" uid="uid://bdp0kqhk63wo" path="res://Sprites/UI/Healthbar_Empty.png" id="1_77l2a"]
 [ext_resource type="Script" path="res://Prepped Assets/UI/hud.gd" id="1_c6a2n"]
 [ext_resource type="Texture2D" uid="uid://djhpnek3mgfy0" path="res://Sprites/UI/Healthbar_Full.png" id="2_2pk3g"]
 [ext_resource type="FontFile" uid="uid://bogvghvlaqn45" path="res://Fonts/m5x7.ttf" id="4_200pi"]
-[ext_resource type="Script" path="res://Prepped Assets/Items/carrot.gd" id="5_gs6vx"]
 [ext_resource type="Texture2D" uid="uid://covaadkcirfii" path="res://Sprites/Items/Carrot.png" id="6_4efan"]
 
 [node name="HUD" type="CanvasLayer"]
@@ -12,8 +11,8 @@ script = ExtResource("1_c6a2n")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 texture_filter = 1
-offset_right = 96.0
-offset_bottom = 32.0
+offset_right = 144.0
+offset_bottom = 48.0
 nine_patch_stretch = true
 texture_under = ExtResource("1_77l2a")
 texture_progress = ExtResource("2_2pk3g")
@@ -26,34 +25,42 @@ grow_horizontal = 0
 grow_vertical = 2
 use_top_left = true
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="VSeparator" type="VSeparator" parent="CenterContainer/PanelContainer"]
+[node name="VSeparator" type="VSeparator" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 5
 
-[node name="CarrotCounter" type="Label" parent="CenterContainer/PanelContainer/VSeparator"]
+[node name="CarrotCounter" type="Label" parent="CenterContainer/VBoxContainer/VSeparator"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 577.0
-offset_top = 16.0
-offset_right = 681.0
-offset_bottom = 57.0
+offset_left = 620.0
+offset_top = 15.0
+offset_right = 638.0
+offset_bottom = 56.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource("4_200pi")
-theme_override_font_sizes/font_size = 32
-text = " X 4"
+theme_override_font_sizes/font_size = 48
+text = "4"
+horizontal_alignment = 2
 
-[node name="Carrot" type="Node2D" parent="CenterContainer/PanelContainer/VSeparator"]
-script = ExtResource("5_gs6vx")
-
-[node name="Sprite2D" type="Sprite2D" parent="CenterContainer/PanelContainer/VSeparator/Carrot"]
+[node name="Carrot" type="Sprite2D" parent="CenterContainer/VBoxContainer/VSeparator/CarrotCounter"]
 texture_filter = 1
-position = Vector2(575, 30)
-scale = Vector2(2, 2)
+position = Vector2(-43, 21)
+scale = Vector2(3, 3)
 texture = ExtResource("6_4efan")
 hframes = 26
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/VSeparator/CarrotCounter/Carrot"]
+offset_left = 7.33333
+offset_top = -8.0
+offset_right = 13.3333
+offset_bottom = 5.0
+theme_override_fonts/font = ExtResource("4_200pi")
+theme_override_font_sizes/font_size = 16
+text = "x"

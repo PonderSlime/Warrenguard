@@ -44,7 +44,6 @@ func _physics_process(delta):
 			await get_tree().create_timer(0.05).timeout
 			sprite.visible = true
 			state_machine.travel("exit_burrow")
-		
 
 	move_and_slide()
 	if velocity.x != 0:
@@ -65,12 +64,10 @@ func _physics_process(delta):
 			state_machine.travel("walk")
 		else:
 			state_machine.travel("idle")
-	if Input.is_action_just_pressed("burrow"):
+	if Input.is_action_just_pressed("burrow") and is_on_floor():
 		collision.disabled = true
-		exit_burrow_loc.visible = true
 		exit_burrow_loc.global_position = get_global_position()
-		
-
+		exit_burrow_loc.visible = true
 
 func _on_exit_burrow_loc_area_entered():
 	exit_burrow_ready = true
