@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://diyn3gqjjdog8"]
+
+[ext_resource type="FontFile" uid="uid://bogvghvlaqn45" path="res://Fonts/m5x7.ttf" id="1_wx15j"]
+[ext_resource type="Script" path="res://Prepped Assets/UI/gos.gd" id="1_x5nyi"]
+
+[node name="GameOverScreen" type="CanvasLayer"]
+process_mode = 2
+offset = Vector2(0, -36.415)
+transform = Transform2D(1, 0, 0, 1, 0, -36.415)
+script = ExtResource("1_x5nyi")
+
+[node name="Rows" type="VBoxContainer" parent="."]
+offset_left = 210.0
+offset_top = 208.0
+offset_right = 430.0
+offset_bottom = 335.0
+
+[node name="Label" type="Label" parent="Rows"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_wx15j")
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER"
+
+[node name="CenterContainer" type="CenterContainer" parent="Rows"]
+layout_mode = 2
+
+[node name="Rows2" type="VBoxContainer" parent="Rows/CenterContainer"]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="Rows/CenterContainer/Rows2"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_wx15j")
+theme_override_font_sizes/font_size = 32
+text = "RESTART"
+
+[node name="QuitButton" type="Button" parent="Rows/CenterContainer/Rows2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_wx15j")
+theme_override_font_sizes/font_size = 32
+text = "QUIT"
+
+[connection signal="pressed" from="Rows/CenterContainer/Rows2/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Rows/CenterContainer/Rows2/QuitButton" to="." method="_on_quit_button_pressed"]

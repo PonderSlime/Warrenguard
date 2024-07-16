@@ -65,7 +65,6 @@ func _physics_process(delta):
 	if is_on_floor():
 		if !is_on_floor():
 			state_machine.travel("land")
-			hurt.emit()
 			return
 		if velocity.length() > 50:
 			state_machine.travel("walk")
@@ -86,3 +85,4 @@ func _on_exit_burrow_loc_area_exited():
 	exit_burrow_ready = false
 func spike():
 	velocity.y = jump_speed
+	hurt.emit()
