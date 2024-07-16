@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 var run_speed = 8.9
 
+signal jump
+signal hurt
+
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 @export var speed = 120
 @export var jump_speed = -450
@@ -51,6 +54,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		state_machine.travel("jump")
 		await get_tree().create_timer(0.1).timeout
+		jump.emit()
 		velocity.y = jump_speed
 		return
 	if velocity.y < 0:
@@ -59,6 +63,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		if !is_on_floor():
 			state_machine.travel("land")
+			hurt.emit()
 			return
 		if velocity.length() > 50:
 			state_machine.travel("walk")
