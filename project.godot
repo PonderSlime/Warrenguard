@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+GlobalVariableLoader="*res://Global.gd"
 
 [display]
 
@@ -66,4 +67,5 @@ exit_burrow={
 2d_physics/layer_1="World"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Cursor"
+2d_physics/layer_4="Items"
 2d_physics/stretch/mode="viewport"

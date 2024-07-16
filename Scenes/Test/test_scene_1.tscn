@@ -1,12 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://dg88qd2iyrbgb"]
+[gd_scene load_steps=15 format=3 uid="uid://dg88qd2iyrbgb"]
 
 [ext_resource type="PackedScene" uid="uid://q01o7rogtouc" path="res://Prepped Assets/Characters/player.tscn" id="1_60xql"]
+[ext_resource type="Script" path="res://Scenes/Test/test_scene_1.gd" id="1_lcnp5"]
 [ext_resource type="Texture2D" uid="uid://bmqmu2cagdk1t" path="res://Sprites/Environment/Tilemap.png" id="1_usa6h"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_bqksy"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_bixfq"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_kphx5"]
 [ext_resource type="Texture2D" uid="uid://l00yjfnvepmv" path="res://Sprites/Environment/Cloud1.png" id="6_55r36"]
 [ext_resource type="Texture2D" uid="uid://p6pjna6l7nwx" path="res://Sprites/Environment/Background.png" id="7_mnen0"]
+[ext_resource type="PackedScene" uid="uid://ch3j6t0gedhm3" path="res://Prepped Assets/Items/carrot.tscn" id="9_100jg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ead3n"]
 
@@ -218,6 +220,7 @@ background_color = Color(0.314306, 0.791953, 0.831257, 1)
 
 [node name="Node2D" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_lcnp5")
 
 [node name="Player" parent="." instance=ExtResource("1_60xql")]
 
@@ -236,7 +239,6 @@ tween_resource = SubResource("Resource_qw48l")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
-position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_left_margin = 0.4
@@ -331,3 +333,18 @@ texture_filter = 1
 position = Vector2(501, 252)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_mnen0")
+
+[node name="Carrot" parent="." instance=ExtResource("9_100jg")]
+position = Vector2(311, 253)
+
+[node name="Carrot2" parent="." instance=ExtResource("9_100jg")]
+position = Vector2(548, 242)
+
+[node name="Carrot3" parent="." instance=ExtResource("9_100jg")]
+position = Vector2(726, 212)
+
+[node name="Carrot4" parent="." instance=ExtResource("9_100jg")]
+position = Vector2(852, 291)
+
+[node name="Carrot5" parent="." instance=ExtResource("9_100jg")]
+position = Vector2(696, 352)
