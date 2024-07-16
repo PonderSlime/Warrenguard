@@ -206,7 +206,7 @@ terrain_set_0/terrain_2/name = "Grass Floor"
 terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_7f4tw")
 
-[sub_resource type="Resource" id="Resource_e37xd"]
+[sub_resource type="Resource" id="Resource_qw48l"]
 script = ExtResource("4_bixfq")
 duration = 1.0
 transition = 0
@@ -232,10 +232,15 @@ priority = 23
 follow_mode = 5
 follow_target = NodePath("../Player/Player")
 zoom = Vector2(2, 2)
-tween_resource = SubResource("Resource_e37xd")
+tween_resource = SubResource("Resource_qw48l")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.4
+drag_right_margin = 0.4
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("5_kphx5")
