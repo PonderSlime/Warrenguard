@@ -226,7 +226,7 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[node name="Node" type="Node2D"]
+[node name="Player" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("exit_burrow_loc")]
 z_index = 2
@@ -261,17 +261,6 @@ visible = false
 
 [node name="HUD" parent="." instance=ExtResource("4_8mjqa")]
 
-[node name="Song" type="AudioStreamPlayer" parent="."]
-volume_db = -10.0
-
-[node name="SoundEffects" type="AudioStreamPlayer" parent="."]
-volume_db = -6.0
-
-[node name="AudioController" type="Node" parent="." node_paths=PackedStringArray("song", "sound_effects")]
-script = ExtResource("6_k4rhr")
-song = NodePath("../Song")
-sound_effects = NodePath("../SoundEffects")
-
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 script = ExtResource("6_qhux0")
 priority = 23
@@ -290,9 +279,26 @@ drag_right_margin = 0.4
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("8_5hogo")
 
-[connection signal="footstep" from="Player" to="AudioController" method="_walk"]
-[connection signal="hurt" from="Player" to="AudioController" method="_hurt"]
-[connection signal="jump" from="Player" to="AudioController" method="_jump"]
-[connection signal="no_walk" from="Player" to="AudioController" method="_no_walk"]
+[node name="Sound" type="Node" parent="."]
+
+[node name="Song" type="AudioStreamPlayer" parent="Sound"]
+volume_db = -10.0
+
+[node name="SoundEffects" type="AudioStreamPlayer" parent="Sound"]
+volume_db = -6.0
+
+[node name="WalkSound" type="AudioStreamPlayer" parent="Sound"]
+volume_db = -6.0
+
+[node name="AudioController" type="Node" parent="Sound" node_paths=PackedStringArray("song", "sound_effects", "walk_sound")]
+script = ExtResource("6_k4rhr")
+song = NodePath("../Song")
+sound_effects = NodePath("../SoundEffects")
+walk_sound = NodePath("../WalkSound")
+
+[connection signal="footstep" from="Player" to="Sound/AudioController" method="_walk"]
+[connection signal="hurt" from="Player" to="Sound/AudioController" method="_hurt"]
+[connection signal="jump" from="Player" to="Sound/AudioController" method="_jump"]
+[connection signal="no_walk" from="Player" to="Sound/AudioController" method="_no_walk"]
 [connection signal="area_entered" from="ExitBurrowLoc" to="Player" method="_on_exit_burrow_loc_area_entered"]
 [connection signal="area_exited" from="ExitBurrowLoc" to="Player" method="_on_exit_burrow_loc_area_exited"]

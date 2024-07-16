@@ -13,6 +13,7 @@ func _process(delta):
 
 func _on_area_2d_body_entered(body):
 	GlobalVariableLoader.carrots += 1
+	GlobalVariableLoader.player_health += 1
 	print(GlobalVariableLoader.carrots)
 	await get_tree().create_timer(0.01).timeout
 	GlobalVariableLoader.prev_carrots = GlobalVariableLoader.carrots

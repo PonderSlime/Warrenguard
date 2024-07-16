@@ -84,3 +84,5 @@ func _on_exit_burrow_loc_area_entered():
 
 func _on_exit_burrow_loc_area_exited():
 	exit_burrow_ready = false
+func spike():
+	velocity.y = jump_speed

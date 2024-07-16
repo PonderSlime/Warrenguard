@@ -68,4 +68,5 @@ exit_burrow={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Cursor"
 2d_physics/layer_4="Items"
+2d_physics/layer_5="DamageObjects"
 2d_physics/stretch/mode="viewport"
