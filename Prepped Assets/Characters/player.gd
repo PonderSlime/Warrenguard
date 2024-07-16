@@ -4,6 +4,8 @@ var run_speed = 8.9
 
 signal jump
 signal hurt
+signal footstep
+signal no_walk
 
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 @export var speed = 120
@@ -67,8 +69,10 @@ func _physics_process(delta):
 			return
 		if velocity.length() > 50:
 			state_machine.travel("walk")
+			footstep.emit()
 		else:
 			state_machine.travel("idle")
+			no_walk.emit()
 	if Input.is_action_just_pressed("burrow") and is_on_floor():
 		collision.disabled = true
 		exit_burrow_loc.global_position = get_global_position()
