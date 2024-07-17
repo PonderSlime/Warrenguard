@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Warrenguard"
+run/main_scene="res://Scenes/Test/test_scene_1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -70,3 +71,8 @@ exit_burrow={
 2d_physics/layer_4="Items"
 2d_physics/layer_5="DamageObjects"
 2d_physics/stretch/mode="viewport"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

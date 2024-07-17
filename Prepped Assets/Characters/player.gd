@@ -17,6 +17,9 @@ signal no_walk
 @onready var collision = $CollisionShape2D
 @onready var sprite = $Sprite2D
 var exit_burrow_ready : bool = false
+var spawn_pos : Vector2
+func _ready():
+	spawn_pos = global_position
 func get_input():
 	var current = state_machine.get_current_node()
 	# flip the character sprite left/right
@@ -76,6 +79,12 @@ func _physics_process(delta):
 		collision.disabled = true
 		exit_burrow_loc.global_position = get_global_position()
 		exit_burrow_loc.visible = true
+
+func _process(delta):
+	if GlobalVariableLoader.player_health <= 0:
+		GlobalVariableLoader.player_health = GlobalVariableLoader.start_health
+		GlobalVariableLoader.carrots -= 1
+		global_position = spawn_pos
 
 func _on_exit_burrow_loc_area_entered():
 	exit_burrow_ready = true

@@ -22,6 +22,7 @@ func _process(delta):
 		song.play()
 	if GlobalVariableLoader.prev_carrots != GlobalVariableLoader.carrots:
 		_point()
+		GlobalVariableLoader.prev_carrots = GlobalVariableLoader.carrots
 	if sound_effects.is_playing():
 		_no_walk()
 

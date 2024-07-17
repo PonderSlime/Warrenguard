@@ -6,7 +6,8 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	health_bar.value = GlobalVariableLoader.start_health
+	health_bar.max_value = GlobalVariableLoader.start_health
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	health_bar.value = GlobalVariableLoader.player_health
