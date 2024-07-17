@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://cu7ynj5u08nlo"]
+
+[ext_resource type="Texture2D" uid="uid://dx10ymymmapdu" path="res://Sprites/Enemies/BasicEnemy/BasicEnemyWalkCycle.png" id="1_c0755"]
+[ext_resource type="Script" path="res://Prepped Assets/Characters/enemy1.gd" id="1_x1y25"]
+
+[sub_resource type="Animation" id="Animation_54kfc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_iq6e8"]
+resource_name = "basic_enemy_walk"
+length = 0.33
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_swfw8"]
+_data = {
+"RESET": SubResource("Animation_54kfc"),
+"basic_enemy_walk": SubResource("Animation_iq6e8")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yjtw0"]
+radius = 9.0
+height = 24.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v8agp"]
+radius = 1.0
+height = 24.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 16
+script = ExtResource("1_x1y25")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -12)
+texture = ExtResource("1_c0755")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_swfw8")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -12)
+shape = SubResource("CapsuleShape2D_yjtw0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("CapsuleShape2D_v8agp")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
