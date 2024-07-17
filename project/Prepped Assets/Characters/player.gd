@@ -18,6 +18,8 @@ signal no_walk
 @onready var sprite = $Sprite2D
 var exit_burrow_ready : bool = false
 var spawn_pos : Vector2
+# This represents the player's inertia.
+var push_force = 80.0
 func _ready():
 	spawn_pos = global_position
 func get_input():
@@ -31,6 +33,11 @@ func get_input():
 	else:
 		state_machine.travel("idle")
 	move_and_slide()
+	# after calling move_and_slide()
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			c.get_collider().apply_central_impulse(-c.get_normal() / push_force)
 
 func _physics_process(delta):
 	if collision.disabled == false:

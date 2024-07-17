@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwwyj"]
 size = Vector2(15, 16)
 
-[node name="Spikes" type="StaticBody2D"]
+[node name="FieryFlower" type="StaticBody2D"]
 z_index = 1
 script = ExtResource("1_0nxgd")
 

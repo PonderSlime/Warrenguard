@@ -46,7 +46,7 @@ radius = 9.0
 height = 24.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v8agp"]
-radius = 1.0
+radius = 5.0
 height = 24.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
@@ -66,6 +66,8 @@ libraries = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -12)
