@@ -20,17 +20,14 @@ func _process(delta):
 	if carrots < 0:
 		carrots = 0
 		GlobalVariableLoader.prev_carrots = GlobalVariableLoader.carrots
-		
 	if current_power_up == 1:
 		player_current_movement_speed = player_default_movement_speed + 100
 		await get_tree().create_timer(0.001).timeout
-		prev_power_up = 1
+		prev_power_up = current_power_up
 		await get_tree().create_timer(5.0).timeout
 		current_power_up = 0
-		print(prev_power_up)
 		await get_tree().create_timer(0.001).timeout
 		prev_power_up = 0
-		print(prev_power_up)
 	elif current_power_up == 0: 
 		player_current_movement_speed = player_default_movement_speed
 func goto_scene(path):
