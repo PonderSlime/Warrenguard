@@ -8,6 +8,7 @@ signal footstep
 signal no_walk
 
 @onready var state_machine = $AnimationTree.get("parameters/playback")
+@export var door_pos : Node2D
 @export_range(0.0, 1.0) var friction = 0.1
 @export_range(0.0 , 1.0) var acceleration = 0.25
 @export var jump_speed = -50
@@ -30,7 +31,9 @@ func get_input():
 func _physics_process(delta):
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
-
+	if GlobalVariableLoader.did_just_doorway == true:
+		global_position = GlobalVariableLoader.door_pos
+		GlobalVariableLoader.did_just_doorway == false
 	move_and_slide()
 	# after calling move_and_slide()
 	for i in get_slide_collision_count():
@@ -46,9 +49,7 @@ func _physics_process(delta):
 	else:
 		state_machine.travel("idle")
 		no_walk.emit()
-
-func _process(delta):
-	pass
+		
 func spike():
 	velocity.y = jump_speed
 	hurt.emit()

@@ -499,4 +499,4 @@ patrol_path = NodePath("../../Path2D")
 position = Vector2(170, 321)
 
 [node name="Teledoor" parent="." instance=ExtResource("12_iepoi")]
-position = Vector2(131, 412)
+position = Vector2(176, 430)

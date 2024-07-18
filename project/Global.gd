@@ -5,6 +5,8 @@ var start_health : int = 3
 var carrots : int = 0
 var prev_carrots : int = 0
 var current_scene = null
+var did_just_doorway : bool = false
+var door_pos : Vector2
 
 var current_power_up : int = 0
 var prev_power_up : int = 0

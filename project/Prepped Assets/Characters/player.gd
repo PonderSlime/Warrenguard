@@ -18,26 +18,15 @@ signal no_walk
 var exit_burrow_ready : bool = false
 var spawn_pos : Vector2
 # This represents the player's inertia.
-var push_force = 80.0
+var push_force = 1.0
 func _ready():
 	spawn_pos = global_position
 func get_input():
-	var current = state_machine.get_current_node()
-	# flip the character sprite left/right
-	if velocity.x != 0:
-		$Sprite2D.scale.x = sign(velocity.x)
 	# choose animation
 	if velocity.length() > 0:
 		state_machine.travel("walk")
 	else:
 		state_machine.travel("idle")
-	move_and_slide()
-	# after calling move_and_slide()
-	for i in get_slide_collision_count():
-		var c = get_slide_collision(i)
-		if c.get_collider() is RigidBody2D:
-			c.get_collider().apply_central_impulse(-c.get_normal() / push_force)
-
 func _physics_process(delta):
 	if collision.disabled == false:
 		velocity.y += gravity * delta
@@ -60,6 +49,11 @@ func _physics_process(delta):
 			state_machine.travel("exit_burrow")
 
 	move_and_slide()
+	# after calling move_and_slide()
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			c.get_collider().apply_central_impulse(-c.get_normal() / push_force)
 	if velocity.x != 0:
 		$Sprite2D.scale.x = sign(velocity.x)
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -92,6 +86,9 @@ func _process(delta):
 		GlobalVariableLoader.carrots -= 1
 		global_position = spawn_pos
 	speed = GlobalVariableLoader.player_current_movement_speed
+	if GlobalVariableLoader.did_just_doorway == true:
+		global_position = GlobalVariableLoader.door_pos
+		GlobalVariableLoader.did_just_doorway == false
 
 func _on_exit_burrow_loc_area_entered():
 	exit_burrow_ready = true
