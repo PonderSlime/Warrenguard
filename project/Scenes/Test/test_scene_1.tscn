@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dg88qd2iyrbgb"]
+[gd_scene load_steps=17 format=3 uid="uid://dg88qd2iyrbgb"]
 
 [ext_resource type="PackedScene" uid="uid://q01o7rogtouc" path="res://Prepped Assets/Characters/player.tscn" id="1_60xql"]
 [ext_resource type="Script" path="res://Scenes/Test/test_scene_1.gd" id="1_lcnp5"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ch3j6t0gedhm3" path="res://Prepped Assets/Items/carrot.tscn" id="9_100jg"]
 [ext_resource type="PackedScene" uid="uid://cu7ynj5u08nlo" path="res://Prepped Assets/Characters/enemy1.tscn" id="9_ufhgb"]
 [ext_resource type="PackedScene" uid="uid://cwl25ebv0nwos" path="res://Prepped Assets/WarrenItems/crate.tscn" id="10_5qsmh"]
+[ext_resource type="PackedScene" uid="uid://c1gebq6lwtsua" path="res://Prepped Assets/Items/apple.tscn" id="11_mikds"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ead3n"]
 
@@ -314,7 +315,7 @@ position = Vector2(501, 252)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_mnen0")
 
-[node name="Spike" type="Node2D" parent="."]
+[node name="Spike" type="Node" parent="."]
 
 [node name="Spikes" parent="Spike" instance=ExtResource("3_v0wrf")]
 position = Vector2(128, 336)
@@ -378,7 +379,7 @@ rotation = 1.5708
 position = Vector2(-48, 360)
 rotation = -3.14159
 
-[node name="Carrots" type="Node2D" parent="."]
+[node name="Carrots" type="Node" parent="."]
 
 [node name="Carrot" parent="Carrots" instance=ExtResource("9_100jg")]
 position = Vector2(311, 253)
@@ -425,54 +426,10 @@ position = Vector2(1936, -144)
 [node name="Carrot13" parent="Carrots" instance=ExtResource("9_100jg")]
 position = Vector2(2120, -64)
 
-[node name="BasicEnemy" parent="." instance=ExtResource("9_ufhgb")]
-position = Vector2(384, 368)
-patrol_path = NodePath("../Path2D")
-
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_57e2r")
 
-[node name="Crate" parent="." instance=ExtResource("10_5qsmh")]
-position = Vector2(950, 360)
-rotation = 0.15708
-
-[node name="Crate2" parent="." instance=ExtResource("10_5qsmh")]
-position = Vector2(963, 343)
-rotation = 0.15708
-
-[node name="Crate9" parent="." instance=ExtResource("10_5qsmh")]
-position = Vector2(980, 347)
-rotation = 0.15708
-
-[node name="Crate10" parent="." instance=ExtResource("10_5qsmh")]
-position = Vector2(975, 328)
-rotation = 0.15708
-
-[node name="Crate3" parent="." instance=ExtResource("10_5qsmh")]
-position = Vector2(970, 363)
-rotation = 0.15708
-
-[node name="Crate7" parent="." instance=ExtResource("10_5qsmh")]
-position = Vector2(987, 365)
-rotation = 0.15708
-
-[node name="Crate8" parent="." instance=ExtResource("10_5qsmh")]
-position = Vector2(996, 383)
-rotation = 0.15708
-
-[node name="Crate4" parent="." instance=ExtResource("10_5qsmh")]
-position = Vector2(944, 376)
-rotation = 0.15708
-
-[node name="Crate5" parent="." instance=ExtResource("10_5qsmh")]
-position = Vector2(962, 378)
-rotation = 0.15708
-
-[node name="Crate6" parent="." instance=ExtResource("10_5qsmh")]
-position = Vector2(980, 382)
-rotation = 0.15708
-
-[node name="Flowers" type="Node2D" parent="."]
+[node name="Flowers" type="Node" parent="."]
 
 [node name="FieryFlower" parent="Flowers" instance=ExtResource("8_6lkdp")]
 position = Vector2(456, 368)
@@ -488,3 +445,54 @@ position = Vector2(1768, 272)
 
 [node name="FieryFlower5" parent="Flowers" instance=ExtResource("8_6lkdp")]
 position = Vector2(1944, 128)
+
+[node name="Crates" type="Node" parent="."]
+
+[node name="Crate" parent="Crates" instance=ExtResource("10_5qsmh")]
+position = Vector2(950, 360)
+rotation = 0.15708
+
+[node name="Crate2" parent="Crates" instance=ExtResource("10_5qsmh")]
+position = Vector2(963, 343)
+rotation = 0.15708
+
+[node name="Crate9" parent="Crates" instance=ExtResource("10_5qsmh")]
+position = Vector2(980, 347)
+rotation = 0.15708
+
+[node name="Crate10" parent="Crates" instance=ExtResource("10_5qsmh")]
+position = Vector2(975, 328)
+rotation = 0.15708
+
+[node name="Crate3" parent="Crates" instance=ExtResource("10_5qsmh")]
+position = Vector2(970, 363)
+rotation = 0.15708
+
+[node name="Crate7" parent="Crates" instance=ExtResource("10_5qsmh")]
+position = Vector2(987, 365)
+rotation = 0.15708
+
+[node name="Crate8" parent="Crates" instance=ExtResource("10_5qsmh")]
+position = Vector2(996, 383)
+rotation = 0.15708
+
+[node name="Crate4" parent="Crates" instance=ExtResource("10_5qsmh")]
+position = Vector2(944, 376)
+rotation = 0.15708
+
+[node name="Crate5" parent="Crates" instance=ExtResource("10_5qsmh")]
+position = Vector2(962, 378)
+rotation = 0.15708
+
+[node name="Crate6" parent="Crates" instance=ExtResource("10_5qsmh")]
+position = Vector2(980, 382)
+rotation = 0.15708
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="CharacterBody2D" parent="Enemies" instance=ExtResource("9_ufhgb")]
+position = Vector2(384, 368)
+patrol_path = NodePath("../../Path2D")
+
+[node name="Apple" parent="." instance=ExtResource("11_mikds")]
+position = Vector2(170, 321)

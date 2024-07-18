@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var run_speed = 8.9
+var speed
 
 signal jump
 signal hurt
@@ -8,7 +8,6 @@ signal footstep
 signal no_walk
 
 @onready var state_machine = $AnimationTree.get("parameters/playback")
-@export var speed = 120
 @export var jump_speed = -450
 @export var gravity = 1000
 @export var exit_burrow_loc : StaticBody2D
@@ -92,6 +91,7 @@ func _process(delta):
 		GlobalVariableLoader.player_health = GlobalVariableLoader.start_health
 		GlobalVariableLoader.carrots -= 1
 		global_position = spawn_pos
+	speed = GlobalVariableLoader.player_current_movement_speed
 
 func _on_exit_burrow_loc_area_entered():
 	exit_burrow_ready = true
