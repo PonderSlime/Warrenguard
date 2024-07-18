@@ -292,11 +292,15 @@ volume_db = -6.0
 [node name="WalkSound" type="AudioStreamPlayer" parent="Sound"]
 volume_db = -6.0
 
-[node name="AudioController" type="Node" parent="Sound" node_paths=PackedStringArray("song", "sound_effects", "walk_sound")]
+[node name="PowerUpSound" type="AudioStreamPlayer" parent="Sound"]
+volume_db = -6.0
+
+[node name="AudioController" type="Node" parent="Sound" node_paths=PackedStringArray("song", "sound_effects", "walk_sound", "powerup_sound")]
 script = ExtResource("6_k4rhr")
 song = NodePath("../Song")
 sound_effects = NodePath("../SoundEffects")
 walk_sound = NodePath("../WalkSound")
+powerup_sound = NodePath("../PowerUpSound")
 
 [connection signal="footstep" from="Player" to="Sound/AudioController" method="_walk"]
 [connection signal="hurt" from="Player" to="Sound/AudioController" method="_hurt"]

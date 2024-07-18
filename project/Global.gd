@@ -24,11 +24,13 @@ func _process(delta):
 	if current_power_up == 1:
 		player_current_movement_speed = player_default_movement_speed + 100
 		await get_tree().create_timer(0.001).timeout
-		prev_power_up = current_power_up
-		await get_tree().create_timer(15.0).timeout
+		prev_power_up = 1
+		await get_tree().create_timer(5.0).timeout
 		current_power_up = 0
+		print(prev_power_up)
 		await get_tree().create_timer(0.001).timeout
-		prev_power_up = current_power_up
+		prev_power_up = 0
+		print(prev_power_up)
 	elif current_power_up == 0: 
 		player_current_movement_speed = player_default_movement_speed
 func goto_scene(path):
