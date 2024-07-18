@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://q01o7rogtouc"]
+[gd_scene load_steps=43 format=3 uid="uid://q01o7rogtouc"]
 
 [ext_resource type="Script" path="res://Prepped Assets/Characters/player.gd" id="1_6joar"]
 [ext_resource type="Texture2D" uid="uid://ch7orknpbswpb" path="res://Sprites/Player/SpriteSheet.png" id="1_osxjy"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_qhux0"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_lpe5d"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_5hogo"]
+[ext_resource type="Texture2D" uid="uid://ddpwk6ygmcuxx" path="res://Sprites/Easter Eggs/flag-orpheus-left_pixelated.png" id="9_6bo7n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sqedp"]
 radius = 7.0
@@ -229,7 +230,6 @@ ease = 2
 
 [sub_resource type="Animation" id="Animation_vbmo2"]
 resource_name = "dissolve_out"
-length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -237,7 +237,7 @@ tracks/0/path = NodePath("dissolve_rect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0.2, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -266,12 +266,13 @@ _data = {
 
 [node name="Player" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("exit_burrow_loc")]
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("exit_burrow_loc", "_anim_player")]
 z_index = 2
 collision_layer = 2
 collision_mask = 219
 script = ExtResource("1_6joar")
 exit_burrow_loc = NodePath("../ExitBurrowLoc")
+_anim_player = NodePath("../SceneTransition/AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 texture_filter = 1
@@ -343,12 +344,20 @@ powerup_sound = NodePath("../PowerUpSound")
 
 [node name="dissolve_rect" type="ColorRect" parent="SceneTransition"]
 modulate = Color(1, 1, 1, 0)
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="SceneTransition/dissolve_rect"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_6bo7n")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SceneTransition"]
 libraries = {
