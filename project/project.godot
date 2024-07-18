@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 GlobalVariableLoader="*res://Global.gd"
-Scenemanager="*res://scenemanager.gd"
 
 [display]
 

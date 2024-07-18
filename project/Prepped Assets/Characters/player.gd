@@ -15,6 +15,7 @@ signal no_walk
 @export_range(0.0 , 1.0) var acceleration = 0.25
 @onready var collision = $CollisionShape2D
 @onready var sprite = $Sprite2D
+@export var _anim_player : AnimationPlayer
 var exit_burrow_ready : bool = false
 var spawn_pos : Vector2
 # This represents the player's inertia.
@@ -47,7 +48,14 @@ func _physics_process(delta):
 			await get_tree().create_timer(0.05).timeout
 			sprite.visible = true
 			state_machine.travel("exit_burrow")
-
+	if GlobalVariableLoader.did_just_doorway == true:
+		_anim_player.play("dissolve_out")
+		visible = false
+		await get_tree().create_timer(0.001).timeout
+		global_position = GlobalVariableLoader.door_pos
+		GlobalVariableLoader.did_just_doorway = false
+		await get_tree().create_timer(0.001).timeout
+		visible = true
 	move_and_slide()
 	# after calling move_and_slide()
 	for i in get_slide_collision_count():
@@ -86,9 +94,7 @@ func _process(delta):
 		GlobalVariableLoader.carrots -= 1
 		global_position = spawn_pos
 	speed = GlobalVariableLoader.player_current_movement_speed
-	if GlobalVariableLoader.did_just_doorway == true:
-		global_position = GlobalVariableLoader.door_pos
-		GlobalVariableLoader.did_just_doorway == false
+	
 
 func _on_exit_burrow_loc_area_entered():
 	exit_burrow_ready = true
