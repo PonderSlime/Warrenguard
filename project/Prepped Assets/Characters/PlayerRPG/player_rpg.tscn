@@ -1,12 +1,15 @@
-[gd_scene load_steps=44 format=3 uid="uid://bvse5e73c1cs7"]
+[gd_scene load_steps=47 format=3 uid="uid://bvse5e73c1cs7"]
 
 [ext_resource type="Script" path="res://Prepped Assets/Characters/PlayerRPG/player_rpg.gd" id="1_ojupd"]
 [ext_resource type="Texture2D" uid="uid://ch7orknpbswpb" path="res://Sprites/Player/SpriteSheet.png" id="2_co24h"]
 [ext_resource type="Script" path="res://Prepped Assets/Characters/PlayerRPG/RayCast2D.gd" id="3_yfcjo"]
 [ext_resource type="PackedScene" uid="uid://bd8v4t8j3r4us" path="res://Prepped Assets/UI/hud.tscn" id="4_37dv5"]
 [ext_resource type="Texture2D" uid="uid://covaadkcirfii" path="res://Sprites/Items/Carrot.png" id="4_arn5n"]
+[ext_resource type="Script" path="res://Prepped Assets/Characters/PlayerRPG/ray_lr.gd" id="4_h6eq0"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_qby07"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_l767b"]
+[ext_resource type="Script" path="res://Prepped Assets/Characters/PlayerRPG/ray_up.gd" id="6_x6mn6"]
+[ext_resource type="Script" path="res://Prepped Assets/Characters/PlayerRPG/ray_down.gd" id="7_7kikl"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_n1ssx"]
 [ext_resource type="Script" path="res://Prepped Assets/Characters/audio_controller.gd" id="8_2uimf"]
 [ext_resource type="Texture2D" uid="uid://ddpwk6ygmcuxx" path="res://Sprites/Easter Eggs/flag-orpheus-left_pixelated.png" id="8_5ac3y"]
@@ -295,15 +298,48 @@ autoplay = "idle"
 tree_root = SubResource("AnimationNodeStateMachine_5ltp2")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="RayCast2D" type="RayCast2D" parent="PlayerRPG"]
-position = Vector2(0, -12)
+[node name="RayCasts" type="Node2D" parent="PlayerRPG" node_paths=PackedStringArray("ray_01", "ray_02", "ray_03")]
+position = Vector2(0, -10)
+script = ExtResource("3_yfcjo")
+ray_01 = NodePath("RayCast2D")
+ray_02 = NodePath("RayCast2D2")
+ray_03 = NodePath("RayCast2D3")
+
+[node name="RayCast2D" type="RayCast2D" parent="PlayerRPG/RayCasts"]
 target_position = Vector2(0, 25)
 collide_with_areas = true
-script = ExtResource("3_yfcjo")
+script = ExtResource("4_h6eq0")
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerRPG/RayCast2D"]
+[node name="Sprite2D" type="Sprite2D" parent="PlayerRPG/RayCasts/RayCast2D"]
 texture_filter = 1
-position = Vector2(0, 25)
+position = Vector2(0, 22)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_arn5n")
+hframes = 25
+
+[node name="RayCast2D2" type="RayCast2D" parent="PlayerRPG/RayCasts"]
+position = Vector2(0, -10)
+target_position = Vector2(0, -25)
+collide_with_areas = true
+script = ExtResource("6_x6mn6")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerRPG/RayCasts/RayCast2D2"]
+texture_filter = 1
+position = Vector2(0, -22)
+rotation = 3.14159
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_arn5n")
+hframes = 25
+
+[node name="RayCast2D3" type="RayCast2D" parent="PlayerRPG/RayCasts"]
+position = Vector2(0, 10)
+target_position = Vector2(0, 25)
+collide_with_areas = true
+script = ExtResource("7_7kikl")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerRPG/RayCasts/RayCast2D3"]
+texture_filter = 1
+position = Vector2(0, 22)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_arn5n")
 hframes = 25
@@ -378,3 +414,9 @@ autoplay = "dissolve_out"
 [connection signal="hurt" from="PlayerRPG" to="Sound/AudioController" method="_hurt"]
 [connection signal="jump" from="PlayerRPG" to="Sound/AudioController" method="_jump"]
 [connection signal="no_walk" from="PlayerRPG" to="Sound/AudioController" method="_no_walk"]
+[connection signal="noray1" from="PlayerRPG/RayCasts" to="PlayerRPG/RayCasts/RayCast2D" method="_on_ray_casts_noray_1"]
+[connection signal="noray2" from="PlayerRPG/RayCasts" to="PlayerRPG/RayCasts/RayCast2D2" method="_on_ray_casts_noray_2"]
+[connection signal="noray3" from="PlayerRPG/RayCasts" to="PlayerRPG/RayCasts/RayCast2D3" method="_on_ray_casts_noray_3"]
+[connection signal="ray1" from="PlayerRPG/RayCasts" to="PlayerRPG/RayCasts/RayCast2D" method="_on_ray_casts_ray_1"]
+[connection signal="ray2" from="PlayerRPG/RayCasts" to="PlayerRPG/RayCasts/RayCast2D2" method="_on_ray_casts_ray_2"]
+[connection signal="ray3" from="PlayerRPG/RayCasts" to="PlayerRPG/RayCasts/RayCast2D3" method="_on_ray_casts_ray_3"]
