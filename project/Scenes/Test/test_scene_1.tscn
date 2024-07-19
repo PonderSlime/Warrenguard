@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://dg88qd2iyrbgb"]
+[gd_scene load_steps=17 format=3 uid="uid://dg88qd2iyrbgb"]
 
 [ext_resource type="PackedScene" uid="uid://q01o7rogtouc" path="res://Prepped Assets/Characters/player.tscn" id="1_60xql"]
-[ext_resource type="Script" path="res://Scenes/Test/test_scene_1.gd" id="1_lcnp5"]
 [ext_resource type="Texture2D" uid="uid://bmqmu2cagdk1t" path="res://Sprites/Environment/Tilemap.png" id="1_usa6h"]
 [ext_resource type="PackedScene" uid="uid://opewwobgojc1" path="res://Prepped Assets/Environment/spikes.tscn" id="3_v0wrf"]
 [ext_resource type="Texture2D" uid="uid://l00yjfnvepmv" path="res://Sprites/Environment/Cloud1.png" id="6_55r36"]
@@ -220,7 +219,6 @@ point_count = 2
 
 [node name="Node2D" type="Node2D"]
 texture_filter = 1
-script = ExtResource("1_lcnp5")
 
 [node name="Player" parent="." instance=ExtResource("1_60xql")]
 

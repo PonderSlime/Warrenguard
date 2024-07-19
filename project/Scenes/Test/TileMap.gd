@@ -28,5 +28,14 @@ func _remove_cell(tile_position):
 						Vector2i(tile_position.x+1,tile_position.y+1),Vector2i(tile_position.x-1,tile_position.y+1),
 						Vector2i(tile_position.x,tile_position.y-1),Vector2i(tile_position.x+1,tile_position.y-1),
 						Vector2i(tile_position.x-1,tile_position.y-1)]
-	set_cells_terrain_connect(0, list_of_tiles, 0, 1, true)
+	for i in list_of_tiles:
+		set_cells_terrain_connect(0, list_of_tiles, 0, 1, true)
+		
+func save():
+	var save_dict = {
+		
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+	}
+	return save_dict
 	
