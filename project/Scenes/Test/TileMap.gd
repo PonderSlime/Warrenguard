@@ -9,16 +9,15 @@ func _process(delta):
 		var tile = damaged_tiles[tile_position]
 	
 func _input(event):
-	if Input.is_action_pressed("exit_burrow"):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		var cells = []
 		var clicked_cell = local_to_map(get_local_mouse_position())
 		var data = get_cell_tile_data(0, clicked_cell)
 		damage_tile(GlobalVariableLoader.cellPosition, 1)
 
 func damage_tile(tile_position : Vector2, damage : float):
-
-		#set_cell(-1, GlobalVariableLoader.cellPosition)
-		#_remove_cell(data)
+	#set_cell(-1, GlobalVariableLoader.cellPosition)
+	#_remove_cell(data)
 	__destroy_tile(tile_position)
 
 func __destroy_tile(tile_position : Vector2):
@@ -26,6 +25,11 @@ func __destroy_tile(tile_position : Vector2):
 	_remove_cell(tile_position)
 	
 func _remove_cell(tile_position):
-	var list_of_tiles = [Vector2i(0,0),Vector2i(0,1),Vector2i(0,2),Vector2i(0,2),Vector2i(1,0),Vector2i(1,1),Vector2i(1,2),Vector2i(2,0),Vector2i(2,1),Vector2i(2,2)]
-	set_cells_terrain_connect(0, list_of_tiles, 0, 0, true)
+	var list_of_tiles = [Vector2i(tile_position.x,tile_position.y),Vector2i(tile_position.x+1,tile_position.y),
+						Vector2i(tile_position.x-1,tile_position.y),Vector2i(tile_position.x,tile_position.y+1),
+						Vector2i(tile_position.x+1,tile_position.y+1),Vector2i(tile_position.x-1,tile_position.y+1),
+						Vector2i(tile_position.x,tile_position.y-1),Vector2i(tile_position.x+1,tile_position.y-1),
+						Vector2i(tile_position.x-1,tile_position.y-1)]
+	
+	set_cells_terrain_connect(0, list_of_tiles, 0, 1, true)
 	

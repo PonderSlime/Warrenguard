@@ -13,7 +13,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sqedp"]
 radius = 7.0
-height = 24.0
+height = 20.0
 
 [sub_resource type="Animation" id="Animation_8jdja"]
 length = 0.001
@@ -269,7 +269,7 @@ _data = {
 
 [node name="PlayerRPG" type="CharacterBody2D" parent="." node_paths=PackedStringArray("_anim_player")]
 z_index = 2
-collision_layer = 2
+collision_layer = 256
 collision_mask = 219
 script = ExtResource("1_ojupd")
 _anim_player = NodePath("../SceneTransition/AnimationPlayer")
@@ -282,7 +282,7 @@ hframes = 16
 vframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerRPG"]
-position = Vector2(0, -12)
+position = Vector2(0, -10)
 shape = SubResource("CapsuleShape2D_sqedp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerRPG"]
@@ -297,11 +297,14 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="RayCast2D" type="RayCast2D" parent="PlayerRPG"]
 position = Vector2(0, -12)
+target_position = Vector2(0, 25)
+collide_with_areas = true
 script = ExtResource("3_yfcjo")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerRPG/RayCast2D"]
 texture_filter = 1
-position = Vector2(2, 44)
+position = Vector2(0, 25)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_arn5n")
 hframes = 25
 
