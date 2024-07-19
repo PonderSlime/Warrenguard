@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://q01o7rogtouc"]
+[gd_scene load_steps=44 format=3 uid="uid://q01o7rogtouc"]
 
 [ext_resource type="Script" path="res://Prepped Assets/Characters/player.gd" id="1_6joar"]
 [ext_resource type="Texture2D" uid="uid://ch7orknpbswpb" path="res://Sprites/Player/SpriteSheet.png" id="1_osxjy"]
@@ -264,13 +264,17 @@ _data = {
 "dissolve_out": SubResource("Animation_vbmo2")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uevdg"]
+size = Vector2(131.25, 52.5)
+
 [node name="Player" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("exit_burrow_loc", "_anim_player")]
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("touch_jump", "exit_burrow_loc", "_anim_player")]
 z_index = 2
 collision_layer = 2
 collision_mask = 219
 script = ExtResource("1_6joar")
+touch_jump = NodePath("../CenterContainer/VBoxContainer/Jump")
 exit_burrow_loc = NodePath("../ExitBurrowLoc")
 _anim_player = NodePath("../SceneTransition/AnimationPlayer")
 
@@ -341,6 +345,7 @@ walk_sound = NodePath("../WalkSound")
 powerup_sound = NodePath("../PowerUpSound")
 
 [node name="SceneTransition" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="dissolve_rect" type="ColorRect" parent="SceneTransition"]
 modulate = Color(1, 1, 1, 0)
@@ -364,6 +369,20 @@ libraries = {
 "": SubResource("AnimationLibrary_gkx0w")
 }
 autoplay = "dissolve_out"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Jump" type="TouchScreenButton" parent="CenterContainer/VBoxContainer"]
+position = Vector2(96, 416)
+shape = SubResource("RectangleShape2D_uevdg")
 
 [connection signal="footstep" from="Player" to="Sound/AudioController" method="_walk"]
 [connection signal="hurt" from="Player" to="Sound/AudioController" method="_hurt"]

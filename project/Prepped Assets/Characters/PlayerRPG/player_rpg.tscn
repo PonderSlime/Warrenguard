@@ -358,6 +358,7 @@ walk_sound = NodePath("../WalkSound")
 powerup_sound = NodePath("../PowerUpSound")
 
 [node name="SceneTransition" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="dissolve_rect" type="ColorRect" parent="SceneTransition"]
 modulate = Color(1, 1, 1, 0)
