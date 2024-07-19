@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dusmlhv2menxi"]
+
+[ext_resource type="Script" path="res://Prepped Assets/save_game_resource.gd" id="1_gqv2b"]
+
+[resource]
+script = ExtResource("1_gqv2b")

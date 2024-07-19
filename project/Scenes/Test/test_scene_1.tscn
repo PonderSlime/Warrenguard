@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dg88qd2iyrbgb"]
+[gd_scene load_steps=18 format=3 uid="uid://dg88qd2iyrbgb"]
 
 [ext_resource type="PackedScene" uid="uid://q01o7rogtouc" path="res://Prepped Assets/Characters/player.tscn" id="1_60xql"]
 [ext_resource type="Texture2D" uid="uid://bmqmu2cagdk1t" path="res://Sprites/Environment/Tilemap.png" id="1_usa6h"]
@@ -11,6 +11,35 @@
 [ext_resource type="PackedScene" uid="uid://cwl25ebv0nwos" path="res://Prepped Assets/WarrenItems/crate.tscn" id="10_5qsmh"]
 [ext_resource type="PackedScene" uid="uid://c1gebq6lwtsua" path="res://Prepped Assets/Items/apple.tscn" id="11_mikds"]
 [ext_resource type="PackedScene" uid="uid://yktbyvhvp1o6" path="res://Prepped Assets/WarrenItems/teledoor.tscn" id="12_iepoi"]
+
+[sub_resource type="GDScript" id="GDScript_0htxm"]
+script/source = "extends Node2D
+
+@onready var tile_map = $TileMap
+# Called when the node enters the scene tree for the first time.
+
+func _ready():
+	pass
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+func load_game():
+	pass
+func save_game():
+	#var savegame := SaveGame.new()
+	#savegame.game_version = ProjectSettings.get_setting(\"application/config/version\")
+			#
+	#for c in tile_map.get_children():
+		#savegame.tile_map.push_back(c.save())
+#
+	##var path = \"res://Levels/Level_\" + String(GlobalVariableLoader.activeLevelNo) + \".res\"
+	##var save_game = FileAccess.open(\"user://savegame.save\", FileAccess.WRITE)
+	#var err = ResourceSaver.save(savegame, \"user://savegame.save\")
+	#if err != 0:
+		#print(\"error saving game in Level Editor, code: \", err)
+	#Dictionary with tilemap data to save, you can save it as json or something
+	pass
+"
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ead3n"]
 
@@ -217,8 +246,9 @@ _data = {
 }
 point_count = 2
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" groups=["parent"]]
 texture_filter = 1
+script = SubResource("GDScript_0htxm")
 
 [node name="Player" parent="." instance=ExtResource("1_60xql")]
 

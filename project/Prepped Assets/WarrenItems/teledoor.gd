@@ -2,6 +2,7 @@ extends Area2D
 
 @export var switch_to_scene : String = "res://Scenes/Test/test_warren_1.tscn"
 @export var _anim_player : AnimationPlayer
+@onready var parent = get_tree().get_nodes_in_group("parent")[0]
 func _ready():
 	pass
 
@@ -12,8 +13,11 @@ func _process(delta):
 func _on_area_2d_body_entered(body):
 	if body.name == "Player" or body.name == "PlayerRPG":
 		_anim_player.play("dissolve")
+		parent.save_game()
 		await get_tree().create_timer(0.8333).timeout
 		GlobalVariableLoader.goto_scene(switch_to_scene)
 		GlobalVariableLoader.door_pos = Vector2.ZERO
 		GlobalVariableLoader.did_just_doorway = true
 		_anim_player.play_backwards("dissolve")
+		parent.load_game()
+	print("entered")
