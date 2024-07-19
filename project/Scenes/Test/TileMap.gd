@@ -1,25 +1,31 @@
 extends TileMap
-
-
-# Called when the node enters the scene tree for the first time.
+var damaged_tiles = {}
+var tile_positioni
 func _ready():
 	pass
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	for tile_position in damaged_tiles:
+		var tile = damaged_tiles[tile_position]
 	
 func _input(event):
 	if Input.is_action_pressed("exit_burrow"):
-		get_clicked_tile_power()
+		var cells = []
+		var clicked_cell = local_to_map(get_local_mouse_position())
+		var data = get_cell_tile_data(0, clicked_cell)
+		damage_tile(GlobalVariableLoader.cellPosition, 1)
 
-func get_clicked_tile_power():
-	var clicked_cell = local_to_map(get_local_mouse_position())
-	var data = get_cell_tile_data(0, clicked_cell)
+func damage_tile(tile_position : Vector2, damage : float):
+
+		#set_cell(-1, GlobalVariableLoader.cellPosition)
+		#_remove_cell(data)
+	__destroy_tile(tile_position)
+
+func __destroy_tile(tile_position : Vector2):
+	set_cell(0, tile_position)
+	_remove_cell(tile_position)
 	
-	if data:
-		set_cell(-1, GlobalVariableLoader.cellPosition)
-	else:
-		return 0
+func _remove_cell(tile_position):
+	var list_of_tiles = [Vector2i(0,0),Vector2i(0,1),Vector2i(0,2),Vector2i(0,2),Vector2i(1,0),Vector2i(1,1),Vector2i(1,2),Vector2i(2,0),Vector2i(2,1),Vector2i(2,2)]
+	set_cells_terrain_connect(0, list_of_tiles, 0, 0, true)
 	
