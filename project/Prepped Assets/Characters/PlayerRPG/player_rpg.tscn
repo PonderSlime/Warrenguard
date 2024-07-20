@@ -6,11 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://bd8v4t8j3r4us" path="res://Prepped Assets/UI/hud.tscn" id="4_37dv5"]
 [ext_resource type="Texture2D" uid="uid://covaadkcirfii" path="res://Sprites/Items/Carrot.png" id="4_arn5n"]
 [ext_resource type="Texture2D" uid="uid://bqkpv22dw1l8f" path="res://Sprites/WarrenItems/Light.png" id="5_8l3mn"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_qby07"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_l767b"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_n1ssx"]
 [ext_resource type="Script" path="res://Prepped Assets/Characters/audio_controller.gd" id="8_2uimf"]
 [ext_resource type="Texture2D" uid="uid://ddpwk6ygmcuxx" path="res://Sprites/Easter Eggs/flag-orpheus-left_pixelated.png" id="8_5ac3y"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="9_dp004"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_5q1f1"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="11_i272q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sqedp"]
 radius = 7.0
@@ -224,12 +224,6 @@ states/walk/position = Vector2(423, -68)
 transitions = ["walk", "idle", SubResource("AnimationNodeStateMachineTransition_iqqmr"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_7bq84"), "fall", "land", SubResource("AnimationNodeStateMachineTransition_ycnlu"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_gn2d3"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_jen4i"), "land", "idle", SubResource("AnimationNodeStateMachineTransition_31lrn"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_3hdeg"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_1e8tb"), "burrow", "exit_burrow", SubResource("AnimationNodeStateMachineTransition_ujwto"), "idle", "burrow", SubResource("AnimationNodeStateMachineTransition_v7h3h"), "exit_burrow", "idle", SubResource("AnimationNodeStateMachineTransition_ye4n2")]
 graph_offset = Vector2(13, -89)
 
-[sub_resource type="Resource" id="Resource_py8ss"]
-script = ExtResource("6_l767b")
-duration = 1.0
-transition = 0
-ease = 2
-
 [sub_resource type="Animation" id="Animation_hb1gc"]
 length = 0.001
 tracks/0/type = "value"
@@ -265,6 +259,12 @@ _data = {
 "RESET": SubResource("Animation_hb1gc"),
 "dissolve_out": SubResource("Animation_vbmo2")
 }
+
+[sub_resource type="Resource" id="Resource_hjs86"]
+script = ExtResource("10_5q1f1")
+duration = 1.0
+transition = 0
+ease = 2
 
 [node name="PlayerRPG" type="Node2D"]
 
@@ -318,25 +318,6 @@ texture = ExtResource("5_8l3mn")
 
 [node name="HUD" parent="." instance=ExtResource("4_37dv5")]
 
-[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-script = ExtResource("5_qby07")
-priority = 23
-follow_mode = 5
-follow_target = NodePath("../PlayerRPG")
-zoom = Vector2(2, 2)
-tween_resource = SubResource("Resource_py8ss")
-draw_limits = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_left_margin = 0.4
-drag_right_margin = 0.4
-
-[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
-script = ExtResource("7_n1ssx")
-
 [node name="Sound" type="Node" parent="."]
 
 [node name="Song" type="AudioStreamPlayer" parent="Sound"]
@@ -381,6 +362,24 @@ libraries = {
 "": SubResource("AnimationLibrary_gkx0w")
 }
 autoplay = "dissolve_out"
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+script = ExtResource("9_dp004")
+follow_mode = 5
+follow_target = NodePath("../PlayerRPG")
+zoom = Vector2(2, 2)
+tween_resource = SubResource("Resource_hjs86")
+draw_limits = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.4
+drag_right_margin = 0.4
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("11_i272q")
 
 [connection signal="footstep" from="PlayerRPG" to="Sound/AudioController" method="_walk"]
 [connection signal="hurt" from="PlayerRPG" to="Sound/AudioController" method="_hurt"]

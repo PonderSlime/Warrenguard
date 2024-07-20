@@ -23,4 +23,4 @@ func _physics_process(float) -> void:
 func _on_area_2d_body_entered(body):
 	if body.name == "Player":
 		GlobalVariableLoader.player_health -= 1
-		body.spike()
+		body._hurt()

@@ -1,13 +1,15 @@
-[gd_scene load_steps=43 format=3 uid="uid://q01o7rogtouc"]
+[gd_scene load_steps=45 format=3 uid="uid://q01o7rogtouc"]
 
 [ext_resource type="Script" path="res://Prepped Assets/Characters/player.gd" id="1_6joar"]
 [ext_resource type="Texture2D" uid="uid://ch7orknpbswpb" path="res://Sprites/Player/SpriteSheet.png" id="1_osxjy"]
 [ext_resource type="PackedScene" uid="uid://jeg576y3uga7" path="res://Prepped Assets/Characters/exit_burrow_loc.tscn" id="3_e5wjs"]
 [ext_resource type="PackedScene" uid="uid://bd8v4t8j3r4us" path="res://Prepped Assets/UI/hud.tscn" id="4_8mjqa"]
+[ext_resource type="PackedScene" uid="uid://diyn3gqjjdog8" path="res://Prepped Assets/UI/gos.tscn" id="5_s7bog"]
 [ext_resource type="Script" path="res://Prepped Assets/Characters/audio_controller.gd" id="6_k4rhr"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="6_qhux0"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="7_lpe5d"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_5hogo"]
+[ext_resource type="Script" path="res://Prepped Assets/Characters/camera_controller.gd" id="8_g516t"]
 [ext_resource type="Texture2D" uid="uid://ddpwk6ygmcuxx" path="res://Sprites/Easter Eggs/flag-orpheus-left_pixelated.png" id="9_6bo7n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sqedp"]
@@ -222,12 +224,6 @@ states/walk/position = Vector2(423, -68)
 transitions = ["walk", "idle", SubResource("AnimationNodeStateMachineTransition_iqqmr"), "idle", "fall", SubResource("AnimationNodeStateMachineTransition_7bq84"), "fall", "land", SubResource("AnimationNodeStateMachineTransition_ycnlu"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_gn2d3"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_jen4i"), "land", "idle", SubResource("AnimationNodeStateMachineTransition_31lrn"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_3hdeg"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_1e8tb"), "burrow", "exit_burrow", SubResource("AnimationNodeStateMachineTransition_ujwto"), "idle", "burrow", SubResource("AnimationNodeStateMachineTransition_v7h3h"), "exit_burrow", "idle", SubResource("AnimationNodeStateMachineTransition_ye4n2")]
 graph_offset = Vector2(13, -89)
 
-[sub_resource type="Resource" id="Resource_py8ss"]
-script = ExtResource("7_lpe5d")
-duration = 1.0
-transition = 0
-ease = 2
-
 [sub_resource type="Animation" id="Animation_hb1gc"]
 length = 0.001
 tracks/0/type = "value"
@@ -264,13 +260,20 @@ _data = {
 "dissolve_out": SubResource("Animation_vbmo2")
 }
 
-[node name="Player" type="Node2D"]
+[sub_resource type="Resource" id="Resource_if8a7"]
+script = ExtResource("7_lpe5d")
+duration = 1.0
+transition = 0
+ease = 2
 
-[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("exit_burrow_loc", "_anim_player")]
+[node name="PlayerRoot" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("gos", "exit_burrow_loc", "_anim_player")]
 z_index = 2
 collision_layer = 2
 collision_mask = 219
 script = ExtResource("1_6joar")
+gos = NodePath("../GameOverScreen")
 exit_burrow_loc = NodePath("../ExitBurrowLoc")
 _anim_player = NodePath("../SceneTransition/AnimationPlayer")
 
@@ -301,24 +304,8 @@ visible = false
 
 [node name="HUD" parent="." instance=ExtResource("4_8mjqa")]
 
-[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-script = ExtResource("6_qhux0")
-priority = 23
-follow_mode = 5
-follow_target = NodePath("../Player")
-zoom = Vector2(2, 2)
-tween_resource = SubResource("Resource_py8ss")
-draw_limits = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_left_margin = 0.4
-drag_right_margin = 0.4
-
-[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
-script = ExtResource("8_5hogo")
+[node name="GameOverScreen" parent="." instance=ExtResource("5_s7bog")]
+visible = false
 
 [node name="Sound" type="Node" parent="."]
 
@@ -366,6 +353,29 @@ libraries = {
 }
 autoplay = "dissolve_out"
 
+[node name="CameraController" type="Node2D" parent="." node_paths=PackedStringArray("PlayerRoot")]
+script = ExtResource("8_g516t")
+PlayerRoot = NodePath("..")
+
+[node name="PhantomCamera2D" type="Node2D" parent="CameraController" node_paths=PackedStringArray("follow_target")]
+script = ExtResource("6_qhux0")
+follow_mode = 5
+follow_target = NodePath("../../Player")
+zoom = Vector2(2, 2)
+tween_resource = SubResource("Resource_if8a7")
+draw_limits = true
+
+[node name="Camera2D" type="Camera2D" parent="CameraController"]
+zoom = Vector2(2, 2)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.4
+drag_right_margin = 0.4
+
+[node name="PhantomCameraHost" type="Node" parent="CameraController/Camera2D"]
+script = ExtResource("8_5hogo")
+
+[connection signal="death" from="Player" to="CameraController" method="_on_player_death"]
 [connection signal="footstep" from="Player" to="Sound/AudioController" method="_walk"]
 [connection signal="hurt" from="Player" to="Sound/AudioController" method="_hurt"]
 [connection signal="jump" from="Player" to="Sound/AudioController" method="_jump"]

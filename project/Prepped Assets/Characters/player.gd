@@ -6,7 +6,8 @@ signal jump
 signal hurt
 signal footstep
 signal no_walk
-
+signal death
+@export var gos : CanvasLayer
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 @export var jump_speed = -450
 @export var gravity = 1000
@@ -20,6 +21,7 @@ var exit_burrow_ready : bool = false
 var spawn_pos : Vector2
 # This represents the player's inertia.
 var push_force = 1.0
+var is_burrowing : bool = false
 func _ready():
 	spawn_pos = global_position
 func get_input():
@@ -29,14 +31,14 @@ func get_input():
 	else:
 		state_machine.travel("idle")
 func _physics_process(delta):
-	if collision.disabled == false:
+	if collision.disabled == false and is_burrowing == false:
 		velocity.y += gravity * delta
 		var dir = Input.get_axis("move_left", "move_right")
 		if dir != 0:
 			velocity.x = lerp(velocity.x, dir * speed, acceleration)
 		else:
 			velocity.x = lerp(velocity.x, 0.0, friction)
-	elif collision.disabled == true:
+	elif collision.disabled == true and is_burrowing == true:
 		velocity.y = 0
 		velocity.x = 0
 		state_machine.travel("burrow")
@@ -48,6 +50,9 @@ func _physics_process(delta):
 			await get_tree().create_timer(0.05).timeout
 			sprite.visible = true
 			state_machine.travel("exit_burrow")
+			is_burrowing = false
+	elif collision.disabled == true and is_burrowing == false:
+		velocity.y += gravity * delta
 	if GlobalVariableLoader.did_just_doorway == true:
 		_anim_player.play("dissolve_out")
 		visible = false
@@ -87,12 +92,20 @@ func _physics_process(delta):
 		collision.disabled = true
 		exit_burrow_loc.global_position = get_global_position()
 		exit_burrow_loc.visible = true
+		is_burrowing = true
 
 func _process(delta):
 	if GlobalVariableLoader.player_health <= 0:
-		GlobalVariableLoader.player_health = GlobalVariableLoader.start_health
-		GlobalVariableLoader.carrots -= 1
-		global_position = spawn_pos
+		death.emit()
+		collision.disabled = true
+		await get_tree().create_timer(1.5).timeout
+		gos.visible = true
+		get_tree().paused = true
+		#velocity.y = jump_speed
+		#velocity.y += gravity * delta
+		#GlobalVariableLoader.player_health = GlobalVariableLoader.start_health
+		#GlobalVariableLoader.carrots -= 1
+		#global_position = spawn_pos
 	speed = GlobalVariableLoader.player_current_movement_speed
 	
 
@@ -104,4 +117,7 @@ func _on_exit_burrow_loc_area_exited():
 	exit_burrow_ready = false
 func spike():
 	velocity.y = jump_speed
+	hurt.emit()
+func _hurt():
+	velocity.y = jump_speed/ 2
 	hurt.emit()
