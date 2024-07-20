@@ -6,7 +6,6 @@ signal jump
 signal hurt
 signal footstep
 signal no_walk
-@export var touch_jump : TouchScreenButton
 
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 @export var jump_speed = -450
@@ -65,7 +64,7 @@ func _physics_process(delta):
 			c.get_collider().apply_central_impulse(-c.get_normal() / push_force)
 	if velocity.x != 0:
 		$Sprite2D.scale.x = sign(velocity.x)
-	if Input.is_action_just_pressed("jump") and is_on_floor() or touch_jump.is_pressed() and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		state_machine.travel("jump")
 		await get_tree().create_timer(0.1).timeout
 		jump.emit()
