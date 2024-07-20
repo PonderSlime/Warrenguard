@@ -8,13 +8,13 @@ var current_scene = null
 var did_just_doorway : bool = false
 var door_pos : Vector2
 var cellPosition : Vector2
-
 var activeLevelNo : String
-
+var reset_player_loc : bool = false
 var current_power_up : int = 0
 var prev_power_up : int = 0
 var player_default_movement_speed : float = 120
 var player_current_movement_speed : float = 0
+var unlockCamera : bool = false
 
 func _ready():
 	player_health = start_health

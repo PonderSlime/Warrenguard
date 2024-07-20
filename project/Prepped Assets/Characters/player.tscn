@@ -267,13 +267,16 @@ transition = 0
 ease = 2
 
 [node name="PlayerRoot" type="Node2D"]
+process_mode = 3
 
-[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("gos", "exit_burrow_loc", "_anim_player")]
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("gos", "hud", "exit_burrow_loc", "_anim_player")]
+process_mode = 1
 z_index = 2
 collision_layer = 2
 collision_mask = 219
 script = ExtResource("1_6joar")
 gos = NodePath("../GameOverScreen")
+hud = NodePath("../HUD")
 exit_burrow_loc = NodePath("../ExitBurrowLoc")
 _anim_player = NodePath("../SceneTransition/AnimationPlayer")
 
@@ -303,9 +306,6 @@ anim_player = NodePath("../AnimationPlayer")
 visible = false
 
 [node name="HUD" parent="." instance=ExtResource("4_8mjqa")]
-
-[node name="GameOverScreen" parent="." instance=ExtResource("5_s7bog")]
-visible = false
 
 [node name="Sound" type="Node" parent="."]
 
@@ -353,9 +353,8 @@ libraries = {
 }
 autoplay = "dissolve_out"
 
-[node name="CameraController" type="Node2D" parent="." node_paths=PackedStringArray("PlayerRoot")]
+[node name="CameraController" type="Node2D" parent="."]
 script = ExtResource("8_g516t")
-PlayerRoot = NodePath("..")
 
 [node name="PhantomCamera2D" type="Node2D" parent="CameraController" node_paths=PackedStringArray("follow_target")]
 script = ExtResource("6_qhux0")
@@ -374,6 +373,9 @@ drag_right_margin = 0.4
 
 [node name="PhantomCameraHost" type="Node" parent="CameraController/Camera2D"]
 script = ExtResource("8_5hogo")
+
+[node name="GameOverScreen" parent="." instance=ExtResource("5_s7bog")]
+visible = false
 
 [connection signal="death" from="Player" to="CameraController" method="_on_player_death"]
 [connection signal="footstep" from="Player" to="Sound/AudioController" method="_walk"]

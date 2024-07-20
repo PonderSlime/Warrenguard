@@ -219,10 +219,9 @@ _data = {
 point_count = 2
 
 [node name="Node2D" type="Node2D" groups=["parent"]]
+process_mode = 3
 texture_filter = 1
 script = ExtResource("1_pnq4k")
-
-[node name="Player" parent="." instance=ExtResource("1_60xql")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_l1ik8")
@@ -233,6 +232,7 @@ layer_0/tile_data = PackedInt32Array(1769472, 262144, 2, 1769473, 262144, 2, 176
 environment = SubResource("Environment_wkaj8")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_offset = Vector2(330.946, 735.269)
 scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -500,3 +500,5 @@ position = Vector2(170, 321)
 
 [node name="Teledoor" parent="." instance=ExtResource("12_iepoi")]
 position = Vector2(176, 430)
+
+[node name="PlayerRoot" parent="." instance=ExtResource("1_60xql")]

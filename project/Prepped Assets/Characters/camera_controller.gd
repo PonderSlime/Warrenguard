@@ -1,7 +1,8 @@
 extends Node2D
 
 @onready var camera = $PhantomCamera2D
-@export var PlayerRoot : Node2D
+@export var player : CharacterBody2D
+var TimeInSeconds : int = 100
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -9,9 +10,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(camera.follow_mode)
-
-
-func _on_player_death():
-	camera.follow_mode = 0
-	camera.zoom += Vector2(0.005,0.005)
+	if GlobalVariableLoader.unlockCamera == true:
+		camera.follow_mode = 0
+		if TimeInSeconds > 0:
+			TimeInSeconds -= delta
+			camera.zoom += Vector2(0.005,0.005)
+	elif GlobalVariableLoader.unlockCamera == false:
+		camera.follow_mode = 5
+		camera.zoom = Vector2(2,2)
