@@ -344,6 +344,9 @@ position = Vector2(501, 252)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_mnen0")
 
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxBackground/ParallaxLayer/Clouds"]
+color = Color(0.408329, 0.408329, 0.408329, 1)
+
 [node name="Spike" type="Node" parent="."]
 
 [node name="Spikes" parent="Spike" instance=ExtResource("3_v0wrf")]
@@ -528,3 +531,6 @@ position = Vector2(170, 321)
 
 [node name="Teledoor" parent="." instance=ExtResource("12_iepoi")]
 position = Vector2(176, 430)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.556953, 0.556953, 0.556953, 1)

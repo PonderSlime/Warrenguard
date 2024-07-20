@@ -15,10 +15,20 @@ func _ready():
 	var loadedData = json_conv.get_data()
 	#loadedData should be dictionary in same format as when you saved it
 	#so you should be able to restore tiles in tilemap like
-	#for y in loadedData.data.size():
-		#for x in loadedData.data.size():
+	for y in loadedData.data.size():
+		for x in loadedData.data.size():
+				# each layer is defined by touple with {}:	myTileMapData.data[layer].append( {"pos": pos, "coords": coords, "source": source, "alt_tile": altTile } )
+				# need an interator to count layers to count the touples
+				# or each touple has a lyaer # stored in it
 			#for layer in loadedData.data.size():
 				#tile_map.set_cell(layer, loadedData.data[layer][y*100 + x].pos, loadedData.data[layer][y*100 + x].source, loadedData.data[layer][y*100 + x].coords, loadedData.data[layer][y*100 + x].alt_tile)
+				#
+			pass
+				##saveFile.store_string(JSON.stringify(myTileMapData))
+				#var pos : Vector2i = Vector2i(x, y)
+				#var coords : Vector2i = tile_map.get_cell_atlas_coords(layer, pos)
+				#var source : int = tile_map.get_cell_source_id(layer, pos)
+				#var altTile : int = tile_map.get_cell_alternative_tile(layer, pos)
 
 func load_game():
 	#print("loading")
@@ -51,16 +61,16 @@ func save_game():
 	#Dictionary with tilemap data to save, you can save it as json or something
 	var myTileMapData : Dictionary = { "data": [] }
 
-	for y in 100:
-		for x in 100:
-			for layer in tile_map.get_layers_count():
+	for layer in tile_map.get_layers_count():
+		for y in 100:
+			for x in 100:
 				if(myTileMapData.data.size() <= layer):
 					myTileMapData.data.append( [] )
 				var pos : Vector2i = Vector2i(x, y)
 				var coords : Vector2i = tile_map.get_cell_atlas_coords(layer, pos)
 				var source : int = tile_map.get_cell_source_id(layer, pos)
 				var altTile : int = tile_map.get_cell_alternative_tile(layer, pos)
-				myTileMapData.data[layer].append( { "pos": pos, "coords": coords, "source": source, "alt_tile": altTile } )
+				myTileMapData.data[layer].append( {"pos": pos, "coords": coords, "source": source, "alt_tile": altTile } )
 
 	#Now you can save myTileMapData
 	var saveFile = FileAccess.open("user://savegame.save", FileAccess.WRITE)

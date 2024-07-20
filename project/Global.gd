@@ -22,10 +22,6 @@ func _ready():
 	current_scene = root.get_child(root.get_child_count() - 1)
 	
 func _process(delta):
-	var save_nodes = get_tree().get_nodes_in_group("Persist")
-	for node in save_nodes:
-		# Now, we can call our save function on each node.
-		pass
 	if carrots < 0:
 		carrots = 0
 		GlobalVariableLoader.prev_carrots = GlobalVariableLoader.carrots
@@ -33,7 +29,7 @@ func _process(delta):
 		player_current_movement_speed = player_default_movement_speed + 100
 		await get_tree().create_timer(0.001).timeout
 		prev_power_up = current_power_up
-		await get_tree().create_timer(5.0).timeout
+		await get_tree().create_timer(15.0).timeout
 		current_power_up = 0
 		await get_tree().create_timer(0.001).timeout
 		prev_power_up = 0
