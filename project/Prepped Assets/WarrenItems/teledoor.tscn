@@ -66,7 +66,7 @@ script = ExtResource("1_7qye0")
 _anim_player = NodePath("SceneTransition/AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 1
+z_index = 2
 texture_filter = 1
 position = Vector2(20, -14)
 texture = ExtResource("2_qd2cn")

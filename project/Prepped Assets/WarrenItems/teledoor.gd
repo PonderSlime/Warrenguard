@@ -19,5 +19,3 @@ func _on_area_2d_body_entered(body):
 		GlobalVariableLoader.door_pos = Vector2.ZERO
 		GlobalVariableLoader.did_just_doorway = true
 		_anim_player.play_backwards("dissolve")
-		parent.load_game()
-	print("entered")

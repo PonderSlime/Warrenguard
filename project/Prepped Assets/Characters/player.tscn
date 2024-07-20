@@ -275,6 +275,7 @@ exit_burrow_loc = NodePath("../ExitBurrowLoc")
 _anim_player = NodePath("../SceneTransition/AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
+z_index = 3
 texture_filter = 1
 position = Vector2(0, -12)
 texture = ExtResource("1_osxjy")
@@ -341,7 +342,6 @@ walk_sound = NodePath("../WalkSound")
 powerup_sound = NodePath("../PowerUpSound")
 
 [node name="SceneTransition" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="dissolve_rect" type="ColorRect" parent="SceneTransition"]
 modulate = Color(1, 1, 1, 0)
