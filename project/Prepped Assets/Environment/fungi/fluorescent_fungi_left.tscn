@@ -1,13 +1,73 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccp1mbv3cbb5v"]
+[gd_scene load_steps=15 format=3 uid="uid://ccp1mbv3cbb5v"]
 
 [ext_resource type="Script" path="res://Prepped Assets/Environment/fungi/florescent_fungi_left.gd" id="1_bo424"]
 [ext_resource type="Texture2D" uid="uid://8fy8t4671fgw" path="res://Sprites/Environment/FluorescentFungis.png" id="2_08xoa"]
+[ext_resource type="AudioStream" uid="uid://db66h1apa74hk" path="res://Audio/Sound Effects/boing.wav" id="3_w2jj8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcurn"]
 size = Vector2(14, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2y66g"]
 size = Vector2(16, 14)
+
+[sub_resource type="Animation" id="Animation_prlsp"]
+resource_name = "boing"
+length = 0.5833
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5833),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 6]
+}
+
+[sub_resource type="Animation" id="Animation_sjoqg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iwgu3"]
+_data = {
+"RESET": SubResource("Animation_sjoqg"),
+"boing": SubResource("Animation_prlsp")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n1hl0"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uhs0v"]
+animation = &"boing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e5oit"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1kh1x"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_55dhk"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_edall"]
+states/RESET/node = SubResource("AnimationNodeAnimation_n1hl0")
+states/RESET/position = Vector2(464, 75)
+states/boing/node = SubResource("AnimationNodeAnimation_uhs0v")
+states/boing/position = Vector2(466, 162)
+transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_e5oit"), "RESET", "boing", SubResource("AnimationNodeStateMachineTransition_1kh1x"), "boing", "RESET", SubResource("AnimationNodeStateMachineTransition_55dhk")]
 
 [node name="FluorescentFungiLeft" type="StaticBody2D"]
 z_index = 1
@@ -32,5 +92,17 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_2y66g")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_w2jj8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iwgu3")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_edall")
+anim_player = NodePath("../AnimationPlayer")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

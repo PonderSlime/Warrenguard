@@ -134,48 +134,38 @@ func _hurt():
 	hurt.emit()
 	
 func fungi_right():
-	is_bouncing = true
 	velocity.x += -jump_speed * 1.2
 	await get_tree().create_timer(0.001).timeout
-	if is_on_floor():
-		is_bouncing = false
-	print("fungi_right")
+	is_bouncing = true
 func fungi_up_right():
 	velocity.y += jump_speed * 1.2
 	velocity.x += -jump_speed * 1.2
 	await get_tree().create_timer(0.001).timeout
 	is_bouncing = true
-	print("fungi_up_right")
 func fungi_up():
 	velocity.y += jump_speed * 1.2
 	await get_tree().create_timer(0.001).timeout
 	is_bouncing = true
-	print("fungi_up")
 func fungi_up_left():
 	velocity.y += jump_speed * 1.2
 	velocity.x += jump_speed * 1.2
 	await get_tree().create_timer(0.001).timeout
 	is_bouncing = true
-	print("fungi_up_left")
 func fungi_left():
 	velocity.x += jump_speed * 1.2
 	await get_tree().create_timer(0.001).timeout
 	is_bouncing = true
-	print("fungi_left")
 func fungi_down_left():
 	velocity.y += -jump_speed * 1.2
 	velocity.x += jump_speed * 1.2
 	await get_tree().create_timer(0.001).timeout
 	is_bouncing = true
-	print("fungi_down_left")
 func fungi_down():
 	velocity.y += -jump_speed * 1.2
 	await get_tree().create_timer(0.001).timeout
 	is_bouncing = true
-	print("fungi_down")
 func fungi_down_right():
 	velocity.y += -jump_speed * 1.2
 	velocity.x += -jump_speed * 1.2
 	await get_tree().create_timer(0.001).timeout
 	is_bouncing = true
-	print("fungi_down_right")
