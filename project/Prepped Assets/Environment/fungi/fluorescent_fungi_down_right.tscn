@@ -1,29 +1,28 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcii0aqficy3w"]
 
 [ext_resource type="Script" path="res://Prepped Assets/Environment/fungi/florescent_fungi_down_right.gd" id="1_5ma7y"]
+[ext_resource type="Texture2D" uid="uid://8fy8t4671fgw" path="res://Sprites/Environment/FluorescentFungis.png" id="2_481oi"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dgqsq"]
-width = 16
-height = 16
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xtqjp"]
+size = Vector2(14, 13)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_73dq4"]
-size = Vector2(14, 8)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwwyj"]
-size = Vector2(16, 12)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uuud6"]
+size = Vector2(16, 14)
 
 [node name="FluorescentFungiDownRight" type="StaticBody2D"]
 z_index = 1
+rotation = 2.35619
 script = ExtResource("1_5ma7y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -8)
-texture = SubResource("NoiseTexture2D_dgqsq")
+texture = ExtResource("2_481oi")
+hframes = 7
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_73dq4")
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_xtqjp")
 one_way_collision = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -31,7 +30,7 @@ collision_layer = 16
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -6)
-shape = SubResource("RectangleShape2D_pwwyj")
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_uuud6")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

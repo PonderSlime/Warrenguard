@@ -4,13 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://8fy8t4671fgw" path="res://Sprites/Environment/FluorescentFungis.png" id="2_5orca"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73dq4"]
-size = Vector2(14, 8)
+size = Vector2(12, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwwyj"]
-size = Vector2(16, 12)
+size = Vector2(16, 14)
 
 [node name="FluorescentFungiRight" type="StaticBody2D"]
 z_index = 1
+rotation = 1.5708
 script = ExtResource("1_5cle5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -20,7 +21,7 @@ texture = ExtResource("2_5orca")
 hframes = 7
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_73dq4")
 one_way_collision = true
 
@@ -29,7 +30,7 @@ collision_layer = 16
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -6)
+position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_pwwyj")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
