@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://rd2mjis5gh3l"]
 
-[ext_resource type="Script" path="res://Prepped Assets/Environment/fungi/florescent_fungi_up.gd" id="1_o0li2"]
+[ext_resource type="Script" path="res://Prepped Assets/Environment/fungi/florescent_fungi_down.gd" id="1_s7og6"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dgqsq"]
 width = 16
@@ -14,7 +14,7 @@ size = Vector2(16, 12)
 
 [node name="FluorescentFungiDown" type="StaticBody2D"]
 z_index = 1
-script = ExtResource("1_o0li2")
+script = ExtResource("1_s7og6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

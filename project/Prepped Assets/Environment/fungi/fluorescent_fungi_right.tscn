@@ -1,10 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cr4gigbwp8t3n"]
 
-[ext_resource type="Script" path="res://Prepped Assets/Environment/fungi/florescent_fungi_up.gd" id="1_2oiaw"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dgqsq"]
-width = 16
-height = 16
+[ext_resource type="Script" path="res://Prepped Assets/Environment/fungi/florescent_fungi_right.gd" id="1_5cle5"]
+[ext_resource type="Texture2D" uid="uid://8fy8t4671fgw" path="res://Sprites/Environment/FluorescentFungis.png" id="2_5orca"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73dq4"]
 size = Vector2(14, 8)
@@ -14,12 +11,13 @@ size = Vector2(16, 12)
 
 [node name="FluorescentFungiRight" type="StaticBody2D"]
 z_index = 1
-script = ExtResource("1_2oiaw")
+script = ExtResource("1_5cle5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -8)
-texture = SubResource("NoiseTexture2D_dgqsq")
+texture = ExtResource("2_5orca")
+hframes = 7
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
