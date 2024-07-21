@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dg88qd2iyrbgb"]
+[gd_scene load_steps=19 format=3 uid="uid://dg88qd2iyrbgb"]
 
 [ext_resource type="PackedScene" uid="uid://q01o7rogtouc" path="res://Prepped Assets/Characters/player.tscn" id="1_60xql"]
 [ext_resource type="Script" path="res://Scenes/Test/dummy_save_Game.tres.gd" id="1_pnq4k"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cwl25ebv0nwos" path="res://Prepped Assets/WarrenItems/crate.tscn" id="10_5qsmh"]
 [ext_resource type="PackedScene" uid="uid://c1gebq6lwtsua" path="res://Prepped Assets/Items/apple.tscn" id="11_mikds"]
 [ext_resource type="PackedScene" uid="uid://yktbyvhvp1o6" path="res://Prepped Assets/WarrenItems/teledoor.tscn" id="12_iepoi"]
+[ext_resource type="PackedScene" uid="uid://b8gss42cnoth3" path="res://Prepped Assets/Environment/fungi/fluorescent_fungi_up.tscn" id="13_w4r3f"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ead3n"]
 
@@ -419,7 +420,7 @@ position = Vector2(1984, 16)
 position = Vector2(2064, -64)
 
 [node name="Carrot14" parent="Carrots" instance=ExtResource("9_100jg")]
-position = Vector2(1880, -144)
+position = Vector2(1910, -144)
 
 [node name="Carrot15" parent="Carrots" instance=ExtResource("9_100jg")]
 position = Vector2(1936, -144)
@@ -499,6 +500,10 @@ patrol_path = NodePath("../../Path2D")
 position = Vector2(170, 321)
 
 [node name="Teledoor" parent="." instance=ExtResource("12_iepoi")]
-position = Vector2(176, 430)
+position = Vector2(1903, -130)
+scale = Vector2(-1, 1)
 
 [node name="PlayerRoot" parent="." instance=ExtResource("1_60xql")]
+
+[node name="FluorescentFungi" parent="." instance=ExtResource("13_w4r3f")]
+position = Vector2(333, 189)

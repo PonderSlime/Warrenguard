@@ -343,6 +343,7 @@ powerup_sound = NodePath("../PowerUpSound")
 
 [node name="dissolve_rect" type="ColorRect" parent="SceneTransition"]
 modulate = Color(1, 1, 1, 0)
+z_index = 100
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -352,6 +353,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="TextureRect" type="TextureRect" parent="SceneTransition/dissolve_rect"]
+z_index = 101
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

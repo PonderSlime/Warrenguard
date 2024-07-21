@@ -125,3 +125,26 @@ func spike():
 func _hurt():
 	velocity.y = jump_speed/ 2
 	hurt.emit()
+	
+func fungi_right():
+	velocity.x = -jump_speed
+	print("fungi_right")
+func fungi_up_right():
+	velocity.y = jump_speed
+	velocity.x = -jump_speed
+	print("fungi_up_right")
+func fungi_up():
+	velocity.y = jump_speed
+	print("fungi_up")
+func fungi_up_left():
+	print("fungi_up_left")
+func fungi_left():
+	velocity.x = jump_speed
+	print("fungi_left")
+func fungi_down_left():
+	print("fungi_down_left")
+func fungi_down():
+	velocity.y = -jump_speed
+	print("fungi_down")
+func fungi_down_right():
+	print("fungi_down_right")

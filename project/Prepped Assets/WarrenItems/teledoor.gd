@@ -18,4 +18,4 @@ func _on_area_2d_body_entered(body):
 		GlobalVariableLoader.goto_scene(switch_to_scene)
 		GlobalVariableLoader.door_pos = Vector2.ZERO
 		GlobalVariableLoader.did_just_doorway = true
-		_anim_player.play_backwards("dissolve")
+		#_anim_player.play_backwards("dissolve")
