@@ -1,8 +1,11 @@
 extends Node
 
+var carrots : int = 0
+var progress_level : int = 0
+
 var player_health : int
 var start_health : int = 3
-var carrots : int = 0
+
 var prev_carrots : int = 0
 var current_scene = null
 var did_just_doorway : bool = false
@@ -20,11 +23,34 @@ func _ready():
 	player_health = start_health
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
-	
+	var saveFile = FileAccess.open("user://game_stats.save", FileAccess.READ)
+	if(FileAccess.get_open_error() != OK):
+		return false
+	else:
+		while saveFile.get_position() < saveFile.get_length():
+			var json_string = saveFile.get_line()
+
+			# Creates the helper class to interact with JSON
+			var json = JSON.new()
+
+			# Check if there is any error while parsing the JSON string, skip in case of failure
+			var parse_result = json.parse(json_string)
+			if not parse_result == OK:
+				print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+				continue
+
+			# Get the data from the JSON object
+			var node_data = json.get_data()
+			
+			# Firstly, we need to create the object and add it to the tree and set its position
+			var carrot_count = node_data["cached_carrots"]
+			var health = node_data["health"]
+			var prog_level = node_data["prog_level"]
 func _process(delta):
+	save_game()
 	if carrots < 0:
 		carrots = 0
-		GlobalVariableLoader.prev_carrots = GlobalVariableLoader.carrots
+		prev_carrots = carrots
 	if current_power_up == 1:
 		player_current_movement_speed = player_default_movement_speed + 100
 		await get_tree().create_timer(0.001).timeout
@@ -62,3 +88,15 @@ func _deferred_goto_scene(path):
 
 	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
 	get_tree().current_scene = current_scene
+	
+func save_game():
+	var saveStats = FileAccess.open("user://game_stats.save", FileAccess.WRITE)
+	if(FileAccess.get_open_error() != OK):
+		return false
+	var current_cached_carrot_count : int = carrots
+	var current_health : int = player_health
+	var prog_level : int = progress_level
+	var save_dict = {"cached_carrots" : current_cached_carrot_count, "health" : current_health, "prog_level" : prog_level}
+	
+	var json_string = JSON.stringify(save_dict)
+	saveStats.store_line(json_string)
