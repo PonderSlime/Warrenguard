@@ -1,11 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://dg88qd2iyrbgb"]
+[gd_scene load_steps=25 format=3 uid="uid://dg88qd2iyrbgb"]
 
 [ext_resource type="PackedScene" uid="uid://q01o7rogtouc" path="res://Prepped Assets/Characters/player.tscn" id="1_60xql"]
 [ext_resource type="Script" path="res://Scenes/Test/dummy_save_Game.tres.gd" id="1_pnq4k"]
 [ext_resource type="Texture2D" uid="uid://bmqmu2cagdk1t" path="res://Sprites/Environment/Tilemap.png" id="1_usa6h"]
 [ext_resource type="PackedScene" uid="uid://opewwobgojc1" path="res://Prepped Assets/Environment/spikes.tscn" id="3_v0wrf"]
+[ext_resource type="Texture2D" uid="uid://bajo5utlgiycs" path="res://Sprites/Environment/NightBackground.png" id="3_yaohv"]
+[ext_resource type="Texture2D" uid="uid://ct8kyjdv21675" path="res://Sprites/Environment/NightBackgroundLights.png" id="4_30ybl"]
 [ext_resource type="Texture2D" uid="uid://l00yjfnvepmv" path="res://Sprites/Environment/Cloud1.png" id="6_55r36"]
-[ext_resource type="Texture2D" uid="uid://p6pjna6l7nwx" path="res://Sprites/Environment/Background.png" id="7_mnen0"]
 [ext_resource type="PackedScene" uid="uid://cjyro2rssxapk" path="res://Prepped Assets/Environment/fiery_flower.tscn" id="8_6lkdp"]
 [ext_resource type="PackedScene" uid="uid://ch3j6t0gedhm3" path="res://Prepped Assets/Items/carrot.tscn" id="9_100jg"]
 [ext_resource type="PackedScene" uid="uid://cu7ynj5u08nlo" path="res://Prepped Assets/Characters/enemy1.tscn" id="9_ufhgb"]
@@ -228,17 +229,28 @@ terrain_set_0/terrain_2/name = "Grass Floor"
 terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_7f4tw")
 
-[node name="Node2D" type="Node2D" groups=["parent"]]
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("color_mod", "color_sky_mod") groups=["parent"]]
 process_mode = 3
 texture_filter = 1
 script = ExtResource("1_pnq4k")
+time = 0
+color_mod = NodePath("ColorMod")
+color_sky_mod = NodePath("ParallaxBackground/ParallaxLayer/Clouds/SkyColorMod")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wkaj8")
 
+[node name="ColorMod" type="CanvasModulate" parent="."]
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
 scroll_offset = Vector2(330.946, 735.269)
 scroll_ignore_camera_zoom = true
+
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground"]
+visible = false
+position = Vector2(501, 252)
+texture = ExtResource("4_30ybl")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
@@ -318,8 +330,15 @@ texture = ExtResource("6_55r36")
 z_index = -2
 texture_filter = 1
 position = Vector2(501, 252)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_mnen0")
+texture = ExtResource("3_yaohv")
+
+[node name="Background2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Clouds"]
+z_index = -1
+texture_filter = 1
+position = Vector2(501, 252)
+texture = ExtResource("4_30ybl")
+
+[node name="SkyColorMod" type="CanvasModulate" parent="ParallaxBackground/ParallaxLayer/Clouds"]
 
 [node name="Spike" type="Node" parent="."]
 
