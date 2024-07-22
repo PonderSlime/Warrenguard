@@ -130,42 +130,42 @@ func spike():
 	velocity.y = jump_speed
 	hurt.emit()
 func _hurt():
-	velocity.y = jump_speed/ 1.2
+	velocity.y = jump_speed/ 2
 	hurt.emit()
 	
 func fungi_right():
-	velocity.x += -jump_speed * 1.2
+	velocity.x += -jump_speed * 2
 	await get_tree().create_timer(0.001).timeout
 	is_bouncing = true
 func fungi_up_right():
-	velocity.y += jump_speed * 1.2
-	velocity.x += -jump_speed * 1.2
+	velocity.y += jump_speed * 1.5
+	velocity.x += -jump_speed * 2
 	await get_tree().create_timer(0.001).timeout
 	is_bouncing = true
 func fungi_up():
-	velocity.y += jump_speed * 1.2
+	velocity.y += jump_speed * 1.5
 	await get_tree().create_timer(0.001).timeout
 	is_bouncing = true
 func fungi_up_left():
-	velocity.y += jump_speed * 1.2
-	velocity.x += jump_speed * 1.2
+	velocity.y += jump_speed * 1.5
+	velocity.x += jump_speed * 2
 	await get_tree().create_timer(0.001).timeout
 	is_bouncing = true
 func fungi_left():
-	velocity.x += jump_speed * 1.2
+	velocity.x += jump_speed * 2
 	await get_tree().create_timer(0.001).timeout
 	is_bouncing = true
 func fungi_down_left():
-	velocity.y += -jump_speed * 1.2
-	velocity.x += jump_speed * 1.2
+	velocity.y += -jump_speed * 1.5
+	velocity.x += jump_speed * 2
 	await get_tree().create_timer(0.001).timeout
 	is_bouncing = true
 func fungi_down():
-	velocity.y += -jump_speed * 1.2
+	velocity.y += -jump_speed * 1.5
 	await get_tree().create_timer(0.001).timeout
 	is_bouncing = true
 func fungi_down_right():
-	velocity.y += -jump_speed * 1.2
-	velocity.x += -jump_speed * 1.2
+	velocity.y += -jump_speed * 1.5
+	velocity.x += -jump_speed * 2
 	await get_tree().create_timer(0.001).timeout
 	is_bouncing = true

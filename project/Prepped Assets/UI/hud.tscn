@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://covaadkcirfii" path="res://Sprites/Items/Carrot.png" id="6_4efan"]
 
 [node name="HUD" type="CanvasLayer"]
+layer = 0
 script = ExtResource("1_c6a2n")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]

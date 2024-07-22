@@ -13,6 +13,8 @@ func _process(delta):
 func _on_area_2d_body_entered(body):
 	if body.name == "Player" or body.name == "PlayerRPG":
 		_anim_player.play("dissolve")
+		GlobalVariableLoader.stored_carrots += GlobalVariableLoader.carrots
+		GlobalVariableLoader.carrots = 0
 		parent.save_game()
 		await get_tree().create_timer(0.8333).timeout
 		GlobalVariableLoader.goto_scene(switch_to_scene)

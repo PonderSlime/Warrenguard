@@ -1,11 +1,10 @@
-[gd_scene load_steps=45 format=3 uid="uid://bvse5e73c1cs7"]
+[gd_scene load_steps=44 format=3 uid="uid://bvse5e73c1cs7"]
 
 [ext_resource type="Script" path="res://Prepped Assets/Characters/PlayerRPG/player_rpg.gd" id="1_ojupd"]
 [ext_resource type="Texture2D" uid="uid://ch7orknpbswpb" path="res://Sprites/Player/SpriteSheet.png" id="2_co24h"]
 [ext_resource type="Script" path="res://Prepped Assets/Characters/PlayerRPG/RayCast2D.gd" id="3_yfcjo"]
 [ext_resource type="PackedScene" uid="uid://bd8v4t8j3r4us" path="res://Prepped Assets/UI/hud.tscn" id="4_37dv5"]
-[ext_resource type="Texture2D" uid="uid://covaadkcirfii" path="res://Sprites/Items/Carrot.png" id="4_arn5n"]
-[ext_resource type="Texture2D" uid="uid://bqkpv22dw1l8f" path="res://Sprites/WarrenItems/Light.png" id="5_8l3mn"]
+[ext_resource type="Texture2D" uid="uid://c7rblixsoovac" path="res://Sprites/WarrenItems/Light_big.png" id="5_pky57"]
 [ext_resource type="Script" path="res://Prepped Assets/Characters/audio_controller.gd" id="8_2uimf"]
 [ext_resource type="Texture2D" uid="uid://ddpwk6ygmcuxx" path="res://Sprites/Easter Eggs/flag-orpheus-left_pixelated.png" id="8_5ac3y"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="9_dp004"]
@@ -297,26 +296,20 @@ autoplay = "idle"
 tree_root = SubResource("AnimationNodeStateMachine_5ltp2")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="RayCasts" type="RayCast2D" parent="PlayerRPG"]
+[node name="RayCast" type="RayCast2D" parent="PlayerRPG"]
 position = Vector2(0, -20)
 target_position = Vector2(0, 25)
 script = ExtResource("3_yfcjo")
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerRPG/RayCasts"]
+[node name="PointLight2D" type="PointLight2D" parent="PlayerRPG/RayCast"]
 texture_filter = 1
-position = Vector2(0, 22)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("4_arn5n")
-hframes = 25
-
-[node name="PointLight2D" type="PointLight2D" parent="PlayerRPG/RayCasts"]
-texture_filter = 1
-position = Vector2(0, 36)
+position = Vector2(0, 52)
 shadow_enabled = true
 shadow_color = Color(0.0475577, 0.0475576, 0.0475576, 0)
-texture = ExtResource("5_8l3mn")
+texture = ExtResource("5_pky57")
 
 [node name="HUD" parent="." instance=ExtResource("4_37dv5")]
+carrot_count_type = 1
 
 [node name="Sound" type="Node" parent="."]
 

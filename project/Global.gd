@@ -1,11 +1,11 @@
 extends Node
 
-var carrots : int = 0
+var stored_carrots : int = 0
 var progress_level : int = 0
 
 var player_health : int
 var start_health : int = 3
-
+var carrots : int = 0
 var prev_carrots : int = 0
 var current_scene = null
 var did_just_doorway : bool = false
@@ -43,7 +43,7 @@ func _ready():
 			var node_data = json.get_data()
 			
 			# Firstly, we need to create the object and add it to the tree and set its position
-			var carrot_count = node_data["cached_carrots"]
+			stored_carrots = node_data["cached_carrots"]
 			var health = node_data["health"]
 			var prog_level = node_data["prog_level"]
 func _process(delta):
@@ -93,7 +93,7 @@ func save_game():
 	var saveStats = FileAccess.open("user://game_stats.save", FileAccess.WRITE)
 	if(FileAccess.get_open_error() != OK):
 		return false
-	var current_cached_carrot_count : int = carrots
+	var current_cached_carrot_count : int = stored_carrots
 	var current_health : int = player_health
 	var prog_level : int = progress_level
 	var save_dict = {"cached_carrots" : current_cached_carrot_count, "health" : current_health, "prog_level" : prog_level}
