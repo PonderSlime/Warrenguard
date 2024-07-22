@@ -15,7 +15,6 @@ var death = preload("res://Audio/Sound Effects/death.wav")
 var powerup_start = preload("res://Audio/Sound Effects/powerup_start.wav")
 var powerup_end = preload("res://Audio/Sound Effects/powerup_end.wav")
 
-
 func _process(delta):
 	if GlobalVariableLoader.current_power_up == 1 and GlobalVariableLoader.prev_power_up == 0 and GlobalVariableLoader.unlockCamera == false:
 		song.stop()

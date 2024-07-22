@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cog6yx1y6q02q"]
+
+[ext_resource type="Script" path="res://Prepped Assets/Characters/Enemies/enemy_projectile_1.gd" id="1_1cmnk"]
+[ext_resource type="Texture2D" uid="uid://d2kgei4hrtqpg" path="res://Sprites/Items/EnemyProjectile1.png" id="1_w0hht"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ff75i"]
+radius = 5.0
+
+[node name="EnemyProjectile1" type="Area2D"]
+script = ExtResource("1_1cmnk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_w0hht")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ff75i")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 2.38419e-07)
+scale = Vector2(0.5, 0.5)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

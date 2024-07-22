@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk0u2p6q8bbty"]
+
+[ext_resource type="Script" path="res://Prepped Assets/Characters/Enemies/projectile_enemy_1.gd" id="1_1p8bs"]
+[ext_resource type="Texture2D" uid="uid://coakhjy0bpm6l" path="res://Sprites/Enemies/ProjectileEnemy.png" id="1_fqrv2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fjq57"]
+radius = 8.0
+
+[node name="ProjectileEnemy" type="StaticBody2D"]
+script = ExtResource("1_1p8bs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_fqrv2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fjq57")
+
+[node name="ShootTimer" type="Timer" parent="."]
