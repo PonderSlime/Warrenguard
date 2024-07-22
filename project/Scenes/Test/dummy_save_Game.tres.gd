@@ -11,10 +11,6 @@ func save_game():
 	pass
 
 func _process(delta):
-	if GlobalVariableLoader.player_health < 2:
-		time = 0
-	else:
-		time = 2
 	if time == 2:
 		background_day.visible = true
 		background_night.visible = false

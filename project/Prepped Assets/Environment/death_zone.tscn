@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b74k3h6tyhai7"]
+
+[ext_resource type="Script" path="res://Prepped Assets/Environment/death_zone.gd" id="1_kksa6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ml8ia"]
+size = Vector2(64, 20)
+
+[node name="DeathZone" type="Node2D"]
+script = ExtResource("1_kksa6")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ml8ia")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

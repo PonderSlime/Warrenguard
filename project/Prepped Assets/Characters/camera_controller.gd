@@ -2,7 +2,8 @@ extends Node2D
 
 @onready var camera = $PhantomCamera2D
 @export var player : CharacterBody2D
-var TimeInSeconds : int = 100
+var TimeStart : int = 100
+var TimeInSeconds : int = TimeStart
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -18,3 +19,4 @@ func _process(delta):
 	elif GlobalVariableLoader.unlockCamera == false:
 		camera.follow_mode = 5
 		camera.zoom = Vector2(2,2)
+		TimeInSeconds = TimeStart

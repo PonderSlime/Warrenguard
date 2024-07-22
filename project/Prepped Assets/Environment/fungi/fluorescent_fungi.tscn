@@ -71,6 +71,7 @@ transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransitio
 
 [node name="FluorescentFungi" type="StaticBody2D"]
 z_index = 1
+collision_layer = 8
 script = ExtResource("1_yqitd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

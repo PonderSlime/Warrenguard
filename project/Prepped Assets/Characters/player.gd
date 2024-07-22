@@ -7,6 +7,7 @@ signal hurt
 signal footstep
 signal no_walk
 signal death
+signal musicStop
 @export var gos : CanvasLayer
 @export var hud : CanvasLayer
 @onready var state_machine = $AnimationTree.get("parameters/playback")
@@ -104,12 +105,17 @@ func _physics_process(delta):
 
 func _process(delta):
 	if GlobalVariableLoader.player_health <= 0:
+		velocity.x = 0
 		hud.visible = false
 		GlobalVariableLoader.player_health = GlobalVariableLoader.start_health
-		death.emit()
 		collision.disabled = true
 		GlobalVariableLoader.unlockCamera = true
-		await get_tree().create_timer(1.5).timeout
+		musicStop.emit()
+		await get_tree().create_timer(0.1).timeout
+		hurt.emit()
+		await get_tree().create_timer(1.15).timeout
+		death.emit()
+		await get_tree().create_timer(0.25).timeout
 		gos.visible = true
 	if GlobalVariableLoader.reset_player_loc:
 		GlobalVariableLoader.reset_player_loc = false

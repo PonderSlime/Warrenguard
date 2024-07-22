@@ -379,10 +379,11 @@ script = ExtResource("8_5hogo")
 [node name="GameOverScreen" parent="." instance=ExtResource("5_s7bog")]
 visible = false
 
-[connection signal="death" from="Player" to="CameraController" method="_on_player_death"]
+[connection signal="death" from="Player" to="Sound/AudioController" method="_gameover"]
 [connection signal="footstep" from="Player" to="Sound/AudioController" method="_walk"]
 [connection signal="hurt" from="Player" to="Sound/AudioController" method="_hurt"]
 [connection signal="jump" from="Player" to="Sound/AudioController" method="_jump"]
+[connection signal="musicStop" from="Player" to="Sound/AudioController" method="_musicStop"]
 [connection signal="no_walk" from="Player" to="Sound/AudioController" method="_no_walk"]
 [connection signal="area_entered" from="ExitBurrowLoc" to="Player" method="_on_exit_burrow_loc_area_entered"]
 [connection signal="area_exited" from="ExitBurrowLoc" to="Player" method="_on_exit_burrow_loc_area_exited"]

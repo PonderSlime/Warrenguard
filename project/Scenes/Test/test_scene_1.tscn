@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dg88qd2iyrbgb"]
+[gd_scene load_steps=22 format=3 uid="uid://dg88qd2iyrbgb"]
 
 [ext_resource type="PackedScene" uid="uid://q01o7rogtouc" path="res://Prepped Assets/Characters/player.tscn" id="1_60xql"]
 [ext_resource type="Script" path="res://Scenes/Test/dummy_save_Game.tres.gd" id="1_pnq4k"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c1gebq6lwtsua" path="res://Prepped Assets/Items/apple.tscn" id="11_mikds"]
 [ext_resource type="PackedScene" uid="uid://yktbyvhvp1o6" path="res://Prepped Assets/WarrenItems/teledoor.tscn" id="12_iepoi"]
 [ext_resource type="PackedScene" uid="uid://b8gss42cnoth3" path="res://Prepped Assets/Environment/fungi/fluorescent_fungi.tscn" id="13_w4r3f"]
+[ext_resource type="PackedScene" uid="uid://b74k3h6tyhai7" path="res://Prepped Assets/Environment/death_zone.tscn" id="16_rnx11"]
 
 [sub_resource type="Environment" id="Environment_wkaj8"]
 background_mode = 1
@@ -234,7 +235,6 @@ sources/0 = SubResource("TileSetAtlasSource_7f4tw")
 process_mode = 3
 texture_filter = 1
 script = ExtResource("1_pnq4k")
-time = 0
 color_mod = NodePath("ColorMod")
 color_sky_mod = NodePath("ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds/SkyColorMod")
 night_lights = NodePath("ParallaxBackground/ParallaxLayer/ParallaxLayerElements/NightLights")
@@ -560,3 +560,18 @@ layer_0/tile_data = PackedInt32Array(1769472, 262144, 2, 1769473, 262144, 2, 176
 layer_1/name = "Detail"
 layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array(1048598, 393216, 0, 1048594, 458752, 0, 1114136, 393216, 0, 983077, 393216, 0, 983075, 458752, 0, 983074, 393216, 0, 852014, 393216, 0, 1441829, 458752, 0, 1441831, 393216, 0, 1441825, 393216, 0, 1441826, 393216, 0, 1441836, 393216, 0, 1507380, 393216, 0, 1507381, 393216, 0, 1507384, 393216, 0, 1179703, 393216, 0, 1179700, 393216, 0, 1048637, 393216, 0, 1638465, 393216, 0, 1638466, 393216, 0, 1507398, 393216, 0, 1507402, 458752, 0, 1179736, 393216, 0, 1179735, 393216, 0, 1048671, 393216, 0, 1179751, 393216, 0, 1048684, 393216, 0, 1048688, 393216, 0, 917618, 393216, 0, 917619, 393216, 0, 786552, 393216, 0, 655487, 393216, 0, 655484, 393216, 0, 655483, 393216, 0, 852104, 393216, 0, 852105, 393216, 0, 786564, 393216, 0, 589963, 393216, 0, 589964, 393216, 0, 589966, 393216, 0, 196738, 393216, 0, 196742, 393216, 0, 115, 393216, 0, 117, 393216, 0, -262014, 393216, 0, -589704, 393216, 0, 262152, 458752, 0, 262153, 393216, 0, -65533, 393216, 0, -1, 393216, 0, -65534, 458752, 0, 589823, 458752, 0, 589822, 393216, 0, 1703932, 393216, 0, 1703933, 393216, 0, 1703934, 393216, 0, 1703941, 393216, 0, 1703944, 393216, 0, 1703940, 393216, 0, 1703947, 393216, 0, 1572880, 393216, 0, 1441817, 393216, 0, 1310792, 393216, 0, 1310791, 393216, 0)
+
+[node name="DeathZone" parent="." instance=ExtResource("16_rnx11")]
+position = Vector2(1328, 396)
+
+[node name="DeathZone2" parent="." instance=ExtResource("16_rnx11")]
+position = Vector2(1472, 338)
+
+[node name="DeathZone3" parent="." instance=ExtResource("16_rnx11")]
+position = Vector2(1592, 340)
+
+[node name="DeathZone4" parent="." instance=ExtResource("16_rnx11")]
+position = Vector2(1696, 439)
+
+[node name="DeathZone5" parent="." instance=ExtResource("16_rnx11")]
+position = Vector2(1696, 340)
