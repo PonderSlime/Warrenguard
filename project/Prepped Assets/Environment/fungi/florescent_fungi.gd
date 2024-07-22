@@ -4,14 +4,13 @@ extends StaticBody2D
 var degree : int
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	degree = round_to_dec(rotation_degrees, 1)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 	
 func _process(delta):
-	degree = round_to_dec(rotation_degrees, 1)
-	print(degree)
+	pass
 	
 func round_to_dec(num, digit):
 	return round(num * pow(10.0, digit)) / pow(10.0, digit)
