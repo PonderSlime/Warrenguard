@@ -580,4 +580,4 @@ position = Vector2(1696, 439)
 position = Vector2(1696, 340)
 
 [node name="ProjectileEnemy" parent="." instance=ExtResource("17_i5nr0")]
-position = Vector2(1196, 314)
+position = Vector2(1196, 336)
