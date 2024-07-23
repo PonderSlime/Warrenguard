@@ -102,7 +102,7 @@ func _physics_process(delta):
 		exit_burrow_loc.global_position = get_global_position()
 		exit_burrow_loc.visible = true
 		is_burrowing = true
-
+	GlobalVariableLoader.player_pos = global_position
 func _process(delta):
 	if GlobalVariableLoader.player_health <= 0:
 		velocity.x = 0
