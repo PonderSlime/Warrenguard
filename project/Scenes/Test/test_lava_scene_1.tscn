@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://icvkngxomnab"]
+[gd_scene load_steps=19 format=3 uid="uid://icvkngxomnab"]
 
 [ext_resource type="Script" path="res://Scenes/Test/dummy_save_Game.tres.gd" id="1_7pt08"]
 [ext_resource type="Texture2D" uid="uid://l00yjfnvepmv" path="res://Sprites/Environment/Cloud1.png" id="2_3yf6o"]
 [ext_resource type="Texture2D" uid="uid://c5syv5rwrxgpi" path="res://Sprites/Environment/Background1.png" id="3_fx0ry"]
+[ext_resource type="Texture2D" uid="uid://b6kwlte2iwcx0" path="res://Sprites/Environment/LavaForegroundBackground.png" id="5_6ojhf"]
 [ext_resource type="Texture2D" uid="uid://ct8kyjdv21675" path="res://Sprites/Environment/NightBackgroundLights.png" id="5_nblss"]
 [ext_resource type="PackedScene" uid="uid://yktbyvhvp1o6" path="res://Prepped Assets/WarrenItems/teledoor.tscn" id="6_htayu"]
 [ext_resource type="PackedScene" uid="uid://b812dr542g6ka" path="res://Prepped Assets/Environment/flowing_lava.tscn" id="7_keam2"]
@@ -274,10 +275,9 @@ terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
 sources/2 = SubResource("TileSetAtlasSource_rflai")
 sources/0 = SubResource("TileSetScenesCollectionSource_ol2s4")
 
-[sub_resource type="Gradient" id="Gradient_0ug4n"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.4)
-colors = PackedColorArray(0.762404, 0.762404, 0.762404, 1, 0.737193, 0.737193, 0.737193, 1)
+[sub_resource type="Gradient" id="Gradient_085gw"]
+offsets = PackedFloat32Array(0, 0.819672)
+colors = PackedColorArray(0.321728, 0.321728, 0.321728, 1, 0.370364, 0.370365, 0.370364, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_tpsm7"]
 
@@ -285,18 +285,18 @@ colors = PackedColorArray(0.762404, 0.762404, 0.762404, 1, 0.737193, 0.737193, 0
 width = 128
 height = 128
 seamless = true
-color_ramp = SubResource("Gradient_0ug4n")
+color_ramp = SubResource("Gradient_085gw")
 noise = SubResource("FastNoiseLite_tpsm7")
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("color_mod", "color_sky_mod", "lights", "point_light", "background", "clouds") groups=["parent"]]
 script = ExtResource("1_7pt08")
 background_type = -1
 color_mod = NodePath("ColorMod")
-color_sky_mod = NodePath("ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds/SkyColorMod")
-lights = NodePath("ParallaxBackground/ParallaxLayer/ParallaxLayerElements/NightLights")
-point_light = NodePath("ParallaxBackground/ParallaxLayer/ParallaxLayerElements/NightLights/PointLight2D")
-background = NodePath("ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Background")
-clouds = NodePath("ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds")
+color_sky_mod = NodePath("ParallaxBackground/ParallaxLayer/Node/Clouds/SkyColorMod")
+lights = NodePath("ParallaxBackground/ParallaxLayer/Node/NightLights")
+point_light = NodePath("ParallaxBackground/ParallaxLayer/Node/NightLights/PointLight2D")
+background = NodePath("ParallaxBackground/ParallaxLayer/Node/Background")
+clouds = NodePath("ParallaxBackground/ParallaxLayer/Node/Clouds")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6uq5a")
@@ -305,108 +305,122 @@ environment = SubResource("Environment_6uq5a")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -1
-scroll_offset = Vector2(330.946, 735.269)
 scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1100, 0)
 
-[node name="ParallaxLayerElements" type="Node" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Node" type="Node2D" parent="ParallaxBackground/ParallaxLayer"]
 
-[node name="Clouds" type="Node2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements"]
+[node name="Clouds" type="Node2D" parent="ParallaxBackground/ParallaxLayer/Node"]
 
-[node name="Cloud1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+[node name="Cloud1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Node/Clouds"]
 z_index = -1
 texture_filter = 1
 position = Vector2(41, 271)
 scale = Vector2(2, 2)
 texture = ExtResource("2_3yf6o")
 
-[node name="Cloud2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+[node name="Cloud2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Node/Clouds"]
 z_index = -1
 texture_filter = 1
 position = Vector2(218, 260)
 scale = Vector2(2, 2)
 texture = ExtResource("2_3yf6o")
 
-[node name="Cloud5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+[node name="Cloud5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Node/Clouds"]
 z_index = -1
 texture_filter = 1
 position = Vector2(742, 233)
 scale = Vector2(2, 2)
 texture = ExtResource("2_3yf6o")
 
-[node name="Cloud6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+[node name="Cloud6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Node/Clouds"]
 z_index = -1
 texture_filter = 1
 position = Vector2(984, 274)
 scale = Vector2(2, 2)
 texture = ExtResource("2_3yf6o")
 
-[node name="Cloud7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+[node name="Cloud7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Node/Clouds"]
 z_index = -1
 texture_filter = 1
 position = Vector2(824, 135)
 scale = Vector2(2, 2)
 texture = ExtResource("2_3yf6o")
 
-[node name="Cloud8" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+[node name="Cloud8" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Node/Clouds"]
 z_index = -1
 texture_filter = 1
 position = Vector2(152, 134)
 scale = Vector2(2, 2)
 texture = ExtResource("2_3yf6o")
 
-[node name="Cloud9" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+[node name="Cloud9" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Node/Clouds"]
 z_index = -1
 texture_filter = 1
 position = Vector2(381, 77)
 scale = Vector2(2, 2)
 texture = ExtResource("2_3yf6o")
 
-[node name="Cloud10" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+[node name="Cloud10" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Node/Clouds"]
 z_index = -1
 texture_filter = 1
 position = Vector2(654, 115)
 scale = Vector2(2, 2)
 texture = ExtResource("2_3yf6o")
 
-[node name="Cloud3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+[node name="Cloud3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Node/Clouds"]
 z_index = -1
 texture_filter = 1
 position = Vector2(382, 185)
 scale = Vector2(2, 2)
 texture = ExtResource("2_3yf6o")
 
-[node name="Cloud4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+[node name="Cloud4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Node/Clouds"]
 z_index = -1
 texture_filter = 1
 position = Vector2(555, 187)
 scale = Vector2(2, 2)
 texture = ExtResource("2_3yf6o")
 
-[node name="SkyColorMod" type="CanvasModulate" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+[node name="SkyColorMod" type="CanvasModulate" parent="ParallaxBackground/ParallaxLayer/Node/Clouds"]
 
-[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements"]
-light_mask = 16384
-z_index = -2
-texture_filter = 1
-position = Vector2(501, 249)
-texture = ExtResource("3_fx0ry")
-
-[node name="NightLights" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements"]
+[node name="NightLights" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Node"]
+visible = false
 top_level = true
 light_mask = 16384
 z_index = -2
 texture_filter = 1
-position = Vector2(501, 249)
 texture = ExtResource("5_nblss")
+centered = false
 
-[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/NightLights"]
-z_index = -1
+[node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/ParallaxLayer/Node/NightLights"]
+z_index = -2
 texture_filter = 1
+position = Vector2(550, 250)
 range_layer_min = -2
 range_item_cull_mask = 16384
 texture = ExtResource("5_nblss")
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Node"]
+z_index = -2
+texture_filter = 1
+position = Vector2(0, -200)
+texture = ExtResource("3_fx0ry")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = 1
+motion_mirroring = Vector2(1100, 0)
+
+[node name="ForegroundBackground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+z_index = 100
+texture_filter = 1
+position = Vector2(0, -275)
+texture = ExtResource("5_6ojhf")
+centered = false
 
 [node name="Teledoor" parent="." instance=ExtResource("6_htayu")]
 position = Vector2(1379, 0)

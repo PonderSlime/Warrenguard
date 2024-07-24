@@ -1,10 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b812dr542g6ka"]
+[gd_scene load_steps=8 format=3 uid="uid://b812dr542g6ka"]
 
 [ext_resource type="Texture2D" uid="uid://bo88iai3l4o53" path="res://Sprites/Environment/LavaLevel/FlowingLavaTiles.png" id="1_8xbql"]
 
 [sub_resource type="Animation" id="Animation_kdis7"]
 resource_name = "flowinglava"
-length = 2.083
+length = 1.4167
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -13,10 +13,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.083),
+"times": PackedFloat32Array(0, 1.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0, 24]
+"values": [0, 15]
 }
 
 [sub_resource type="Animation" id="Animation_5peyg"]
@@ -40,15 +40,30 @@ _data = {
 "flowinglava": SubResource("Animation_kdis7")
 }
 
+[sub_resource type="Gradient" id="Gradient_mwyn3"]
+offsets = PackedFloat32Array(0, 0.819672)
+colors = PackedColorArray(0.273873, 0.273873, 0.273873, 1, 0.310617, 0.310617, 0.310617, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_imw1u"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6hbea"]
+seamless = true
+color_ramp = SubResource("Gradient_mwyn3")
+noise = SubResource("FastNoiseLite_imw1u")
+
 [node name="FlowingLava" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_8xbql")
-hframes = 25
+hframes = 17
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_3hcb8")
 }
 autoplay = "flowinglava"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.03125, 0.03125)
+texture = SubResource("NoiseTexture2D_6hbea")

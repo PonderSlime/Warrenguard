@@ -40,7 +40,7 @@ func _process(delta):
 		background.texture = lava
 		color_mod.color = Color(0.7,0.7,0.7)
 		color_sky_mod.color = Color(0.5,0.5,0.5)
-		lights.visible = true
+		#lights.visible = true
 		lights.texture = lavalight
 		point_light.texture = lavalight
 		
