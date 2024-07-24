@@ -38,7 +38,7 @@ func _process(delta):
 	elif background_type == -1:
 		clouds.visible = false
 		background.texture = lava
-		color_mod.color = Color(0.4,0.4,0.4)
+		color_mod.color = Color(0.7,0.7,0.7)
 		color_sky_mod.color = Color(0.5,0.5,0.5)
 		lights.visible = true
 		lights.texture = lavalight
