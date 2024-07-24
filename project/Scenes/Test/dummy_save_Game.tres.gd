@@ -6,6 +6,7 @@ extends Node2D
 @export var point_light : PointLight2D
 @export var background : Sprite2D
 @export var clouds : Node2D
+@export var scene_type : int = 0
 @onready var day = preload("res://Sprites/Environment/Background1.png")
 @onready var night = preload("res://Sprites/Environment/NightBackground.png")
 @onready var lava = preload("res://Sprites/Environment/LavaBackground.png")
@@ -16,6 +17,8 @@ func load_game():
 	pass
 func save_game():
 	pass
+func _ready():
+	GlobalVariableLoader.active_level = scene_type
 
 func _process(delta):
 	if background_type == 2:

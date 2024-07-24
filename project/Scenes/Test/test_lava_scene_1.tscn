@@ -36,6 +36,7 @@ lights = NodePath("ParallaxBackground/ParallaxLayer/Node/NightLights")
 point_light = NodePath("ParallaxBackground/ParallaxLayer/Node/NightLights/PointLight2D")
 background = NodePath("ParallaxBackground/ParallaxLayer/Node/Background")
 clouds = NodePath("ParallaxBackground/ParallaxLayer/Node/Clouds")
+scene_type = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6uq5a")

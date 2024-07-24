@@ -21,7 +21,9 @@ func _on_body_entered(body):
 			await get_tree().create_timer(0.8333).timeout
 			GlobalVariableLoader.goto_scene(level_1)
 			GlobalVariableLoader.switch_scene = true
+			GlobalVariableLoader.active_level = 1
 		elif GlobalVariableLoader.progress_level == 2:
 			GlobalVariableLoader.goto_scene(level_2)
 			GlobalVariableLoader.switch_scene = true
+			GlobalVariableLoader.active_level = 2
 				

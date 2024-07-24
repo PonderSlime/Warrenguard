@@ -1,6 +1,8 @@
 extends Area2D
 
 @export var switch_to_scene : String = "res://Scenes/Test/test_warren_1.tscn"
+@export var is_warren : bool = true
+@export var active_level : int = 0
 @export var _anim_player : AnimationPlayer
 @onready var parent = get_tree().get_nodes_in_group("parent")[0]
 func _ready():
@@ -12,6 +14,10 @@ func _process(delta):
 
 func _on_area_2d_body_entered(body):
 	if body.name == "Player" or body.name == "PlayerRPG":
+		if is_warren:
+			GlobalVariableLoader.active_level = 0
+		else:
+			GlobalVariableLoader.active_level = active_level
 		_anim_player.play("dissolve")
 		GlobalVariableLoader.stored_carrots += GlobalVariableLoader.carrots
 		GlobalVariableLoader.carrots = 0

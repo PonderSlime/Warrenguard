@@ -37,6 +37,7 @@ lights = NodePath("ParallaxBackground/ParallaxLayer/ParallaxLayerElements/NightL
 point_light = NodePath("ParallaxBackground/ParallaxLayer/ParallaxLayerElements/NightLights/PointLight2D")
 background = NodePath("ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Background")
 clouds = NodePath("ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds")
+scene_type = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wkaj8")
@@ -152,45 +153,6 @@ texture = ExtResource("4_30ybl")
 
 [node name="Spikes" parent="Spike" instance=ExtResource("3_v0wrf")]
 position = Vector2(128, 336)
-
-[node name="Spikes7" parent="Spike" instance=ExtResource("3_v0wrf")]
-position = Vector2(1304, 752)
-
-[node name="Spikes8" parent="Spike" instance=ExtResource("3_v0wrf")]
-position = Vector2(1320, 752)
-
-[node name="Spikes9" parent="Spike" instance=ExtResource("3_v0wrf")]
-position = Vector2(1336, 752)
-
-[node name="Spikes10" parent="Spike" instance=ExtResource("3_v0wrf")]
-position = Vector2(1352, 752)
-
-[node name="Spikes11" parent="Spike" instance=ExtResource("3_v0wrf")]
-position = Vector2(1448, 752)
-
-[node name="Spikes12" parent="Spike" instance=ExtResource("3_v0wrf")]
-position = Vector2(1464, 752)
-
-[node name="Spikes13" parent="Spike" instance=ExtResource("3_v0wrf")]
-position = Vector2(1480, 752)
-
-[node name="Spikes14" parent="Spike" instance=ExtResource("3_v0wrf")]
-position = Vector2(1496, 752)
-
-[node name="Spikes15" parent="Spike" instance=ExtResource("3_v0wrf")]
-position = Vector2(1576, 752)
-
-[node name="Spikes16" parent="Spike" instance=ExtResource("3_v0wrf")]
-position = Vector2(1592, 752)
-
-[node name="Spikes17" parent="Spike" instance=ExtResource("3_v0wrf")]
-position = Vector2(1608, 752)
-
-[node name="Spikes18" parent="Spike" instance=ExtResource("3_v0wrf")]
-position = Vector2(1688, 752)
-
-[node name="Spikes19" parent="Spike" instance=ExtResource("3_v0wrf")]
-position = Vector2(1704, 752)
 
 [node name="Spikes2" parent="Spike" instance=ExtResource("3_v0wrf")]
 position = Vector2(-144, 336)

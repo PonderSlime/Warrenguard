@@ -387,3 +387,4 @@ visible = false
 [connection signal="no_walk" from="Player" to="Sound/AudioController" method="_no_walk"]
 [connection signal="area_entered" from="ExitBurrowLoc" to="Player" method="_on_exit_burrow_loc_area_entered"]
 [connection signal="area_exited" from="ExitBurrowLoc" to="Player" method="_on_exit_burrow_loc_area_exited"]
+[connection signal="stopmusic" from="GameOverScreen" to="Sound/AudioController" method="_musicStop"]
