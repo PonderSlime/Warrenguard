@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bk0u2p6q8bbty"]
+[gd_scene load_steps=9 format=3 uid="uid://bk0u2p6q8bbty"]
 
 [ext_resource type="Script" path="res://Prepped Assets/Characters/Enemies/projectile_enemy_1.gd" id="1_1p8bs"]
 [ext_resource type="Texture2D" uid="uid://coakhjy0bpm6l" path="res://Sprites/Enemies/ProjectileEnemy.png" id="1_fqrv2"]
@@ -29,10 +29,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0, 1]
+"values": [0, 1, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cu45f"]
@@ -44,10 +44,15 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_fjq57"]
 radius = 7.0
 
-[node name="ProjectileEnemy" type="StaticBody2D" node_paths=PackedStringArray("head", "headAnim")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_v6y8n"]
+radius = 160.0
+
+[node name="ProjectileEnemy" type="StaticBody2D" node_paths=PackedStringArray("head", "headAnim", "area")]
+position = Vector2(0, 8)
 script = ExtResource("1_1p8bs")
 head = NodePath("Head")
 headAnim = NodePath("HeadAnim")
+area = NodePath("Area2D")
 
 [node name="HeadAnim" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Head/HeadTex")
@@ -78,4 +83,14 @@ rotation = -4.71239
 texture = ExtResource("2_5uwo4")
 hframes = 2
 
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -9)
+collision_layer = 16
+collision_mask = 34
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_v6y8n")
+
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

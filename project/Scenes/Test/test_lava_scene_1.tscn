@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://icvkngxomnab"]
+[gd_scene load_steps=13 format=3 uid="uid://icvkngxomnab"]
 
 [ext_resource type="Script" path="res://Scenes/Test/dummy_save_Game.tres.gd" id="1_7pt08"]
 [ext_resource type="Texture2D" uid="uid://l00yjfnvepmv" path="res://Sprites/Environment/Cloud1.png" id="2_3yf6o"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://yktbyvhvp1o6" path="res://Prepped Assets/WarrenItems/teledoor.tscn" id="6_htayu"]
 [ext_resource type="PackedScene" uid="uid://q01o7rogtouc" path="res://Prepped Assets/Characters/player.tscn" id="7_qn018"]
 [ext_resource type="TileSet" uid="uid://cclthgh7vkn28" path="res://Prepped Assets/Tilemaps/lava_tilemap.tres" id="8_cp2xs"]
-[ext_resource type="PackedScene" uid="uid://b74k3h6tyhai7" path="res://Prepped Assets/Environment/death_zone.tscn" id="9_vavv4"]
 
 [sub_resource type="Environment" id="Environment_6uq5a"]
 background_mode = 1
@@ -223,40 +222,3 @@ position = Vector2(1168.5, 78.75)
 scale = Vector2(1.03906, 0.808594)
 energy = 0.5
 texture = SubResource("NoiseTexture2D_d1x31")
-
-[node name="DeathZones" type="Node" parent="."]
-
-[node name="DeathZone" parent="DeathZones" instance=ExtResource("9_vavv4")]
-visible = false
-position = Vector2(136, 20)
-scale = Vector2(1.4, 1.4)
-
-[node name="DeathZone2" parent="DeathZones" instance=ExtResource("9_vavv4")]
-visible = false
-position = Vector2(329, 20)
-scale = Vector2(1.4, 1.4)
-
-[node name="DeathZone3" parent="DeathZones" instance=ExtResource("9_vavv4")]
-visible = false
-position = Vector2(505, 55)
-scale = Vector2(1.4, 1.4)
-
-[node name="DeathZone4" parent="DeathZones" instance=ExtResource("9_vavv4")]
-visible = false
-position = Vector2(689, 98)
-scale = Vector2(1.1, 1.1)
-
-[node name="DeathZone7" parent="DeathZones" instance=ExtResource("9_vavv4")]
-visible = false
-position = Vector2(817, 98)
-scale = Vector2(1.1, 1.1)
-
-[node name="DeathZone5" parent="DeathZones" instance=ExtResource("9_vavv4")]
-visible = false
-position = Vector2(928, 98)
-scale = Vector2(1.1, 1.1)
-
-[node name="DeathZone6" parent="DeathZones" instance=ExtResource("9_vavv4")]
-visible = false
-position = Vector2(1156, 71)
-scale = Vector2(3, 3)

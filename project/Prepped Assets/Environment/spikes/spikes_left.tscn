@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://opewwobgojc1"]
+[gd_scene load_steps=5 format=3 uid="uid://dkqs4n8cxwv4r"]
 
-[ext_resource type="Script" path="res://Prepped Assets/Environment/spikes.gd" id="1_12u7n"]
-[ext_resource type="Texture2D" uid="uid://ot4kmsk7b43l" path="res://Sprites/Environment/Spikes.png" id="2_vo8yn"]
+[ext_resource type="Script" path="res://Prepped Assets/Environment/spikes/spikes.gd" id="1_tdwti"]
+[ext_resource type="Texture2D" uid="uid://ot4kmsk7b43l" path="res://Sprites/Environment/Spikes.png" id="2_086yn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73dq4"]
 size = Vector2(14, 8)
@@ -11,12 +11,14 @@ size = Vector2(16, 12)
 
 [node name="Spikes" type="StaticBody2D"]
 z_index = 1
-script = ExtResource("1_12u7n")
+position = Vector2(8, 0)
+rotation = -1.5708
+script = ExtResource("1_tdwti")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -8)
-texture = ExtResource("2_vo8yn")
+texture = ExtResource("2_086yn")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)

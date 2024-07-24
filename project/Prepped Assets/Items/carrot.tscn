@@ -50,6 +50,7 @@ script = ExtResource("1_88kim")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(0, -11)
 texture = ExtResource("1_ooohv")
 hframes = 26
 
@@ -64,6 +65,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -11)
 shape = SubResource("CapsuleShape2D_7qj23")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -6,7 +6,7 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_625ys"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ol2s4"]
-resource_name = "SceneCollection"
+resource_name = "Lava"
 scenes/1/scene = ExtResource("1_45bfo")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rflai"]

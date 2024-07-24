@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm4tvcijyws0y"]
+
+[ext_resource type="PackedScene" uid="uid://ch3j6t0gedhm3" path="res://Prepped Assets/Items/carrot.tscn" id="1_8qptk"]
+
+[node name="CarrotCentered" type="Node2D"]
+position = Vector2(-8, 0)
+
+[node name="Carrot" parent="." instance=ExtResource("1_8qptk")]

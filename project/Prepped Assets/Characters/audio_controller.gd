@@ -38,6 +38,7 @@ func _process(delta):
 	elif GlobalVariableLoader.current_power_up == 0 and GlobalVariableLoader.prev_power_up == 0 and GlobalVariableLoader.active_level == 1 and GlobalVariableLoader.unlockCamera == false:
 		if !song.is_playing():
 			song.stream = overworld
+			song.volume_db
 			song.play()
 	elif GlobalVariableLoader.current_power_up == 0 and GlobalVariableLoader.prev_power_up == 0 and GlobalVariableLoader.active_level == 2 and GlobalVariableLoader.unlockCamera == false:
 		if !song.is_playing():

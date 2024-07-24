@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cjyro2rssxapk"]
 
-[ext_resource type="Script" path="res://Prepped Assets/Environment/spikes.gd" id="1_0nxgd"]
+[ext_resource type="Script" path="res://Prepped Assets/Environment/spikes/spikes.gd" id="1_0nxgd"]
 [ext_resource type="Texture2D" uid="uid://c5vi341dpkqxr" path="res://Sprites/Environment/Fiery Flower.png" id="2_utos5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwwyj"]
@@ -8,6 +8,7 @@ size = Vector2(15, 16)
 
 [node name="FieryFlower" type="StaticBody2D"]
 z_index = 1
+position = Vector2(0, 8)
 script = ExtResource("1_0nxgd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
