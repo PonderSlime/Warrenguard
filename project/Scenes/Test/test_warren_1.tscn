@@ -148,7 +148,7 @@ position = Vector2(1398, 826)
 
 [node name="Teledoor" parent="." instance=ExtResource("3_7rmpb")]
 position = Vector2(1480, 815)
-switch_to_scene = "res://Scenes/Test/test_lava_scene_1.tscn"
+switch_to_scene = "res://Prepped Assets/Environment/next_level.tscn"
 
 [node name="TileMap" type="TileMap" parent="." groups=["Persist"]]
 texture_filter = 1

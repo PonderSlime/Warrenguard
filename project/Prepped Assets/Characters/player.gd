@@ -62,14 +62,18 @@ func _physics_process(delta):
 			is_burrowing = false
 	elif collision.disabled == true and is_burrowing == false:
 		velocity.y += gravity * delta
-	if GlobalVariableLoader.did_just_doorway == true:
-		_anim_player.play("dissolve_out")
-		visible = false
-		await get_tree().create_timer(0.001).timeout
-		global_position = GlobalVariableLoader.door_pos
-		GlobalVariableLoader.did_just_doorway = false
-		await get_tree().create_timer(0.001).timeout
-		visible = true
+	if GlobalVariableLoader.switch_scene == true:
+		GlobalVariableLoader.switch_scene = false
+		if GlobalVariableLoader.did_just_doorway == true:
+			_anim_player.play("dissolve_out")
+			visible = false
+			await get_tree().create_timer(0.001).timeout
+			global_position = GlobalVariableLoader.door_pos
+			GlobalVariableLoader.did_just_doorway = false
+			await get_tree().create_timer(0.001).timeout
+			visible = true
+		elif GlobalVariableLoader.did_just_doorway == false:
+			_anim_player.play("dissolve_out")
 	move_and_slide()
 	# after calling move_and_slide()
 	for i in get_slide_collision_count():

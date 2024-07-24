@@ -9,6 +9,7 @@ var carrots : int = 0
 var prev_carrots : int = 0
 var current_scene = null
 var did_just_doorway : bool = false
+var switch_scene : bool = false
 var door_pos : Vector2
 var cellPosition : Vector2
 var activeLevelNo : String
@@ -46,7 +47,7 @@ func _ready():
 			# Firstly, we need to create the object and add it to the tree and set its position
 			stored_carrots = node_data["cached_carrots"]
 			var health = node_data["health"]
-			var prog_level = node_data["prog_level"]
+			progress_level = node_data["prog_level"]
 func _process(delta):
 	save_game()
 	if carrots < 0:
