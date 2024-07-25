@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var tile_map = $TileMap
-
+@export var scene_type : int = 1
 
 static func string_to_vector2(string := "") -> Vector2:
 	if string:
@@ -15,6 +15,7 @@ static func string_to_vector2(string := "") -> Vector2:
 	return Vector2.ZERO
 	
 func _ready():
+	GlobalVariableLoader.active_level = scene_type
 	var saveFile = FileAccess.open("user://warren.save", FileAccess.READ)
 	if(FileAccess.get_open_error() != OK):
 		return false

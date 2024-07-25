@@ -11,7 +11,7 @@ size = Vector2(16, 12)
 
 [node name="Spikes" type="StaticBody2D"]
 z_index = 1
-position = Vector2(-8, 0)
+position = Vector2(-10, 0)
 rotation = 1.5708
 script = ExtResource("1_xxxug")
 

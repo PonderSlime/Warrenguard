@@ -7,6 +7,7 @@ extends Node
 var overworld = preload("res://Audio/Music/overworld.wav")
 var dreadful = preload("res://Audio/Music/dreadful.wav")
 var wonderful = preload("res://Audio/Music/wonderful.wav")
+var peaceful = preload("res://Audio/Music/peaceful.wav")
 var powerup_music = preload("res://Audio/Music/powerup.wav")
 var game_over = preload("res://Audio/Music/gameover.wav")
 var jump = preload("res://Audio/Sound Effects/jump.wav")
@@ -33,14 +34,18 @@ func _process(delta):
 		powerup_sound.play()
 	elif GlobalVariableLoader.current_power_up == 0 and GlobalVariableLoader.prev_power_up == 0 and GlobalVariableLoader.active_level == 0 and GlobalVariableLoader.unlockCamera == false:
 		if !song.is_playing():
-			song.stream = wonderful
+			song.stream = peaceful
 			song.play()
 	elif GlobalVariableLoader.current_power_up == 0 and GlobalVariableLoader.prev_power_up == 0 and GlobalVariableLoader.active_level == 1 and GlobalVariableLoader.unlockCamera == false:
+		if !song.is_playing():
+			song.stream = wonderful
+			song.play()
+	elif GlobalVariableLoader.current_power_up == 0 and GlobalVariableLoader.prev_power_up == 0 and GlobalVariableLoader.active_level == 2 and GlobalVariableLoader.unlockCamera == false:
 		if !song.is_playing():
 			song.stream = overworld
 			song.volume_db
 			song.play()
-	elif GlobalVariableLoader.current_power_up == 0 and GlobalVariableLoader.prev_power_up == 0 and GlobalVariableLoader.active_level == 2 and GlobalVariableLoader.unlockCamera == false:
+	elif GlobalVariableLoader.current_power_up == 0 and GlobalVariableLoader.prev_power_up == 0 and GlobalVariableLoader.active_level == 3 and GlobalVariableLoader.unlockCamera == false:
 		if !song.is_playing():
 			song.stream = dreadful
 			song.play()
