@@ -62,6 +62,7 @@ _data = {
 }
 
 [node name="Teledoor" type="Area2D" node_paths=PackedStringArray("_anim_player")]
+collision_mask = 265
 script = ExtResource("1_7qye0")
 _anim_player = NodePath("SceneTransition/AnimationPlayer")
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bxcep06pekqu4"]
 
 [ext_resource type="Script" path="res://Scenes/Test/save_Game.gd" id="1_8icv6"]
-[ext_resource type="PackedScene" uid="uid://bvse5e73c1cs7" path="res://Prepped Assets/Characters/PlayerRPG/player_rpg.tscn" id="2_axyd1"]
+[ext_resource type="PackedScene" uid="uid://bvse5e73c1cs7" path="res://Prepped Assets/Characters/PlayerRPG/player_rpg_digger.tscn" id="2_axyd1"]
 [ext_resource type="PackedScene" uid="uid://yktbyvhvp1o6" path="res://Prepped Assets/WarrenItems/teledoor.tscn" id="3_7rmpb"]
 [ext_resource type="Texture2D" uid="uid://xbqwuak3j61q" path="res://Sprites/WarrenItems/WarrenTilemap.png" id="3_36to6"]
 [ext_resource type="Script" path="res://Scenes/Test/TileMap.gd" id="4_r1db7"]
@@ -143,7 +143,7 @@ sources/0 = SubResource("TileSetAtlasSource_tun5u")
 [node name="Node2D" type="Node2D" groups=["parent"]]
 script = ExtResource("1_8icv6")
 
-[node name="PlayerRPG" parent="." groups=["Persist"] instance=ExtResource("2_axyd1")]
+[node name="PlayerRPGDigger" parent="." groups=["Persist"] instance=ExtResource("2_axyd1")]
 position = Vector2(1398, 826)
 
 [node name="Teledoor" parent="." instance=ExtResource("3_7rmpb")]

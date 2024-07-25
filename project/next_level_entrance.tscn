@@ -61,8 +61,9 @@ _data = {
 }
 
 [node name="NextLevelEntrance" type="Area2D" node_paths=PackedStringArray("_anim_player")]
+z_index = 2
 collision_layer = 16
-collision_mask = 2
+collision_mask = 258
 script = ExtResource("1_ovkc6")
 _anim_player = NodePath("SceneTransition/AnimationPlayer")
 

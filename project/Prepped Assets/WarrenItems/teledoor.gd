@@ -13,7 +13,7 @@ func _process(delta):
 	GlobalVariableLoader.door_pos = global_position
 
 func _on_area_2d_body_entered(body):
-	if body.name == "Player" or body.name == "PlayerRPG":
+	if body.name == "Player" or body.name == "PlayerRPG" or body.name == "PlayerRPGDigger":
 		if is_internal:
 			GlobalVariableLoader.active_level = 0
 		elif !is_internal:

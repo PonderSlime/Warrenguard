@@ -14,7 +14,7 @@ func _process(delta):
 	if GlobalVariableLoader.progress_level > level_count - 1:
 		GlobalVariableLoader.progress_level = 1
 func _on_body_entered(body):
-	if body.name == "Player":
+	if body.name == "PlayerRPG":
 		_anim_player.play("dissolve")
 		await get_tree().create_timer(0.8333).timeout
 		if GlobalVariableLoader.progress_level == 0:
