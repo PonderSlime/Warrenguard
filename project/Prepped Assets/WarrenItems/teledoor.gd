@@ -1,9 +1,10 @@
 extends Area2D
 
-@export var switch_to_scene : String = "res://Scenes/Test/test_warren_1.tscn"
+@export var switch_to_scene : String = "res://Prepped Assets/Environment/next_level.tscn"
 @export var is_internal : bool = true
 @export var active_level : int = 0
 @export var _anim_player : AnimationPlayer
+@export var is_level_end : bool = false
 @onready var parent = get_tree().get_nodes_in_group("parent")[0]
 func _ready():
 	pass
@@ -27,5 +28,6 @@ func _on_area_2d_body_entered(body):
 		GlobalVariableLoader.goto_scene(switch_to_scene)
 		GlobalVariableLoader.door_pos = Vector2.ZERO
 		GlobalVariableLoader.switch_scene = true
-		GlobalVariableLoader.did_just_doorway = true
+		if is_level_end == false:
+			GlobalVariableLoader.did_just_doorway = true
 		#_anim_player.play_backwards("dissolve")
