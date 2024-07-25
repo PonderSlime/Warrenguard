@@ -271,6 +271,7 @@ process_mode = 3
 
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("gos", "hud", "exit_burrow_loc", "_anim_player")]
 process_mode = 1
+light_mask = 3
 z_index = 2
 collision_layer = 2
 collision_mask = 219

@@ -1,17 +1,6 @@
-[gd_resource type="TileSet" load_steps=19 format=3 uid="uid://cdjnneus38taj"]
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://cdjnneus38taj"]
 
 [ext_resource type="Texture2D" uid="uid://bmqmu2cagdk1t" path="res://Sprites/Environment/Tilemap.png" id="1_64w50"]
-[ext_resource type="PackedScene" uid="uid://opewwobgojc1" path="res://Prepped Assets/Environment/spikes/spikes.tscn" id="2_gy362"]
-[ext_resource type="PackedScene" uid="uid://ch3j6t0gedhm3" path="res://Prepped Assets/Items/carrot.tscn" id="3_hw3c6"]
-[ext_resource type="PackedScene" uid="uid://dqy212n5ah77m" path="res://Prepped Assets/Environment/spikes/spikes_down.tscn" id="3_tds0c"]
-[ext_resource type="PackedScene" uid="uid://b74k3h6tyhai7" path="res://Prepped Assets/Environment/death_zone.tscn" id="4_bm1k5"]
-[ext_resource type="PackedScene" uid="uid://dkqs4n8cxwv4r" path="res://Prepped Assets/Environment/spikes/spikes_left.tscn" id="4_ch7ls"]
-[ext_resource type="PackedScene" uid="uid://3jmkia5goai7" path="res://Prepped Assets/Environment/spikes/spikes_right.tscn" id="5_oti3x"]
-[ext_resource type="PackedScene" uid="uid://c1gebq6lwtsua" path="res://Prepped Assets/Items/apple.tscn" id="7_eciqm"]
-[ext_resource type="PackedScene" uid="uid://bm4tvcijyws0y" path="res://Prepped Assets/Items/carrot_centered_left_edge.tscn" id="8_xoh01"]
-[ext_resource type="PackedScene" uid="uid://cwl25ebv0nwos" path="res://Prepped Assets/WarrenItems/crate.tscn" id="9_hry2m"]
-[ext_resource type="PackedScene" uid="uid://cjyro2rssxapk" path="res://Prepped Assets/Environment/fiery_flower.tscn" id="9_udygf"]
-[ext_resource type="PackedScene" uid="uid://bk0u2p6q8bbty" path="res://Prepped Assets/Characters/Enemies/projectile_enemy_1.tscn" id="10_jlkiu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_v46xm"]
 
@@ -203,29 +192,6 @@ texture = ExtResource("1_64w50")
 7:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:0/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_075ba"]
-resource_name = "Spikes"
-scenes/1/scene = ExtResource("2_gy362")
-scenes/4/scene = ExtResource("3_tds0c")
-scenes/5/scene = ExtResource("4_ch7ls")
-scenes/6/scene = ExtResource("5_oti3x")
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0bctd"]
-resource_name = "Items"
-scenes/1/scene = ExtResource("3_hw3c6")
-scenes/2/scene = ExtResource("7_eciqm")
-scenes/3/scene = ExtResource("8_xoh01")
-scenes/4/scene = ExtResource("9_hry2m")
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_40m04"]
-resource_name = "DeathZone"
-scenes/1/scene = ExtResource("4_bm1k5")
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_tkpd8"]
-resource_name = "Flowers"
-scenes/1/scene = ExtResource("9_udygf")
-scenes/2/scene = ExtResource("10_jlkiu")
-
 [resource]
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
@@ -239,7 +205,3 @@ terrain_set_0/terrain_1/color = Color(0.268954, 0.507579, 0.255816, 1)
 terrain_set_0/terrain_2/name = "Grass Floor"
 terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_7f4tw")
-sources/1 = SubResource("TileSetScenesCollectionSource_075ba")
-sources/2 = SubResource("TileSetScenesCollectionSource_0bctd")
-sources/3 = SubResource("TileSetScenesCollectionSource_40m04")
-sources/4 = SubResource("TileSetScenesCollectionSource_tkpd8")

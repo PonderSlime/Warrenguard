@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://vabffkr4eow8"]
+
+[ext_resource type="Texture2D" uid="uid://k6moj07cvvfy" path="res://Sprites/Environment/LavaLevel/LavaTopEmission.png" id="1_w6tvc"]
+[ext_resource type="Texture2D" uid="uid://mpr16u53uiib" path="res://Sprites/Environment/LavaLevel/LavaTop.png" id="2_dyl8y"]
+[ext_resource type="PackedScene" uid="uid://b74k3h6tyhai7" path="res://Prepped Assets/Environment/death_zone.tscn" id="2_umo0p"]
+
+[node name="LavaPoolTop" type="Node2D"]
+z_index = -2
+texture_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 16385
+texture = ExtResource("2_dyl8y")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 16386
+color = Color(0.309804, 0.309804, 0.309804, 1)
+texture = ExtResource("1_w6tvc")
+
+[node name="DeathZone" parent="." instance=ExtResource("2_umo0p")]
+position = Vector2(0, 2)
+scale = Vector2(1, 0.75)
