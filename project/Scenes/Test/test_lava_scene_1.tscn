@@ -150,6 +150,7 @@ centered = false
 
 [node name="Teledoor" parent="." instance=ExtResource("6_htayu")]
 position = Vector2(1379, 0)
+is_internal = false
 
 [node name="PlayerRoot" parent="." instance=ExtResource("7_qn018")]
 z_index = -10

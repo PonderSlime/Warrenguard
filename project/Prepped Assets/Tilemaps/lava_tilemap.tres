@@ -1,9 +1,17 @@
-[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://cclthgh7vkn28"]
+[gd_resource type="TileSet" load_steps=18 format=3 uid="uid://cclthgh7vkn28"]
 
 [ext_resource type="PackedScene" uid="uid://b812dr542g6ka" path="res://Prepped Assets/Environment/flowing_lava.tscn" id="1_45bfo"]
 [ext_resource type="Texture2D" uid="uid://bp5virt0ogcxl" path="res://Sprites/Environment/LavaTilemap.png" id="2_uow6f"]
 [ext_resource type="PackedScene" uid="uid://cssb0vsax6u8a" path="res://Prepped Assets/Environment/lava_pool_mid.tscn" id="3_g780e"]
 [ext_resource type="PackedScene" uid="uid://vabffkr4eow8" path="res://Prepped Assets/Environment/lava_pool_top.tscn" id="4_oxy8w"]
+[ext_resource type="PackedScene" uid="uid://opewwobgojc1" path="res://Prepped Assets/Environment/spikes/spikes.tscn" id="5_b7p0o"]
+[ext_resource type="PackedScene" uid="uid://dqy212n5ah77m" path="res://Prepped Assets/Environment/spikes/spikes_down.tscn" id="6_pd2e8"]
+[ext_resource type="PackedScene" uid="uid://dkqs4n8cxwv4r" path="res://Prepped Assets/Environment/spikes/spikes_left.tscn" id="7_bqlpo"]
+[ext_resource type="PackedScene" uid="uid://3jmkia5goai7" path="res://Prepped Assets/Environment/spikes/spikes_right.tscn" id="8_twt7h"]
+[ext_resource type="PackedScene" uid="uid://ch3j6t0gedhm3" path="res://Prepped Assets/Items/carrot.tscn" id="9_ik5rb"]
+[ext_resource type="PackedScene" uid="uid://bm4tvcijyws0y" path="res://Prepped Assets/Items/carrot_centered_left_edge.tscn" id="10_d85cw"]
+[ext_resource type="PackedScene" uid="uid://cwl25ebv0nwos" path="res://Prepped Assets/WarrenItems/crate.tscn" id="11_n8mia"]
+[ext_resource type="PackedScene" uid="uid://c1gebq6lwtsua" path="res://Prepped Assets/Items/apple.tscn" id="12_jtm03"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_625ys"]
 
@@ -238,6 +246,20 @@ scenes/1/scene = ExtResource("1_45bfo")
 scenes/2/scene = ExtResource("3_g780e")
 scenes/3/scene = ExtResource("4_oxy8w")
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_weihl"]
+resource_name = "Spikes"
+scenes/1/scene = ExtResource("5_b7p0o")
+scenes/2/scene = ExtResource("6_pd2e8")
+scenes/3/scene = ExtResource("7_bqlpo")
+scenes/4/scene = ExtResource("8_twt7h")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_uai4l"]
+resource_name = "Items"
+scenes/1/scene = ExtResource("9_ik5rb")
+scenes/2/scene = ExtResource("10_d85cw")
+scenes/3/scene = ExtResource("11_n8mia")
+scenes/4/scene = ExtResource("12_jtm03")
+
 [resource]
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
@@ -250,3 +272,5 @@ terrain_set_0/terrain_1/name = "DarkStoneBricks"
 terrain_set_0/terrain_1/color = Color(0.46875, 0.5, 0.25, 1)
 sources/3 = SubResource("TileSetScenesCollectionSource_ol2s4")
 sources/1 = SubResource("TileSetAtlasSource_rflai")
+sources/4 = SubResource("TileSetScenesCollectionSource_weihl")
+sources/5 = SubResource("TileSetScenesCollectionSource_uai4l")

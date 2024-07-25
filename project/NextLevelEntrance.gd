@@ -14,15 +14,14 @@ func _process(delta):
 		GlobalVariableLoader.progress_level = 2
 func _on_body_entered(body):
 	if body.name == "Player":
-		GlobalVariableLoader.progress_level += 1
 		_anim_player.play("dissolve")
 		await get_tree().create_timer(0.8333).timeout
-		if GlobalVariableLoader.progress_level == 1:
+		if GlobalVariableLoader.progress_level == 0:
 			await get_tree().create_timer(0.8333).timeout
 			GlobalVariableLoader.goto_scene(level_1)
 			GlobalVariableLoader.switch_scene = true
 			GlobalVariableLoader.active_level = 1
-		elif GlobalVariableLoader.progress_level == 2:
+		elif GlobalVariableLoader.progress_level == 1:
 			GlobalVariableLoader.goto_scene(level_2)
 			GlobalVariableLoader.switch_scene = true
 			GlobalVariableLoader.active_level = 2
