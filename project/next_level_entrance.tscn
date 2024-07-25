@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ck5rgfhvaespt"]
 
 [ext_resource type="Script" path="res://NextLevelEntrance.gd" id="1_ovkc6"]
-[ext_resource type="Texture2D" uid="uid://f84papy5cwmh" path="res://Sprites/Environment/Stone_Dirt_Blend_Left_Corner.png" id="2_r3kq5"]
+[ext_resource type="Texture2D" uid="uid://pwaebwqrklta" path="res://Sprites/Environment/NextLevel/WishingWell.png" id="2_yequi"]
 [ext_resource type="Texture2D" uid="uid://ddpwk6ygmcuxx" path="res://Sprites/Easter Eggs/flag-orpheus-left_pixelated.png" id="3_vx0ad"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wax6"]
@@ -68,10 +68,12 @@ script = ExtResource("1_ovkc6")
 _anim_player = NodePath("SceneTransition/AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_2wax6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_r3kq5")
+texture_filter = 1
+texture = ExtResource("2_yequi")
 
 [node name="SceneTransition" type="CanvasLayer" parent="."]
 
