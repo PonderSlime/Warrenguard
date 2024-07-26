@@ -20,6 +20,7 @@ func _on_area_2d_body_entered(body):
 		elif !is_internal:
 			GlobalVariableLoader.progress_level += 1
 			GlobalVariableLoader.active_level = active_level
+			GlobalVariableLoader.player_health = GlobalVariableLoader.start_health
 		_anim_player.play("dissolve")
 		GlobalVariableLoader.stored_carrots += GlobalVariableLoader.carrots
 		GlobalVariableLoader.carrots = 0
