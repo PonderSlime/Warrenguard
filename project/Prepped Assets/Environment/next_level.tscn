@@ -158,7 +158,7 @@ layer_4/name = "Barrier"
 layer_4/tile_data = PackedInt32Array()
 
 [node name="NextLevelEntrance" parent="." instance=ExtResource("8_nu20s")]
-position = Vector2(140, -47)
+position = Vector2(144, -31)
 
 [node name="PlayerRPG" parent="." instance=ExtResource("9_82o27")]
 position = Vector2(-38, 271)
