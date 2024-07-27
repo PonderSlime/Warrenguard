@@ -131,6 +131,7 @@ texture = ExtResource("3_hykrp")
 [node name="PointLight2D" type="PointLight2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/NightLights"]
 z_index = -1
 texture_filter = 1
+position = Vector2(-10, -29)
 range_layer_min = -2
 range_item_cull_mask = 16384
 texture = ExtResource("3_hykrp")
@@ -162,7 +163,7 @@ layer_4/tile_data = PackedInt32Array()
 position = Vector2(144, -31)
 
 [node name="PlayerRPG" parent="." instance=ExtResource("9_82o27")]
-position = Vector2(-38, 271)
+position = Vector2(-38, 251)
 
 [node name="Sign" parent="." instance=ExtResource("9_sajjh")]
 position = Vector2(-72, 210)

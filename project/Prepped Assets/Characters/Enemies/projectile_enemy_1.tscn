@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bk0u2p6q8bbty"]
+[gd_scene load_steps=8 format=3 uid="uid://bk0u2p6q8bbty"]
 
 [ext_resource type="Script" path="res://Prepped Assets/Characters/Enemies/projectile_enemy_1.gd" id="1_1p8bs"]
 [ext_resource type="Texture2D" uid="uid://coakhjy0bpm6l" path="res://Sprites/Enemies/ProjectileEnemy.png" id="1_fqrv2"]
@@ -41,9 +41,6 @@ _data = {
 "belch_proj": SubResource("Animation_vegga")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fjq57"]
-radius = 7.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_v6y8n"]
 radius = 160.0
 
@@ -59,10 +56,6 @@ root_node = NodePath("../Head/HeadTex")
 libraries = {
 "": SubResource("AnimationLibrary_cu45f")
 }
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -9)
-shape = SubResource("CircleShape2D_fjq57")
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 10.0

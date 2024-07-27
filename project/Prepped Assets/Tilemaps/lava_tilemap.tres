@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=18 format=3 uid="uid://cclthgh7vkn28"]
+[gd_resource type="TileSet" load_steps=20 format=3 uid="uid://cclthgh7vkn28"]
 
 [ext_resource type="PackedScene" uid="uid://b812dr542g6ka" path="res://Prepped Assets/Environment/flowing_lava.tscn" id="1_45bfo"]
+[ext_resource type="PackedScene" uid="uid://bk0u2p6q8bbty" path="res://Prepped Assets/Characters/Enemies/projectile_enemy_1.tscn" id="1_dvt7q"]
 [ext_resource type="Texture2D" uid="uid://bp5virt0ogcxl" path="res://Sprites/Environment/LavaTilemap.png" id="2_uow6f"]
 [ext_resource type="PackedScene" uid="uid://cssb0vsax6u8a" path="res://Prepped Assets/Environment/lava_pool_mid.tscn" id="3_g780e"]
 [ext_resource type="PackedScene" uid="uid://vabffkr4eow8" path="res://Prepped Assets/Environment/lava_pool_top.tscn" id="4_oxy8w"]
@@ -14,6 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://c1gebq6lwtsua" path="res://Prepped Assets/Items/apple.tscn" id="12_jtm03"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_625ys"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_gmefn"]
+resource_name = "Flowers"
+scenes/1/scene = ExtResource("1_dvt7q")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rflai"]
 resource_name = "Tileset"
@@ -274,3 +279,4 @@ sources/3 = SubResource("TileSetScenesCollectionSource_ol2s4")
 sources/1 = SubResource("TileSetAtlasSource_rflai")
 sources/4 = SubResource("TileSetScenesCollectionSource_weihl")
 sources/5 = SubResource("TileSetScenesCollectionSource_uai4l")
+sources/0 = SubResource("TileSetScenesCollectionSource_gmefn")

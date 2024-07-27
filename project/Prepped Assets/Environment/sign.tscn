@@ -55,6 +55,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="PopupBackground" type="TileMap" parent="."]
+visible = false
 modulate = Color(0.671688, 0.75068, 0.499772, 1)
 texture_filter = 1
 tile_set = ExtResource("4_r4u8d")
