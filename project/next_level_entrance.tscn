@@ -62,7 +62,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rqxu"]
-size = Vector2(16, 18)
+size = Vector2(16, 17)
 
 [node name="NextLevelEntrance" type="Area2D" node_paths=PackedStringArray("_anim_player")]
 z_index = 3
@@ -115,7 +115,7 @@ y_sort_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 y_sort_enabled = true
-position = Vector2(0, -11)
+position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_8rqxu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

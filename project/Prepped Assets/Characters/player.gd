@@ -137,12 +137,19 @@ func _on_exit_burrow_loc_area_entered():
 func _on_exit_burrow_loc_area_exited():
 	exit_burrow_ready = false
 func spike():
+	var tween = get_tree().create_tween()
+	tween.tween_method(set_shader_blink_intenisty, 1.0, 0.0, 0.3)
 	velocity.y = jump_speed
 	hurt.emit()
+	
 func _hurt():
+	var tween = get_tree().create_tween()
+	tween.tween_method(set_shader_blink_intenisty, 1.0, 0.0, 0.3)
 	velocity.y = jump_speed/ 2
 	hurt.emit()
-	
+
+func set_shader_blink_intenisty(newValue : float):
+	sprite.material.set_shader_parameter("blink_intensity", newValue)
 func fungi_right():
 	velocity.x += -jump_speed * 2
 	await get_tree().create_timer(0.001).timeout

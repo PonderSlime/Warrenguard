@@ -1,7 +1,8 @@
-[gd_scene load_steps=45 format=3 uid="uid://q01o7rogtouc"]
+[gd_scene load_steps=47 format=3 uid="uid://q01o7rogtouc"]
 
 [ext_resource type="Script" path="res://Prepped Assets/Characters/player.gd" id="1_6joar"]
 [ext_resource type="Texture2D" uid="uid://ch7orknpbswpb" path="res://Sprites/Player/SpriteSheet.png" id="1_osxjy"]
+[ext_resource type="Shader" path="res://Prepped Assets/Characters/hurt.gdshader" id="2_8swtm"]
 [ext_resource type="PackedScene" uid="uid://jeg576y3uga7" path="res://Prepped Assets/Characters/exit_burrow_loc.tscn" id="3_e5wjs"]
 [ext_resource type="PackedScene" uid="uid://bd8v4t8j3r4us" path="res://Prepped Assets/UI/hud.tscn" id="4_8mjqa"]
 [ext_resource type="PackedScene" uid="uid://diyn3gqjjdog8" path="res://Prepped Assets/UI/gos.tscn" id="5_s7bog"]
@@ -11,6 +12,11 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_5hogo"]
 [ext_resource type="Script" path="res://Prepped Assets/Characters/camera_controller.gd" id="8_g516t"]
 [ext_resource type="Texture2D" uid="uid://ddpwk6ygmcuxx" path="res://Sprites/Easter Eggs/flag-orpheus-left_pixelated.png" id="9_6bo7n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2i5nr"]
+shader = ExtResource("2_8swtm")
+shader_parameter/blink_color = Color(1, 1, 1, 1)
+shader_parameter/blink_intensity = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sqedp"]
 radius = 7.0
@@ -284,6 +290,7 @@ _anim_player = NodePath("../SceneTransition/AnimationPlayer")
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 z_index = 3
 texture_filter = 1
+material = SubResource("ShaderMaterial_2i5nr")
 position = Vector2(0, -12)
 texture = ExtResource("1_osxjy")
 hframes = 16
