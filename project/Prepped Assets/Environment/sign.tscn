@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfn3k18tptvpf"]
+
+[ext_resource type="Script" path="res://Prepped Assets/Environment/sign.gd" id="1_1y61t"]
+[ext_resource type="Texture2D" uid="uid://knnkx1yl76t" path="res://Sprites/Items/Sign.png" id="1_tytu3"]
+[ext_resource type="FontFile" uid="uid://bogvghvlaqn45" path="res://Fonts/m5x7.ttf" id="3_mflg4"]
+[ext_resource type="TileSet" uid="uid://d12b82yw2q40w" path="res://Prepped Assets/UI/ui_small_tileset.tres" id="4_r4u8d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_spbrq"]
+radius = 23.0
+
+[node name="Sign" type="Node2D"]
+z_index = 3
+y_sort_enabled = true
+script = ExtResource("1_1y61t")
+label = "warren"
+
+[node name="Sign" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+position = Vector2(0, -2)
+texture = ExtResource("1_tytu3")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_spbrq")
+
+[node name="PopupBackground" type="TileMap" parent="."]
+texture_filter = 1
+tile_set = ExtResource("4_r4u8d")
+format = 2
+layer_0/tile_data = PackedInt32Array(-131072, 131073, 2, -196608, 131073, 0, -65537, 1, 2, -131073, 1, 0)
+
+[node name="Label" type="Label" parent="PopupBackground"]
+z_index = 10
+texture_filter = 1
+offset_left = -3.0
+offset_top = -24.0
+offset_right = 3.0
+offset_bottom = -11.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mflg4")
+theme_override_font_sizes/font_size = 16
+text = "G
+"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

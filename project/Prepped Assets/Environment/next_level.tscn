@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bx8qwuwab63nw"]
+[gd_scene load_steps=11 format=3 uid="uid://bx8qwuwab63nw"]
 
 [ext_resource type="Script" path="res://Scenes/Test/dummy_save_Game.tres.gd" id="1_l6jtn"]
 [ext_resource type="Texture2D" uid="uid://l00yjfnvepmv" path="res://Sprites/Environment/Cloud1.png" id="1_lvl4t"]
@@ -8,6 +8,7 @@
 [ext_resource type="TileSet" uid="uid://cnxbkxsmlme8a" path="res://Prepped Assets/Tilemaps/rpg_tilemap.tres" id="6_hiyh4"]
 [ext_resource type="PackedScene" uid="uid://ck5rgfhvaespt" path="res://next_level_entrance.tscn" id="8_nu20s"]
 [ext_resource type="PackedScene" uid="uid://dil0glpjfhdat" path="res://Prepped Assets/Characters/PlayerRPG/player_rpg.tscn" id="9_82o27"]
+[ext_resource type="PackedScene" uid="uid://cfn3k18tptvpf" path="res://Prepped Assets/Environment/sign.tscn" id="9_sajjh"]
 
 [sub_resource type="Environment" id="Environment_bstse"]
 background_mode = 1
@@ -162,3 +163,7 @@ position = Vector2(144, -31)
 
 [node name="PlayerRPG" parent="." instance=ExtResource("9_82o27")]
 position = Vector2(-38, 271)
+
+[node name="Sign" parent="." instance=ExtResource("9_sajjh")]
+position = Vector2(-72, 210)
+is_flipped = true
