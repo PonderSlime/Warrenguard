@@ -1,0 +1,400 @@
+[gd_scene load_steps=23 format=3 uid="uid://o7pmlfpkit6n"]
+
+[ext_resource type="TileSet" uid="uid://cdjnneus38taj" path="res://Prepped Assets/Tilemaps/overworld_tilemap_1.tres" id="1_jkh1x"]
+[ext_resource type="Script" path="res://Prepped Assets/UI/level_select.gd" id="1_yak24"]
+[ext_resource type="Texture2D" uid="uid://ch7orknpbswpb" path="res://Sprites/Player/SpriteSheet.png" id="2_u5bsu"]
+[ext_resource type="Texture2D" uid="uid://l00yjfnvepmv" path="res://Sprites/Environment/Cloud1.png" id="3_djy1r"]
+[ext_resource type="AudioStream" uid="uid://dionqrvasy46s" path="res://Audio/Music/peaceful.wav" id="4_13pp4"]
+[ext_resource type="Texture2D" uid="uid://c5syv5rwrxgpi" path="res://Sprites/Environment/Background1.png" id="4_rebsj"]
+[ext_resource type="TileSet" uid="uid://dqb407tvplnt8" path="res://Prepped Assets/UI/ui_large_tileset.tres" id="7_6c5gg"]
+[ext_resource type="FontFile" uid="uid://bogvghvlaqn45" path="res://Fonts/m5x7.ttf" id="8_mqws0"]
+[ext_resource type="Texture2D" uid="uid://ddpwk6ygmcuxx" path="res://Sprites/Easter Eggs/flag-orpheus-left_pixelated.png" id="9_gdeth"]
+
+[sub_resource type="Animation" id="Animation_8jdja"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_pwvms"]
+resource_name = "burrow"
+length = 0.91
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [80, 90]
+}
+
+[sub_resource type="Animation" id="Animation_jn1kh"]
+resource_name = "exit_burrow"
+length = 0.91
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.91),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [90, 80]
+}
+
+[sub_resource type="Animation" id="Animation_3b2b1"]
+resource_name = "fall"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [48, 48]
+}
+
+[sub_resource type="Animation" id="Animation_2abqj"]
+resource_name = "idle"
+length = 1.33
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 15]
+}
+
+[sub_resource type="Animation" id="Animation_xlovt"]
+resource_name = "jump"
+length = 0.4167
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [32, 36]
+}
+
+[sub_resource type="Animation" id="Animation_gk3a6"]
+resource_name = "land"
+length = 0.4167
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [64, 68]
+}
+
+[sub_resource type="Animation" id="Animation_nw5t7"]
+resource_name = "walk"
+length = 0.33
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [16, 19]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4abcs"]
+_data = {
+"RESET": SubResource("Animation_8jdja"),
+"burrow": SubResource("Animation_pwvms"),
+"exit_burrow": SubResource("Animation_jn1kh"),
+"fall": SubResource("Animation_3b2b1"),
+"idle": SubResource("Animation_2abqj"),
+"jump": SubResource("Animation_xlovt"),
+"land": SubResource("Animation_gk3a6"),
+"walk": SubResource("Animation_nw5t7")
+}
+
+[sub_resource type="Animation" id="Animation_hc3t8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dissolve_rect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_h8mje"]
+resource_name = "dissolve"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dissolve_rect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w0db4"]
+resource_name = "dissolve"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dissolve_rect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_00teg"]
+_data = {
+"RESET": SubResource("Animation_hc3t8"),
+"dissolve": SubResource("Animation_h8mje"),
+"dissolve_out": SubResource("Animation_w0db4")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_yak24")
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+tile_set = ExtResource("1_jkh1x")
+format = 2
+layer_0/name = "Ground"
+layer_0/tile_data = PackedInt32Array(524297, 262144, 2, 458761, 262144, 2, 393225, 262144, 2, 327689, 262144, 2, 524296, 262144, 2, 458760, 262144, 2, 393224, 262144, 2, 327688, 262144, 2, 524295, 262144, 2, 458759, 262144, 2, 393223, 262144, 2, 327687, 262144, 2, 524294, 262144, 2, 458758, 262144, 2, 393222, 262144, 2, 327686, 262144, 2, 524293, 262144, 2, 458757, 262144, 2, 393221, 262144, 2, 327685, 262144, 2, 524292, 262144, 2, 458756, 262144, 2, 393220, 262144, 2, 327684, 262144, 2, 524291, 262144, 2, 458755, 262144, 2, 393219, 262144, 2, 327683, 262144, 2, 524290, 262144, 2, 458754, 262144, 2, 393218, 262144, 2, 327682, 262144, 2, 524289, 262144, 2, 458753, 262144, 2, 393217, 262144, 2, 327681, 262144, 2, 524288, 262144, 2, 458752, 262144, 2, 393216, 262144, 2, 327680, 262144, 2, 589823, 262144, 2, 524287, 262144, 2, 458751, 262144, 2, 393215, 262144, 2, 589822, 262144, 2, 524286, 262144, 2, 458750, 262144, 2, 393214, 262144, 1, 589821, 262144, 2, 524285, 262144, 2, 458749, 262144, 2, 393213, 262144, 1, 589820, 262144, 2, 524284, 262144, 2, 458748, 262144, 2, 393212, 262144, 1, 589819, 262144, 2, 524283, 262144, 2, 458747, 262144, 2, 393211, 262144, 1, 589818, 262144, 2, 524282, 262144, 2, 458746, 262144, 2, 393210, 262144, 1, 589817, 262144, 2, 524281, 262144, 2, 458745, 262144, 2, 393209, 262144, 1, 589816, 262144, 2, 524280, 262144, 2, 458744, 262144, 2, 393208, 262144, 1, 589815, 262144, 2, 524279, 262144, 2, 458743, 262144, 2, 393207, 262144, 1, 589814, 262144, 2, 524278, 262144, 2, 458742, 262144, 2, 393206, 262144, 1, 262153, 262144, 1, 262152, 262144, 1, 262151, 262144, 1, 262150, 262144, 1, 262149, 262144, 1, 262148, 262144, 1, 262147, 262144, 1, 262146, 262144, 1, 262145, 262144, 1, 262144, 262144, 1, 327679, 262144, 1)
+layer_1/name = "Detail"
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "InteractableStuff"
+layer_2/tile_data = PackedInt32Array()
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMap"]
+texture_filter = 1
+position = Vector2(-128, 68)
+texture = ExtResource("2_u5bsu")
+hframes = 16
+vframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TileMap/Sprite2D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_4abcs")
+}
+autoplay = "idle"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="TileMap/Sprite2D"]
+stream = ExtResource("4_13pp4")
+volume_db = -10.0
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="ColorMod" type="CanvasModulate" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
+scroll_offset = Vector2(330.946, 735.269)
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="ParallaxLayerElements" type="Node" parent="ParallaxBackground/ParallaxLayer"]
+
+[node name="Clouds" type="Node2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements"]
+
+[node name="Cloud1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+z_index = -1
+texture_filter = 1
+position = Vector2(41, 271)
+scale = Vector2(2, 2)
+texture = ExtResource("3_djy1r")
+
+[node name="Cloud2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+z_index = -1
+texture_filter = 1
+position = Vector2(218, 260)
+scale = Vector2(2, 2)
+texture = ExtResource("3_djy1r")
+
+[node name="Cloud5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+z_index = -1
+texture_filter = 1
+position = Vector2(742, 233)
+scale = Vector2(2, 2)
+texture = ExtResource("3_djy1r")
+
+[node name="Cloud6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+z_index = -1
+texture_filter = 1
+position = Vector2(984, 274)
+scale = Vector2(2, 2)
+texture = ExtResource("3_djy1r")
+
+[node name="Cloud7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+z_index = -1
+texture_filter = 1
+position = Vector2(824, 135)
+scale = Vector2(2, 2)
+texture = ExtResource("3_djy1r")
+
+[node name="Cloud8" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+z_index = -1
+texture_filter = 1
+position = Vector2(152, 134)
+scale = Vector2(2, 2)
+texture = ExtResource("3_djy1r")
+
+[node name="Cloud9" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+z_index = -1
+texture_filter = 1
+position = Vector2(381, 77)
+scale = Vector2(2, 2)
+texture = ExtResource("3_djy1r")
+
+[node name="Cloud10" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+z_index = -1
+texture_filter = 1
+position = Vector2(654, 115)
+scale = Vector2(2, 2)
+texture = ExtResource("3_djy1r")
+
+[node name="Cloud3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+z_index = -1
+texture_filter = 1
+position = Vector2(382, 185)
+scale = Vector2(2, 2)
+texture = ExtResource("3_djy1r")
+
+[node name="Cloud4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+z_index = -1
+texture_filter = 1
+position = Vector2(555, 187)
+scale = Vector2(2, 2)
+texture = ExtResource("3_djy1r")
+
+[node name="SkyColorMod" type="CanvasModulate" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds"]
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/ParallaxLayerElements"]
+light_mask = 16384
+z_index = -2
+texture_filter = 1
+position = Vector2(501, 249)
+texture = ExtResource("4_rebsj")
+
+[node name="TextDialog" type="TileMap" parent="."]
+modulate = Color(0.610125, 0.447323, 0.311508, 1)
+z_index = 20
+texture_filter = 1
+tile_set = ExtResource("7_6c5gg")
+format = 2
+layer_0/tile_data = PackedInt32Array(-262150, 65536, 2, -327686, 65536, 0, -262151, 65536, 2, -327687, 65536, 0, -262152, 0, 2, -327688, 0, 0, -327685, 131072, 0, -262149, 131072, 2, -327673, 131072, 2, -393209, 131072, 0, -327674, 65536, 2, -393210, 65536, 0, -327675, 65536, 2, -393211, 65536, 0, -327676, 0, 2, -393212, 0, 0, -327679, 131072, 2, -393215, 131072, 0, -327680, 65536, 2, -393216, 65536, 0, -262145, 65536, 2, -327681, 65536, 0, -262146, 0, 2, -327682, 0, 0, -65541, 131072, 2, -131077, 131072, 0, -65542, 65536, 2, -131078, 65536, 0, -65543, 65536, 2, -131079, 65536, 0, -65544, 0, 2, -131080, 0, 0, -131071, 131072, 2, -196607, 131072, 0, -131072, 65536, 2, -196608, 65536, 0, -65537, 65536, 2, -131073, 65536, 0, -65538, 0, 2, -131074, 0, 0, -131065, 131072, 2, -196601, 131072, 0, -131066, 65536, 2, -196602, 65536, 0, -131067, 65536, 2, -196603, 65536, 0, -131068, 0, 2, -196604, 0, 0, 131067, 131072, 2, 65531, 131072, 0, 131066, 65536, 2, 65530, 65536, 0, 131065, 65536, 2, 65529, 65536, 0, 131064, 0, 2, 65528, 0, 0, 65537, 131072, 2, 1, 131072, 0, 65536, 65536, 2, 0, 65536, 0, 131071, 65536, 2, 65535, 65536, 0, 131070, 0, 2, 65534, 0, 0, 65543, 131072, 2, 7, 131072, 0, 65542, 65536, 2, 6, 65536, 0, 65541, 65536, 2, 5, 65536, 0, 65540, 0, 2, 4, 0, 0)
+
+[node name="Level1Start" type="Button" parent="."]
+z_index = 50
+texture_filter = 1
+offset_left = -124.0
+offset_top = -92.0
+offset_right = -68.0
+offset_bottom = -68.0
+theme_override_fonts/font = ExtResource("8_mqws0")
+theme_override_font_sizes/font_size = 16
+text = "Level 1
+"
+
+[node name="Level2Start" type="Button" parent="."]
+z_index = 50
+texture_filter = 1
+offset_left = -28.0
+offset_top = -92.0
+offset_right = 28.0
+offset_bottom = -68.0
+theme_override_fonts/font = ExtResource("8_mqws0")
+theme_override_font_sizes/font_size = 16
+text = "Level 2
+"
+
+[node name="SceneTransition" type="CanvasLayer" parent="."]
+
+[node name="dissolve_rect" type="ColorRect" parent="SceneTransition"]
+modulate = Color(1, 1, 1, 0)
+z_index = 100
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="SceneTransition/dissolve_rect"]
+z_index = 101
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("9_gdeth")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SceneTransition"]
+libraries = {
+"": SubResource("AnimationLibrary_00teg")
+}
+autoplay = "dissolve_out"
+
+[connection signal="pressed" from="Level1Start" to="." method="_on_level_1_start_pressed"]
+[connection signal="pressed" from="Level2Start" to="." method="_on_level_2_start_pressed"]
