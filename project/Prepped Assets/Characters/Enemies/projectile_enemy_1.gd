@@ -21,7 +21,6 @@ func _process(delta):
 		continue_shoot = false
 func _on_shoot_timer_timeout():
 	if continue_shoot:
-		print("timeout!")
 		var b = projectile1_scene.instantiate()
 		get_tree().root.add_child(b)
 		headAnim.play("belch_proj")
