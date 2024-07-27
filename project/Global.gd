@@ -21,6 +21,7 @@ var player_current_movement_speed : float = 0
 var unlockCamera : bool = false
 var player_pos : Vector2
 var active_level : int = 0
+var is_frozen : bool = false
 func _ready():
 	player_health = start_health
 	var root = get_tree().root
