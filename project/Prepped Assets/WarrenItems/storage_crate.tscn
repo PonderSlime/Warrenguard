@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://cscyc5ihbe04m"]
+
+[ext_resource type="Script" path="res://Prepped Assets/WarrenItems/storage_crate.gd" id="1_5bujq"]
+[ext_resource type="Texture2D" uid="uid://bsquf371yqxh0" path="res://Sprites/WarrenItems/Crate-01.png" id="1_vrvru"]
+[ext_resource type="TileSet" uid="uid://d12b82yw2q40w" path="res://Prepped Assets/UI/ui_small_tileset.tres" id="3_xpmwj"]
+[ext_resource type="FontFile" uid="uid://bogvghvlaqn45" path="res://Fonts/m5x7.ttf" id="4_riueo"]
+[ext_resource type="TileSet" uid="uid://dqb407tvplnt8" path="res://Prepped Assets/UI/ui_large_tileset.tres" id="5_ywfqq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_n0ur3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i027h"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xu4nb"]
+radius = 23.0
+
+[node name="StorageCrate" type="StaticBody2D" node_paths=PackedStringArray("inventory")]
+collision_mask = 307
+collision_priority = 200.0
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_n0ur3")
+script = ExtResource("1_5bujq")
+inventory = NodePath("Inventory")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i027h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_vrvru")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_xu4nb")
+
+[node name="PopupBackground" type="TileMap" parent="."]
+visible = false
+modulate = Color(0.671688, 0.75068, 0.499772, 1)
+texture_filter = 1
+tile_set = ExtResource("3_xpmwj")
+format = 2
+layer_0/tile_data = PackedInt32Array(-196608, 131073, 2, -131073, 1, 2, -262144, 131073, 0, -196609, 1, 0)
+
+[node name="Button" type="Button" parent="PopupBackground"]
+texture_filter = 1
+offset_left = -5.0
+offset_top = -29.0
+offset_right = 5.0
+offset_bottom = -19.0
+
+[node name="Inventory" type="TileMap" parent="."]
+visible = false
+modulate = Color(0.610125, 0.447323, 0.311508, 1)
+z_index = 20
+texture_filter = 1
+tile_set = ExtResource("5_ywfqq")
+format = 2
+layer_0/tile_data = PackedInt32Array(-196606, 131072, 1, -262142, 131072, 0, -196607, 65536, 1, -262143, 65536, 0, -196608, 65536, 1, -262144, 65536, 0, -131073, 65536, 1, -196609, 65536, 0, -131074, 65536, 1, -196610, 65536, 0, -131075, 0, 1, -196611, 0, 0, -131070, 131072, 2, -131071, 65536, 2, -131072, 65536, 2, -65537, 65536, 2, -65538, 65536, 2, -65539, 0, 2)
+
+[node name="Label2" type="Label" parent="Inventory"]
+z_index = 10
+texture_filter = 1
+offset_left = -44.0
+offset_top = -60.0
+offset_right = 44.0
+offset_bottom = -20.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_riueo")
+theme_override_font_sizes/font_size = 16
+text = "Warren        ↙️"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="pressed" from="PopupBackground/Button" to="." method="_on_button_pressed"]
