@@ -6,6 +6,7 @@ func save_game():
 @export var scene_type : int = 2
 @export var scene_1 = "res://Scenes/Test/test_scene_1.tscn"
 @export var scene_2 = "res://Scenes/Test/test_lava_scene_1.tscn"
+@export var scene_3 = "res://Scenes/Test/test_scene_3.tscn"
 @onready var _anim_player = $SceneTransition/AnimationPlayer
 func _ready():
 	GlobalVariableLoader.active_level = scene_type
@@ -26,3 +27,11 @@ func _on_level_2_start_pressed():
 		_anim_player.play("dissolve")
 		await get_tree().create_timer(0.8333).timeout
 		GlobalVariableLoader.goto_scene(scene_2)
+
+
+
+func _on_level_3_start_pressed():
+	if GlobalVariableLoader.progress_level >= 2:
+		_anim_player.play("dissolve")
+		await get_tree().create_timer(0.8333).timeout
+		GlobalVariableLoader.goto_scene(scene_3)

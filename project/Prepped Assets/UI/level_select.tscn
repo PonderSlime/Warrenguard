@@ -366,6 +366,17 @@ theme_override_font_sizes/font_size = 16
 text = "Level 2
 "
 
+[node name="Level3Start" type="Button" parent="."]
+z_index = 50
+texture_filter = 1
+offset_left = 68.0
+offset_top = -92.0
+offset_right = 124.0
+offset_bottom = -68.0
+theme_override_fonts/font = ExtResource("8_mqws0")
+theme_override_font_sizes/font_size = 16
+text = "Level 3"
+
 [node name="SceneTransition" type="CanvasLayer" parent="."]
 
 [node name="dissolve_rect" type="ColorRect" parent="SceneTransition"]
@@ -398,3 +409,4 @@ autoplay = "dissolve_out"
 
 [connection signal="pressed" from="Level1Start" to="." method="_on_level_1_start_pressed"]
 [connection signal="pressed" from="Level2Start" to="." method="_on_level_2_start_pressed"]
+[connection signal="pressed" from="Level3Start" to="." method="_on_level_3_start_pressed"]

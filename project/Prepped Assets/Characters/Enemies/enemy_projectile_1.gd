@@ -8,6 +8,7 @@ func start(pos):
 func _process(delta):
 	#position.y += speed * delta
 	position += transform.x * speed * delta
+	$Sprite2D.rotation += 0.25
 	
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
