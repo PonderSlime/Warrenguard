@@ -46,7 +46,7 @@ func _physics_process(delta):
 				velocity.x = lerp(velocity.x, 0.0, friction)
 		elif is_bouncing:
 			velocity.y += gravity * delta
-			velocity.x = lerp(velocity.x, 0.0, friction)
+			velocity.x = lerp(velocity.x, 0.0, 0.1)
 	elif collision.disabled == true and is_burrowing == true:
 		velocity.y = 0
 		velocity.x = 0

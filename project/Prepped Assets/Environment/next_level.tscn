@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bx8qwuwab63nw"]
 
-[ext_resource type="Script" path="res://Scenes/Test/dummy_save_Game.tres.gd" id="1_l6jtn"]
 [ext_resource type="Texture2D" uid="uid://l00yjfnvepmv" path="res://Sprites/Environment/Cloud1.png" id="1_lvl4t"]
+[ext_resource type="Script" path="res://Scenes/Test/next_level.gd" id="1_yg3g6"]
 [ext_resource type="Texture2D" uid="uid://c5syv5rwrxgpi" path="res://Sprites/Environment/Background1.png" id="2_xejpl"]
 [ext_resource type="Texture2D" uid="uid://ct8kyjdv21675" path="res://Sprites/Environment/NightBackgroundLights.png" id="3_hykrp"]
 [ext_resource type="PackedScene" uid="uid://yktbyvhvp1o6" path="res://Prepped Assets/WarrenItems/teledoor.tscn" id="4_l2g6w"]
@@ -16,7 +16,7 @@ background_color = Color(0.314306, 0.791953, 0.831257, 1)
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("color_mod", "color_sky_mod", "lights", "point_light", "background", "clouds") groups=["parent"]]
 y_sort_enabled = true
-script = ExtResource("1_l6jtn")
+script = ExtResource("1_yg3g6")
 color_mod = NodePath("ColorMod")
 color_sky_mod = NodePath("ParallaxBackground/ParallaxLayer/ParallaxLayerElements/Clouds/SkyColorMod")
 lights = NodePath("ParallaxBackground/ParallaxLayer/ParallaxLayerElements/NightLights")

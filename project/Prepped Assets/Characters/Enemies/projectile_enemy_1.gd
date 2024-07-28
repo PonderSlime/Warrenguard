@@ -21,9 +21,10 @@ func _process(delta):
 		continue_shoot = false
 func _on_shoot_timer_timeout():
 	if continue_shoot:
+		headAnim.play("belch_proj")
+		$AudioStreamPlayer2D.play()
 		var b = projectile1_scene.instantiate()
 		get_tree().root.add_child(b)
-		headAnim.play("belch_proj")
 		b.start(head.position)
 		b.transform = head.global_transform
 	$ShootTimer.wait_time = randf_range(4, 10)

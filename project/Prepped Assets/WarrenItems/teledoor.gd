@@ -20,10 +20,10 @@ func _on_area_2d_body_entered(body):
 		elif !is_internal:
 			GlobalVariableLoader.progress_level += 1
 			GlobalVariableLoader.active_level = active_level
-			GlobalVariableLoader.player_health = GlobalVariableLoader.start_health
+			#GlobalVariableLoader.player_health = GlobalVariableLoader.start_health
 		_anim_player.play("dissolve")
 		GlobalVariableLoader.stored_carrots += GlobalVariableLoader.carrots
-		GlobalVariableLoader.carrots = 0
+		#GlobalVariableLoader.carrots = 0
 		parent.save_game()
 		await get_tree().create_timer(0.8333).timeout
 		GlobalVariableLoader.goto_scene(switch_to_scene)

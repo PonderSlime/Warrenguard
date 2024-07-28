@@ -285,6 +285,7 @@ script = ExtResource("1_6joar")
 gos = NodePath("../GameOverScreen")
 hud = NodePath("../HUD")
 exit_burrow_loc = NodePath("../ExitBurrowLoc")
+friction = 0.3
 _anim_player = NodePath("../SceneTransition/AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]

@@ -17,6 +17,8 @@ func _process(delta):
 
 
 func _on_level_1_start_pressed():
+	$AudioStreamPlayer2D.play()
+	await get_tree().create_timer(0.01).timeout
 	_anim_player.play("dissolve")
 	await get_tree().create_timer(0.8333).timeout
 	GlobalVariableLoader.goto_scene(scene_1)
@@ -24,6 +26,8 @@ func _on_level_1_start_pressed():
 
 func _on_level_2_start_pressed():	
 	if GlobalVariableLoader.progress_level >= 1:
+		$AudioStreamPlayer2D.play()
+		await get_tree().create_timer(0.01).timeout
 		_anim_player.play("dissolve")
 		await get_tree().create_timer(0.8333).timeout
 		GlobalVariableLoader.goto_scene(scene_2)
@@ -32,6 +36,8 @@ func _on_level_2_start_pressed():
 
 func _on_level_3_start_pressed():
 	if GlobalVariableLoader.progress_level >= 2:
+		$AudioStreamPlayer2D.play()
+		await get_tree().create_timer(0.01).timeout
 		_anim_player.play("dissolve")
 		await get_tree().create_timer(0.8333).timeout
 		GlobalVariableLoader.goto_scene(scene_3)

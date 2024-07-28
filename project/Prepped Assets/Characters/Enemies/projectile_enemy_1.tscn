@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bk0u2p6q8bbty"]
+[gd_scene load_steps=9 format=3 uid="uid://bk0u2p6q8bbty"]
 
 [ext_resource type="Script" path="res://Prepped Assets/Characters/Enemies/projectile_enemy_1.gd" id="1_1p8bs"]
-[ext_resource type="Texture2D" uid="uid://coakhjy0bpm6l" path="res://Sprites/Enemies/ProjectileEnemy.png" id="1_fqrv2"]
-[ext_resource type="Texture2D" uid="uid://cggj1ij76adyr" path="res://Sprites/Enemies/ProjectileEnemyHead.png" id="2_5uwo4"]
+[ext_resource type="Texture2D" uid="uid://coakhjy0bpm6l" path="res://Sprites/Enemies/ProjectileEnemy/ProjectileEnemy.png" id="2_rn06g"]
+[ext_resource type="Texture2D" uid="uid://cggj1ij76adyr" path="res://Sprites/Enemies/ProjectileEnemy/ProjectileEnemyHead.png" id="3_u8b0n"]
+[ext_resource type="AudioStream" uid="uid://clcfllald4mbi" path="res://Audio/Sound Effects/proj_launch.wav" id="4_hmvuy"]
 
 [sub_resource type="Animation" id="Animation_ox018"]
 length = 0.001
@@ -65,7 +66,7 @@ autostart = true
 z_index = -1
 texture_filter = 1
 position = Vector2(0, -12)
-texture = ExtResource("1_fqrv2")
+texture = ExtResource("2_rn06g")
 
 [node name="Head" type="Sprite2D" parent="."]
 position = Vector2(0, -9)
@@ -73,7 +74,7 @@ position = Vector2(0, -9)
 [node name="HeadTex" type="Sprite2D" parent="Head"]
 texture_filter = 1
 rotation = -4.71239
-texture = ExtResource("2_5uwo4")
+texture = ExtResource("3_u8b0n")
 hframes = 2
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -83,6 +84,9 @@ collision_mask = 34
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_v6y8n")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_hmvuy")
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

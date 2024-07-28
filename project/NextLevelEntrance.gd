@@ -13,7 +13,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if GlobalVariableLoader.progress_level > level_count - 1:
-		GlobalVariableLoader.progress_level = 1
+		GlobalVariableLoader.progress_level = level_count - 1
 func _on_body_entered(body):
 	if body.name == "PlayerRPG":
 		_anim_player.play("dissolve")

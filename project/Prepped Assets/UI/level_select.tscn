@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://o7pmlfpkit6n"]
+[gd_scene load_steps=24 format=3 uid="uid://o7pmlfpkit6n"]
 
 [ext_resource type="TileSet" uid="uid://cdjnneus38taj" path="res://Prepped Assets/Tilemaps/overworld_tilemap_1.tres" id="1_jkh1x"]
 [ext_resource type="Script" path="res://Prepped Assets/UI/level_select.gd" id="1_yak24"]
@@ -9,6 +9,7 @@
 [ext_resource type="TileSet" uid="uid://dqb407tvplnt8" path="res://Prepped Assets/UI/ui_large_tileset.tres" id="7_6c5gg"]
 [ext_resource type="FontFile" uid="uid://bogvghvlaqn45" path="res://Fonts/m5x7.ttf" id="8_mqws0"]
 [ext_resource type="Texture2D" uid="uid://ddpwk6ygmcuxx" path="res://Sprites/Easter Eggs/flag-orpheus-left_pixelated.png" id="9_gdeth"]
+[ext_resource type="AudioStream" uid="uid://b4bb1cw11qks8" path="res://Audio/Sound Effects/select.wav" id="10_jpn0e"]
 
 [sub_resource type="Animation" id="Animation_8jdja"]
 length = 0.001
@@ -406,6 +407,9 @@ libraries = {
 "": SubResource("AnimationLibrary_00teg")
 }
 autoplay = "dissolve_out"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_jpn0e")
 
 [connection signal="pressed" from="Level1Start" to="." method="_on_level_1_start_pressed"]
 [connection signal="pressed" from="Level2Start" to="." method="_on_level_2_start_pressed"]
