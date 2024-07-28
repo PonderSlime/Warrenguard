@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxcep06pekqu4"]
+[gd_scene load_steps=12 format=3 uid="uid://bxcep06pekqu4"]
 
 [ext_resource type="Script" path="res://Scenes/Test/save_Game.gd" id="1_8icv6"]
 [ext_resource type="PackedScene" uid="uid://bvse5e73c1cs7" path="res://Prepped Assets/Characters/PlayerRPG/player_rpg_digger.tscn" id="2_axyd1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://xbqwuak3j61q" path="res://Sprites/WarrenItems/WarrenTilemap.png" id="3_36to6"]
 [ext_resource type="Script" path="res://Scenes/Test/TileMap.gd" id="4_r1db7"]
 [ext_resource type="PackedScene" uid="uid://cscyc5ihbe04m" path="res://Prepped Assets/WarrenItems/static_crate.tscn" id="5_ufs77"]
+[ext_resource type="PackedScene" uid="uid://c5gqlq42xq46y" path="res://Prepped Assets/Items/lantern.tscn" id="7_dmsee"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tun5u"]
 resource_name = "WarrenTilemap"
@@ -149,13 +150,13 @@ sources/1 = SubResource("TileSetScenesCollectionSource_ep6xn")
 [node name="Node2D" type="Node2D" groups=["parent"]]
 script = ExtResource("1_8icv6")
 
-[node name="PlayerRPGDigger" parent="." groups=["Persist"] instance=ExtResource("2_axyd1")]
+[node name="PlayerRPGDigger" parent="." instance=ExtResource("2_axyd1")]
 position = Vector2(1398, 826)
 
 [node name="Teledoor" parent="." instance=ExtResource("3_7rmpb")]
 position = Vector2(1480, 815)
 
-[node name="TileMap" type="TileMap" parent="." groups=["Persist"]]
+[node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
 tile_set = SubResource("TileSet_i65pc")
 format = 2
@@ -174,3 +175,6 @@ occluder = SubResource("OccluderPolygon2D_tvyoc")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.385493, 0.385492, 0.385492, 1)
+
+[node name="Lantern" parent="." instance=ExtResource("7_dmsee")]
+position = Vector2(1453, 827)
