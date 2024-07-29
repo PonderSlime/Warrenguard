@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bvse5e73c1cs7"]
+[gd_scene load_steps=46 format=3 uid="uid://bvse5e73c1cs7"]
 
 [ext_resource type="Script" path="res://Prepped Assets/Characters/PlayerRPG/player_rpg_digger_export_vars.gd" id="1_4xg5f"]
 [ext_resource type="Script" path="res://Prepped Assets/Characters/PlayerRPG/player_rpg.gd" id="1_ojupd"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="9_dp004"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="10_5q1f1"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="11_i272q"]
+[ext_resource type="PackedScene" uid="uid://byhmhdnw6t0f" path="res://Prepped Assets/UI/build_menu.tscn" id="12_i6ggp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sqedp"]
 radius = 7.0
@@ -380,6 +381,8 @@ drag_right_margin = 0.4
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("11_i272q")
+
+[node name="BuildMenu" parent="." instance=ExtResource("12_i6ggp")]
 
 [connection signal="footstep" from="PlayerRPGDigger" to="Sound/AudioController" method="_walk"]
 [connection signal="hurt" from="PlayerRPGDigger" to="Sound/AudioController" method="_hurt"]

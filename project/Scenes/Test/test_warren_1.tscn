@@ -131,7 +131,7 @@ texture = ExtResource("3_36to6")
 4:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ep6xn"]
-resource_name = "Items"
+resource_name = "Lantern"
 scenes/1/scene = ExtResource("5_ufs77")
 scenes/3/scene = ExtResource("7_dmsee")
 

@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=3 uid="uid://byhmhdnw6t0f"]
+
+[ext_resource type="Script" path="res://addons/radial_menu/RadialMenu.gd" id="1_432t5"]
+[ext_resource type="Script" path="res://Prepped Assets/UI/build_menu.gd" id="1_n8qbw"]
+[ext_resource type="Texture2D" uid="uid://cagcvchj2a6tq" path="res://Sprites/WarrenItems/Lantern_01.png" id="2_hc3nc"]
+[ext_resource type="Script" path="res://Prepped Assets/UI/BuildMenu.gd" id="2_ka0cw"]
+[ext_resource type="Texture2D" uid="uid://bsquf371yqxh0" path="res://Sprites/WarrenItems/Crate-01.png" id="3_hdd2c"]
+[ext_resource type="Texture2D" uid="uid://bhnc2ch08rnun" path="res://Sprites/Environment/Dirt.png" id="4_u7ydf"]
+[ext_resource type="Texture2D" uid="uid://ot4kmsk7b43l" path="res://Sprites/Environment/Spikes.png" id="5_nicbh"]
+[ext_resource type="Texture2D" uid="uid://mpr16u53uiib" path="res://Sprites/Environment/LavaLevel/LavaTop.png" id="6_kq6a4"]
+[ext_resource type="Texture2D" uid="uid://dr74vcdcrr1pr" path="res://Sprites/Environment/Cursor.png" id="7_2cgiq"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_n8qbw")
+
+[node name="BuildMenu" type="MarginContainer" parent="."]
+visible = false
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 157.0
+offset_top = 122.0
+offset_right = -163.0
+offset_bottom = -118.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_ka0cw")
+
+[node name="RadialMenu" type="Container" parent="BuildMenu"]
+layout_mode = 2
+script = ExtResource("1_432t5")
+snap = true
+width_min = 0.35
+
+[node name="TextureButton8" type="TextureButton" parent="BuildMenu/RadialMenu"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("2_hc3nc")
+
+[node name="TextureButton12" type="TextureButton" parent="BuildMenu/RadialMenu"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("3_hdd2c")
+
+[node name="TextureButton13" type="TextureButton" parent="BuildMenu/RadialMenu"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("4_u7ydf")
+
+[node name="TextureButton9" type="TextureButton" parent="BuildMenu/RadialMenu"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("5_nicbh")
+
+[node name="TextureButton10" type="TextureButton" parent="BuildMenu/RadialMenu"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("6_kq6a4")
+
+[node name="TextureButton11" type="TextureButton" parent="BuildMenu/RadialMenu"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = ExtResource("7_2cgiq")
+
+[connection signal="hovered" from="BuildMenu/RadialMenu" to="BuildMenu" method="_on_radial_menu_hovered"]
+[connection signal="selected" from="BuildMenu/RadialMenu" to="." method="_on_radial_menu_selected"]
+[connection signal="pressed" from="BuildMenu/RadialMenu/TextureButton8" to="BuildMenu" method="_on_texture_button_8_pressed"]
+[connection signal="pressed" from="BuildMenu/RadialMenu/TextureButton12" to="BuildMenu" method="_on_texture_button_12_pressed"]
+[connection signal="pressed" from="BuildMenu/RadialMenu/TextureButton13" to="BuildMenu" method="_on_texture_button_13_pressed"]
+[connection signal="pressed" from="BuildMenu/RadialMenu/TextureButton9" to="BuildMenu" method="_on_texture_button_9_pressed"]
+[connection signal="pressed" from="BuildMenu/RadialMenu/TextureButton10" to="BuildMenu" method="_on_texture_button_10_pressed"]
+[connection signal="pressed" from="BuildMenu/RadialMenu/TextureButton11" to="BuildMenu" method="_on_texture_button_11_pressed"]
