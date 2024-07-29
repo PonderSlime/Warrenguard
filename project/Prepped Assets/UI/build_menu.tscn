@@ -29,7 +29,6 @@ size_flags_vertical = 4
 script = ExtResource("2_ka0cw")
 
 [node name="RadialMenu" type="Container" parent="BuildMenu"]
-visible = false
 layout_mode = 2
 script = ExtResource("1_432t5")
 snap = true

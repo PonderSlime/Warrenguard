@@ -1,8 +1,8 @@
 extends Control
-var build_item : int
+var build_item : int = 0
 func _process(delta):
-	print(GlobalVariableLoader.build_item)
-	GlobalVariableLoader.build_item = build_item
+		GlobalVariableLoader.build_item = build_item
+		print(GlobalVariableLoader.build_item)
 func _on_radial_menu_hovered(child):
 	prints("Hovered", child)
 
