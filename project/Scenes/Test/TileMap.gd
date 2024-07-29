@@ -12,6 +12,19 @@ func _process(delta):
 		var clicked_cell = local_to_map(get_local_mouse_position())
 		var data = get_cell_tile_data(0, clicked_cell)
 		damage_tile(GlobalVariableLoader.cellPosition, 1)
+	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+		var cells = []
+		var clicked_cell = local_to_map(get_local_mouse_position())
+		var data = get_cell_tile_data(0, clicked_cell)
+		place_lantern(GlobalVariableLoader.cellPosition)
+func place_lantern(tile_position):
+	
+	__set_cell(tile_position)
+	
+func __set_cell(tile_position : Vector2):
+	var zero = Vector2i(0,0)
+	set_cell(2, tile_position, 1, zero, 3)
+	print("cell_placed")
 func damage_tile(tile_position : Vector2, damage : float):
 	#set_cell(-1, GlobalVariableLoader.cellPosition)
 	#_remove_cell(data)

@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5gqlq42xq46y"]
+[gd_scene load_steps=3 format=3 uid="uid://c5gqlq42xq46y"]
 
 [ext_resource type="Texture2D" uid="uid://cagcvchj2a6tq" path="res://Sprites/WarrenItems/Lantern_01.png" id="1_ufe05"]
 [ext_resource type="Texture2D" uid="uid://bn7frrg6sd1c8" path="res://Sprites/WarrenItems/Lantern_01_Emission.png" id="2_3wdqr"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6envw"]
-size = Vector2(6, 8)
 
 [node name="Lantern" type="StaticBody2D"]
 texture_filter = 1
@@ -15,7 +12,3 @@ texture = ExtResource("1_ufe05")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = ExtResource("2_3wdqr")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_6envw")
