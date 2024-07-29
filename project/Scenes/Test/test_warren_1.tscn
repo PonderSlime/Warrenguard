@@ -151,8 +151,9 @@ sources/1 = SubResource("TileSetScenesCollectionSource_ep6xn")
 [node name="Node2D" type="Node2D" groups=["parent"]]
 script = ExtResource("1_8icv6")
 
-[node name="PlayerRPGDigger" parent="." instance=ExtResource("2_axyd1")]
+[node name="PlayerRPGDigger" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("2_axyd1")]
 position = Vector2(1398, 826)
+tilemap = NodePath("../TileMap")
 
 [node name="Teledoor" parent="." instance=ExtResource("3_7rmpb")]
 position = Vector2(1480, 815)
