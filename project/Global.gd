@@ -24,7 +24,7 @@ var active_level : int = 0
 var is_frozen : bool = false
 var player_tile_pos : Vector2
 
-var active_build_item : int = 0
+var build_item : int = 0
 func _ready():
 	player_health = start_health
 	var root = get_tree().root

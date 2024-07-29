@@ -7,11 +7,10 @@ func _process(delta):
 		build_menu = !build_menu
 	
 	if build_menu:
-		$BuildMenu.visible = true
+		$BuildMenu/RadialMenu.visible = true
 	elif !build_menu:
-		$BuildMenu.visible = false
+		$BuildMenu/RadialMenu.visible = false
 
 
 func _on_radial_menu_selected(child):
-	print("select!")
 	build_menu = false

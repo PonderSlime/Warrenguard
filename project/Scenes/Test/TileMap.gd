@@ -23,7 +23,10 @@ func place_lantern(tile_position):
 	
 func __set_cell(tile_position : Vector2):
 	var zero = Vector2i(0,0)
-	set_cell(2, tile_position, 1, zero, 3)
+	if GlobalVariableLoader.build_item == 1:
+		set_cell(2, tile_position, 1, zero, 3)
+	elif GlobalVariableLoader.build_item == 2:
+		set_cell(2, tile_position, 1, zero, 1)
 func damage_tile(tile_position : Vector2, damage : float):
 	#set_cell(-1, GlobalVariableLoader.cellPosition)
 	#_remove_cell(data)

@@ -11,7 +11,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var pos = Vector2(player.global_position.x,player.global_position.y - 16)
+	var pos = get_global_mouse_position()#Vector2(player.global_position.x,player.global_position.y - 16)
 	cellPos = tilemap.local_to_map(pos)
 	GlobalVariableLoader.player_tile_pos = cellPos
 	if Input.is_action_just_pressed("toggle_light"):
