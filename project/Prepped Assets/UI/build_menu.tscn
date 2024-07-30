@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://cagcvchj2a6tq" path="res://Sprites/WarrenItems/Lantern_01.png" id="2_hc3nc"]
 [ext_resource type="Script" path="res://Prepped Assets/UI/BuildMenu.gd" id="2_ka0cw"]
 [ext_resource type="Texture2D" uid="uid://bsquf371yqxh0" path="res://Sprites/WarrenItems/Crate-01.png" id="3_hdd2c"]
-[ext_resource type="Texture2D" uid="uid://bhnc2ch08rnun" path="res://Sprites/Environment/Dirt.png" id="4_u7ydf"]
-[ext_resource type="Texture2D" uid="uid://ot4kmsk7b43l" path="res://Sprites/Environment/Spikes.png" id="5_nicbh"]
+[ext_resource type="Texture2D" uid="uid://brhvhkedhhxt6" path="res://Sprites/WarrenItems/warrenWoodFloor.png" id="6_6bpao"]
 [ext_resource type="Texture2D" uid="uid://mpr16u53uiib" path="res://Sprites/Environment/LavaLevel/LavaTop.png" id="6_kq6a4"]
 [ext_resource type="Texture2D" uid="uid://dr74vcdcrr1pr" path="res://Sprites/Environment/Cursor.png" id="7_2cgiq"]
+[ext_resource type="Texture2D" uid="uid://db0x85rcd8vc1" path="res://Sprites/WarrenItems/Doorway.png" id="7_fvh05"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_n8qbw")
@@ -47,12 +47,12 @@ texture_normal = ExtResource("3_hdd2c")
 [node name="TextureButton13" type="TextureButton" parent="BuildMenu/RadialMenu"]
 layout_mode = 2
 focus_mode = 0
-texture_normal = ExtResource("4_u7ydf")
+texture_normal = ExtResource("6_6bpao")
 
 [node name="TextureButton9" type="TextureButton" parent="BuildMenu/RadialMenu"]
 layout_mode = 2
 focus_mode = 0
-texture_normal = ExtResource("5_nicbh")
+texture_normal = ExtResource("7_fvh05")
 
 [node name="TextureButton10" type="TextureButton" parent="BuildMenu/RadialMenu"]
 layout_mode = 2

@@ -33,6 +33,9 @@ func __set_cell(tile_position : Vector2):
 		if get_cell_source_id(0, Vector2i(tile_position.x,tile_position.y)) == -1:
 			set_cell(2, tile_position, 0, Vector2i(1,4), 0)
 			_build_room(tile_position)
+	elif GlobalVariableLoader.build_item == 4:
+		if get_cell_source_id(0, Vector2i(tile_position.x,tile_position.y)) == -1:
+			set_cell(2, tile_position, 0, Vector2i(1,4), 0)
 	elif GlobalVariableLoader.build_item == 5:
 		set_cell(3, tile_position, 1, Vector2i(-1,-1))
 func damage_tile(tile_position : Vector2, damage : float):
@@ -63,7 +66,6 @@ func _build_room(tile_position):
 	for i in list_of_tiles:
 		if get_cell_source_id(0, i) == -1:
 			set_cells_terrain_connect(2, list_of_tiles, 1, 0, true)
-	
 		
 func save():
 	var save_dict = {
