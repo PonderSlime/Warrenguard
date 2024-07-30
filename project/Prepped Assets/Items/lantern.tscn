@@ -8,6 +8,7 @@ texture_filter = 1
 collision_layer = 9
 
 [node name="LanternTex" type="Sprite2D" parent="."]
+z_index = 2
 texture = ExtResource("1_ufe05")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

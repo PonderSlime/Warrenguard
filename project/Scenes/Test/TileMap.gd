@@ -24,12 +24,17 @@ func place_lantern(tile_position):
 	
 func __set_cell(tile_position : Vector2):
 	var zero = Vector2i(0,0)
+	
 	if GlobalVariableLoader.build_item == 1:
-		set_cell(2, tile_position, 1, zero, 3)
+		set_cell(3, tile_position, 1, zero, 3)
 	elif GlobalVariableLoader.build_item == 2:
-		set_cell(2, tile_position, 1, zero, 1)
+		set_cell(3, tile_position, 1, zero, 1)
+	elif GlobalVariableLoader.build_item == 3:
+		if get_cell_source_id(0, Vector2i(tile_position.x,tile_position.y)) == -1:
+			set_cell(2, tile_position, 0, Vector2i(1,4), 0)
+			_build_room(tile_position)
 	elif GlobalVariableLoader.build_item == 5:
-		set_cell(2, tile_position, 1, Vector2i(-1,-1))
+		set_cell(3, tile_position, 1, Vector2i(-1,-1))
 func damage_tile(tile_position : Vector2, damage : float):
 	#set_cell(-1, GlobalVariableLoader.cellPosition)
 	#_remove_cell(data)
@@ -48,6 +53,17 @@ func _remove_cell(tile_position):
 						Vector2i(tile_position.x-1,tile_position.y-1)]
 	for i in list_of_tiles:
 		set_cells_terrain_connect(0, list_of_tiles, 0, 1, true)
+func _build_room(tile_position):
+	var list_of_tiles = [Vector2i(tile_position.x,tile_position.y),Vector2i(tile_position.x+1,tile_position.y),
+						Vector2i(tile_position.x-1,tile_position.y),Vector2i(tile_position.x,tile_position.y+1),
+						Vector2i(tile_position.x+1,tile_position.y+1),Vector2i(tile_position.x-1,tile_position.y+1),
+						Vector2i(tile_position.x,tile_position.y-1),Vector2i(tile_position.x+1,tile_position.y-1),
+						Vector2i(tile_position.x-1,tile_position.y-1)]
+	
+	for i in list_of_tiles:
+		if get_cell_source_id(0, i) == -1:
+			set_cells_terrain_connect(2, list_of_tiles, 1, 0, true)
+	
 		
 func save():
 	var save_dict = {

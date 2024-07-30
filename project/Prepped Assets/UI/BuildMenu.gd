@@ -2,13 +2,14 @@ extends Control
 var build_item : int = 0
 func _process(delta):
 		GlobalVariableLoader.build_item = build_item
-		print(GlobalVariableLoader.build_item)
 func _on_radial_menu_hovered(child):
-	prints("Hovered", child)
+	#prints("Hovered", child)
+	pass
 
 
 func _on_radial_menu_selected(child):
-	prints("Selected", child)
+	#prints("Selected", child)
+	pass
 
 
 func _on_texture_button_8_pressed():
