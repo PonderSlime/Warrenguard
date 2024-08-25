@@ -373,6 +373,7 @@ tween_resource = SubResource("Resource_hjs86")
 draw_limits = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
 zoom = Vector2(2, 2)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true

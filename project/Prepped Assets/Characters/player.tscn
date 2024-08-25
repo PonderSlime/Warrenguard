@@ -330,12 +330,8 @@ volume_db = -6.0
 [node name="PowerUpSound" type="AudioStreamPlayer" parent="Sound"]
 volume_db = -6.0
 
-[node name="AudioController" type="Node" parent="Sound" node_paths=PackedStringArray("song", "sound_effects", "walk_sound", "powerup_sound")]
+[node name="AudioController" type="Node" parent="Sound"]
 script = ExtResource("6_k4rhr")
-song = NodePath("../Song")
-sound_effects = NodePath("../SoundEffects")
-walk_sound = NodePath("../WalkSound")
-powerup_sound = NodePath("../PowerUpSound")
 
 [node name="SceneTransition" type="CanvasLayer" parent="."]
 
@@ -376,6 +372,7 @@ tween_resource = SubResource("Resource_if8a7")
 draw_limits = true
 
 [node name="Camera2D" type="Camera2D" parent="CameraController"]
+physics_interpolation_mode = 1
 zoom = Vector2(2, 2)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
